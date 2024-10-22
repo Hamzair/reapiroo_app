@@ -10,4 +10,8 @@ class AppColors {
   static const Color darkBlue = Color(0xFF1F2937);
   static const Color skyBlue = Color(0xFF35A4FF);
   static const Color orange = Color(0xFFDB5C00);
+  static const Color fill = Color.fromRGBO(250, 250, 250, 1);
+  static const Color buttontext = Color.fromRGBO(255, 255, 255, 1);
+
+
 }
