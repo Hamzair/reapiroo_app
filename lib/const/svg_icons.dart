@@ -5,6 +5,10 @@ class AppSvgs {
   static const String notification = "./assets/svgs/notification.svg";
   static const String calender = "./assets/svgs/calender.svg";
   static const String clock = "./assets/svgs/clock.svg";
+  static const String today_appointment = "./assets/svgs/today_appointment.svg";
+  static const String happy_customers = "./assets/svgs/happy_customers.svg";
+  static const String jobs_completed = "./assets/svgs/jobs_completed.svg";
+  static const String total_earned = "./assets/svgs/total_earned.svg";
 
 
   // Midat
@@ -12,6 +16,6 @@ class AppSvgs {
 
 
 
-// Hamza
+  // Hamza
 
 }

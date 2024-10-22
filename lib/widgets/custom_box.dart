@@ -42,10 +42,12 @@ class _CustomBoxState extends State<CustomBox> {
           SizedBox(height: 5.h,),
           Container(
             width: 84.w,
+            padding: EdgeInsets.symmetric(vertical: 4.h),
             decoration: BoxDecoration(
               color: AppColors.secondary,
               borderRadius: BorderRadius.circular(6.w),
             ),
+            alignment: Alignment.center,
             child: Text(widget.value, style: montserrat700(12.sp, AppColors.primary),),
           )
         ],

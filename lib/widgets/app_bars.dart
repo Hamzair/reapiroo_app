@@ -5,8 +5,15 @@ import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/widgets/my_svg.dart';
 
-class MyAppBar extends StatefulWidget {
-  const MyAppBar({super.key, required this.isMenu, required this.isNotification, required this.isTitle, this.title, required this.isSecondIcon});
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const MyAppBar({
+    super.key,
+    required this.isMenu,
+    required this.isNotification,
+    required this.isTitle,
+    this.title,
+    required this.isSecondIcon,
+  });
 
   final bool isMenu;
   final bool isNotification;
@@ -15,14 +22,9 @@ class MyAppBar extends StatefulWidget {
   final String? title;
 
   @override
-  State<MyAppBar> createState() => _MyAppBarState();
-}
-
-class _MyAppBarState extends State<MyAppBar> {
-  @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 13.w, right: 19.w, bottom: 22.h, top: 20.h),
+      padding: EdgeInsets.only(left: 13.w, right: 19.w, bottom: 10.h, top: 40.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(14.w),
@@ -32,7 +34,7 @@ class _MyAppBarState extends State<MyAppBar> {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.18), // Adjust opacity if needed
-            offset: Offset(0, 4), // (x = 0, y = 4)
+            offset: const Offset(0, 4), // (x = 0, y = 4)
             blurRadius: 10.4, // blur 10.4
             spreadRadius: 0, // spread 0
           ),
@@ -41,23 +43,39 @@ class _MyAppBarState extends State<MyAppBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          MySvg(assetName: widget.isMenu ? AppSvgs.menu : AppSvgs.back_button, height: 38.h, width: 38.w,),
-          if(widget.isTitle == true)
-            Expanded(child: Text(widget.title ?? "", style: jost600(22.sp, AppColors.darkBlue),)),
-          if(widget.isNotification == true)
+          MySvg(
+            assetName: isMenu ? AppSvgs.menu : AppSvgs.back_button,
+            height: 38.h,
+            width: 38.w,
+          ),
+          if (isTitle == true)
+            Expanded(
+              child: Text(
+                title ?? "",
+                style: jost600(22.sp, AppColors.darkBlue),
+              ),
+            ),
+          if (isNotification == true)
             Container(
               height: 38.h,
               width: 35.w,
               decoration: BoxDecoration(
                 color: AppColors.primary,
-                borderRadius: BorderRadius.circular(14.w)
+                borderRadius: BorderRadius.circular(14.w),
               ),
               alignment: Alignment.center,
-              child: MySvg(assetName: AppSvgs.notification, height: 23.h, width: 23.w,),
+              child: MySvg(
+                assetName: AppSvgs.notification,
+                height: 23.h,
+                width: 23.w,
+              ),
             ),
-
         ],
       ),
     );
   }
+
+  // To set a fixed size for the AppBar
+  @override
+  Size get preferredSize => Size.fromHeight(70.h); // Adjust height as needed
 }
