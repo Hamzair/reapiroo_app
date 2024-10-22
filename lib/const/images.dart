@@ -15,7 +15,13 @@ class AppImages{
   static const Engineer = 'assets/images/Engineer.png';
   static const email_icon = 'assets/images/email_icon.png';
   static const Customer = 'assets/images/Customer.png';
+  static const onboardingelipse = 'assets/images/onboardingelipse.png';
 
   //balaj
+
+
+//midhat
+  static const ss = 'assets/images/onboardingelipse.png';
+
 
 }

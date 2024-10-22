@@ -92,7 +92,7 @@ class _MainOnBoardingViewState extends State<MainOnBoardingView> {
                           height: 52,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: AppColors.primary, // Button color
+                            color: AppColors.secondary, // Button color
                           ),
                           child: Icon(
                             Icons.arrow_forward_ios,
@@ -105,9 +105,9 @@ class _MainOnBoardingViewState extends State<MainOnBoardingView> {
                           child: CircularProgressIndicator(
                             value: progress,
                             strokeWidth: 1.5,
-                            backgroundColor: AppColors.primary.withOpacity(0.3),
+                            backgroundColor: AppColors.secondary.withOpacity(0.3),
                             valueColor: AlwaysStoppedAnimation<Color>(
-                              AppColors.primary,
+                              AppColors.skyBlue,
                             ),
                           ),
                         ),
