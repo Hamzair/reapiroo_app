@@ -51,10 +51,10 @@ class _MainOnBoardingViewState extends State<MainOnBoardingView> {
             },
             children: const [
               OnBoardingOne(),
-              // OnBoardingTwo(),
-              // OnBoardingThree(),
-              // OnBoardingFour(),
-              // OnBoardingFive(),
+              OnBoardingTwo(),
+              OnBoardingThree(),
+             OnBoardingFour(),
+             OnBoardingFive(),
             ],
           ),
 
@@ -72,7 +72,7 @@ class _MainOnBoardingViewState extends State<MainOnBoardingView> {
                     effect: ExpandingDotsEffect(
                       dotWidth: 9.w,
                       dotHeight: 9.h,
-                      activeDotColor: AppColors.primary,
+                      activeDotColor: AppColors.skyBlue,
                       dotColor: Colors.grey.shade400,
                     ),
                     controller: pageController,
