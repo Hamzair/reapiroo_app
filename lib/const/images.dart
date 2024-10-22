@@ -34,4 +34,7 @@ class AppImages{
   static const joeprofile = 'assets/images/joe_profile.png';
   static const saraprofile = 'assets/images/sara_profile.png';
   static const sendicon = 'assets/images/send_icon.png';
+  static const pinlocation = 'assets/images/pin_location_icon.png';
+  static const calendericon = 'assets/images/calender_icon.png';
+  static const clockicon = 'assets/images/clock_icon.png';
 }
