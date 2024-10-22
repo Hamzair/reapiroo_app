@@ -40,13 +40,13 @@ class OnBoardingOne extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 11.w),
               child: Text(
-                'Connecting you with trusted local technicians for any service. Choose from cleaning, plumbing, electrical work, and more!',
+                'Connecting you with trusted local technicians\nfor any service. Choose from cleaning,\nplumbing, electrical work, and more!',
                 style: jost700(15.17.sp, Color(0xff6B7280)),
                 textAlign: TextAlign.center,
               ),
             ),
             SizedBox(
-              height: 30.h,
+              height: 32.h,
             ),
             Stack(
               children: [
