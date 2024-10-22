@@ -1,7 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:repairoo/const/color.dart';
+import 'package:repairoo/const/images.dart';
+
+import '../on_boarding/main_onboarding.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -40,15 +43,28 @@ class _SplashScreenState extends State<SplashScreen> {
       Get.to(() => MainOnBoardingView());
     });
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: AppColors.primary,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Spacer(),
+          SizedBox(
+            height: 120,
+          ),
           Center(
             child: Image.asset(
-              AppImages.biomedicalogo,
-              height: 302.h,
-              width: 302.w,
+              // fit:BoxFit.cover,
+              AppImages.splash_logo2,
+              height: 237.h,
+              width: 237.w,
+            ),
+          ),
+          Spacer(),
+          Center(
+            child: Image.asset(
+              AppImages.splash_logo,
+              height: 180.h,
+              width: 180.w,
             ),
           )
         ],
