@@ -18,6 +18,7 @@ class AppImages{
   static const onboardingelipse = 'assets/images/onboardingelipse.png';
 
   //balaj
+  static const jared_hughs = 'assets/images/jared_hughs.png';
 
 
 //midhat
