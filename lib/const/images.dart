@@ -19,6 +19,7 @@ class AppImages{
 
   //balaj
   static const jared_hughs = 'assets/images/jared_hughs.png';
+  static const plumbing_thumbnail = 'assets/images/plumbing_thumbnail.png';
 
 
 //midhat

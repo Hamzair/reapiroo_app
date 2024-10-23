@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/views/home_screen/Home_screen.dart';
 import 'package:repairoo/views/splash_screen/splash_screen.dart';
 
 import 'views/booking_screens/booking_screen_main.dart';
@@ -10,6 +12,9 @@ import 'views/profile_screens/edit_profile_screen.dart';
 import 'views/profile_screens/profile_screen.dart';
 
 void main() {
+
+  Get.put(HomeController());
+
   runApp(const MyApp());
 }
 
@@ -29,7 +34,8 @@ class MyApp extends StatelessWidget {
           //     ProfileScreen(),
           //     ChatsScreenMain(),
           //     ChatScreenDetail(),
-              BookingScreenMain(),
+          //    BookingScreenMain(),
+                HomeScreen(),
 
             // initialBinding: UserBinding(),
           );
