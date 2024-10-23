@@ -5,10 +5,20 @@ import 'package:repairoo/const/color.dart';
 class CustomElevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final double? width; // Optional width
+  final double? height; // Optional height
+  final Color? backgroundColor; // Optional background color
+  final Color? textColor; // Optional text color
+  final BorderSide? borderSide; // Optional border side
 
   CustomElevatedButton({
     required this.text,
     required this.onPressed,
+    this.width, // Add width
+    this.height, // Add height
+    this.backgroundColor, // Add background color
+    this.textColor, // Add text color
+    this.borderSide, // Add border side
   });
 
   @override
@@ -16,16 +26,17 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary, // Background color
+        backgroundColor: backgroundColor ?? AppColors.primary, // Use backgroundColor or default color
         shape: RoundedRectangleBorder(
+          side: borderSide ?? BorderSide(color: Colors.black, width: 1), // Use borderSide or default
           borderRadius: BorderRadius.circular(13.31.r), // Border radius
         ),
-        minimumSize: Size(double.infinity, 51.h), // Width and height
+        minimumSize: Size(width ?? double.infinity, height ?? 51.h), // Use width and height or default values
       ),
       child: Text(
         text,
         style: TextStyle(
-          color: AppColors.buttontext, // Text color
+          color: textColor ?? AppColors.buttontext, // Use textColor or default text color
           fontSize: 16.sp, // Text size
         ),
       ),
