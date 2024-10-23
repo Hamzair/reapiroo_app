@@ -17,12 +17,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.isSecondIcon,
     this.onBackTap,
     this.onMenuTap,
+    this.isTextField = false,
   });
 
   final bool isMenu;
   final bool isNotification;
   final bool isSecondIcon;
   final bool isTitle;
+  final bool isTextField;
   final String? title;
   final VoidCallback? onBackTap;
   final VoidCallback? onMenuTap;
@@ -58,15 +60,46 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               width: 38.w,
             ),
           ),
-          if (isTitle == true)
+          if (isTitle == true || isTextField == true)
             SizedBox(width: 12.w,),
-          if (isTitle == true)
+          if (isTitle == true && isTextField == false)
             Expanded(
               child: Text(
                 title ?? "",
                 style: jost600(22.sp, AppColors.darkBlue),
               ),
             ),
+          if(isTextField == true && isTitle == false)
+            Expanded(
+              child: Container(
+                padding:  EdgeInsets.symmetric(horizontal: 13.w),
+                decoration: BoxDecoration(
+                  color: Colors.black, // Set the background color
+                  borderRadius: BorderRadius.circular(15.w), // Rounded edges
+                ),
+                child: Row(
+                  children: [
+                    MySvg(assetName: AppSvgs.search_icon, height: 19.2.h, width: 19.2.w,),
+                    SizedBox(width: 10.w), // Space between the icon and the text field
+                    Expanded(
+                      child: TextField(
+                        cursorColor: AppColors.secondary,
+                        style: jost400(14.sp, AppColors.secondary),
+                        decoration: InputDecoration(
+                          isDense: true,
+                          contentPadding: EdgeInsets.symmetric(vertical: 9.h),
+                          hintText: "Search for anything",
+                          hintStyle: jost400(14.sp, AppColors.secondary),
+                          border: InputBorder.none, // Remove the underline border
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          if(isTextField == true && isTitle == false)
+            SizedBox(width: 12.w,),
           if (isNotification == true)
             Container(
               height: 38.h,
@@ -91,3 +124,5 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(130.h);
 }
+
+

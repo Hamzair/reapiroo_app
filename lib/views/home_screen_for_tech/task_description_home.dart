@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
@@ -8,50 +7,36 @@ import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/widgets/app_bars.dart';
-import 'package:repairoo/widgets/custom_box.dart';
+import 'package:repairoo/widgets/custom_button.dart';
 import 'package:repairoo/widgets/my_svg.dart';
 
-class MainHome extends StatefulWidget {
-  const MainHome({super.key});
+class TaskDescriptionHome extends StatefulWidget {
+  const TaskDescriptionHome({super.key});
 
   @override
-  State<MainHome> createState() => _MainHomeState();
+  State<TaskDescriptionHome> createState() => _TaskDescriptionHomeState();
 }
 
-class _MainHomeState extends State<MainHome> {
+class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
 
-  final HomeController homeVM = Get.find<HomeController>();
-
-  List<Map<String, dynamic>> dummy = [
-    {
-      "image": AppSvgs.today_appointment,
-      "title": "Today Appointments",
-      "value": '3'
-    },
-    {
-      "image": AppSvgs.happy_customers,
-      "title": "Happy Customers",
-      "value": '2000'
-    },
-    {
-      "image": AppSvgs.jobs_completed,
-      "title": "Jobs Completed",
-      "value": '170'
-    },
-    {
-      "image": AppSvgs.total_earned,
-      "title": "Total Earned",
-      "value": '\$400'
-    },
-  ];
+  final TechHomeController homeVM = Get.find<TechHomeController>();
 
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-        ()=> Scaffold(
+    return Scaffold(
         backgroundColor: AppColors.secondary,
-        appBar: MyAppBar(isMenu: homeVM.isMenu.value, isNotification: homeVM.isNotification.value, isTitle: homeVM.isTitle.value, isSecondIcon: homeVM.isSecondIcon.value, title: homeVM.title.value,),
+        appBar: MyAppBar(
+          isMenu: homeVM.isMenu.value,
+          isNotification: homeVM.isNotification.value,
+          isTitle: homeVM.isTitle.value,
+          isSecondIcon: homeVM.isSecondIcon.value,
+          title: homeVM.title.value,
+          onBackTap: (){
+            homeVM.updateAppBar(true, false, true, false, "");
+            homeVM.isHome.value = "main";
+          },
+        ),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 13.5.w),
@@ -59,10 +44,8 @@ class _MainHomeState extends State<MainHome> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 16.h,),
-                Text("Reminder", style: montserrat600(15.sp, AppColors.primary),),
-                SizedBox(height: 8.h,),
-                Text("You have an upcoming appointment", style: montserrat400(11.sp, AppColors.primary),),
-                SizedBox(height: 14.h,),
+                Text("Plumbing", style: jost700(24.sp, AppColors.primary),),
+                SizedBox(height: 9.h,),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
                   decoration: BoxDecoration(
@@ -155,6 +138,56 @@ class _MainHomeState extends State<MainHome> {
                           ],
                         ),
                         SizedBox(height: 10.h,),
+                        Container(
+                          height: 138.h,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: AppColors.lightGrey,
+                            image: DecorationImage(image: AssetImage(AppImages.plumbing_thumbnail), fit: BoxFit.fill),
+                            borderRadius: BorderRadius.circular(12.w),
+                          ),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 8.h),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.secondary,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(12.w,),
+                                      bottomRight: Radius.circular(12.w),
+                                    )
+
+                                  ),
+                                  child: Text("video", style: montserrat400(11.sp, AppColors.primary),),
+                                ),
+                              ),
+                              SizedBox(height: 16.h,),
+                              Align(
+                                alignment: Alignment.center,
+                                child: MySvg(assetName: AppSvgs.play_icon, height: 50.h, width: 47.5.w,),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 19.h,),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            MySvg(assetName: AppSvgs.audio_play_icon, height: 36.h, width: 36.w,),
+                            SizedBox(width: 12.w,),
+                            Expanded(
+                              child: Container(
+                                height: 36.h,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(image: AssetImage(AppImages.audio), fit: BoxFit.fill)
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 21.h,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -171,7 +204,7 @@ class _MainHomeState extends State<MainHome> {
                                     borderRadius: BorderRadius.circular(8.w),
                                   ),
                                   alignment: Alignment.center,
-                                  child: Text("View", style: jost600(13.sp, AppColors.primary),),
+                                  child: Text("Chat", style: jost600(13.sp, AppColors.primary),),
                                 ),
                               ),
                             ),
@@ -204,36 +237,48 @@ class _MainHomeState extends State<MainHome> {
                       ]
                   ),
                 ),
-                SizedBox(height: 18.h,),
-                MasonryGridView.count(
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  physics: NeverScrollableScrollPhysics(),
-                  crossAxisCount: 2, // Number of items in a row
-                  mainAxisSpacing: 20.w, // Vertical spacing between items
-                  crossAxisSpacing: 20.w, // Horizontal spacing between items
-                  itemCount: dummy.length, // Number of items
-                  itemBuilder: (context, index) {
-                    return CustomBox(
-                      image: dummy[index]["image"],
-                      title: dummy[index]["title"],
-                      value: dummy[index]["value"],
-                    );
-                  },
+                SizedBox(height: 26.h,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CustomElevatedButton(
+                      width: 160.w,
+                        text: "Mark as done",
+                        backgroundColor: AppColors.primary,
+                        textColor: AppColors.secondary,
+                        fontSize: 19.sp,
+                        onPressed: (){
+                          homeVM.updateAppBar(false, true, false, false, "New Task");
+                          homeVM.isHome.value = "new task";
+                        },
+                    ),
+
+                    CustomElevatedButton(
+                      width: 160.w,
+                      text: "Cancel",
+                      backgroundColor: AppColors.buttonGrey,
+                      textColor: AppColors.primary,
+                      borderSide: BorderSide(
+                        width: 0,
+                        color: Colors.transparent
+                      ),
+                      fontSize: 19.sp,
+                      onPressed: (){
+                        homeVM.updateAppBar(true, false, true, false, "");
+                        homeVM.isHome.value = "main";
+                      },
+                    ),
+                  ],
                 )
 
 
-                // Wrap(
-                // spacing: 8.0,
-                // runSpacing: 8.0,
-                // children: List.generate(role.length, (index) {}
+
 
 
               ],
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
