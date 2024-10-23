@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:repairoo/views/auth/login_view/login_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../const/color.dart';
 import 'on_boarding_five.dart';
@@ -28,7 +30,7 @@ class _MainOnBoardingViewState extends State<MainOnBoardingView> {
       );
     } else if (currentpage == 4) {
       // Navigate to the LoginView screen
-      // Get.offAll(LoginView());
+       Get.offAll(LoginScreen());
     }
   }
 

@@ -22,7 +22,7 @@ class TechSignup extends StatefulWidget {
 }
 
 class _TechSignupState extends State<TechSignup> {
-  final TechController techController = Get.find();
+  final TechController techController = Get.put(TechController());
   List<String> index = [
     "0",
     "1",
@@ -45,7 +45,9 @@ class _TechSignupState extends State<TechSignup> {
             .unfocus(); // Close the keyboard when tapping outside
       },
       child: Scaffold(
+        backgroundColor: AppColors.secondary,
         appBar: AppBar(
+          backgroundColor: AppColors.secondary,
           automaticallyImplyLeading: false,
           flexibleSpace: Row(
             children: [

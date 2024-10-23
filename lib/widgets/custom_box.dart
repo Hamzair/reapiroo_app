@@ -26,9 +26,9 @@ class _CustomBoxState extends State<CustomBox> {
         boxShadow: [
           BoxShadow(
             color: Color.fromRGBO(20, 159, 169, 0.24), // Adjust opacity if needed
-            offset: Offset(0, 4), // (x = 0, y = 4)
-            blurRadius: 10.4, // blur 10.4
-            spreadRadius: 0, // spread 0
+            offset: Offset(0, 0.86), // (x = 0, y = 4)
+            blurRadius: 8.64, // blur 10.4
+            spreadRadius: -0.86, // spread 0
           ),
         ]
       ),

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/views/booking_screens/booking_screen_main.dart';
 import 'package:repairoo/views/chat_screens/chat_screen_main.dart';
-import 'package:repairoo/views/home_Screen/home_screen.dart';
+import 'package:repairoo/views/home_screen_for_tech/Home_screen.dart';
 import 'package:repairoo/views/profile_screens/profile_screen.dart';
 
 import '../../const/images.dart';

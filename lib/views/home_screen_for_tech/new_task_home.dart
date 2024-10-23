@@ -206,7 +206,12 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                       textColor: AppColors.secondary,
                       fontSize: 19.sp,
                       onPressed: (){
-                        Get.bottomSheet(BidBottomSheet());
+                        Get.bottomSheet(
+                          isScrollControlled: true,
+                          isDismissible: true,
+
+                            BidBottomSheet()
+                        );
                       },
                     ),
 

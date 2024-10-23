@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           //     ChatsScreenMain(),
           //     ChatScreenDetail(),
           //    BookingScreenMain(),
-                HomeScreen(),
+                SplashScreen(),
 
             // initialBinding: UserBinding(),
           );

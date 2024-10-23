@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:repairoo/views/bottom_nav/bottom_nav.dart';
 
 import '../../../const/color.dart';
 import '../../../const/images.dart';
@@ -28,6 +29,7 @@ class _CustomerSignupState extends State<CustomerSignup> {
         FocusScope.of(context).unfocus(); // Close the keyboard when tapping outside
       },
       child: Scaffold(
+        backgroundColor: AppColors.secondary,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -107,14 +109,14 @@ class _CustomerSignupState extends State<CustomerSignup> {
                   text: 'Continue',
                   textColor: AppColors.secondary,
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return OtpAuthenticationView(); // Replace with your desired screen/widget
-                    //     },
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return AppNavBar(); // Replace with your desired screen/widget
+                        },
+                      ),
+                    );
                   },
                   backgroundColor: AppColors.primary, // Custom background color
                 ),

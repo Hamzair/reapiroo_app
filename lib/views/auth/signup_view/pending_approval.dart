@@ -12,6 +12,8 @@ class PendingApproval extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.secondary,
+
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(

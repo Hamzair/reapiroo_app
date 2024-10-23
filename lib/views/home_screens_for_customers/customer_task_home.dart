@@ -30,8 +30,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
     return Scaffold(
           backgroundColor: AppColors.secondary,
         appBar: MyAppBar(
-          isMenu: customerVM.isMenu.value,
-          isNotification: customerVM.isNotification.value,
+          isMenu: false,
+          isNotification: false,
           isTitle: true,
           isTextField: false,
           isSecondIcon: false,

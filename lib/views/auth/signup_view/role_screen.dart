@@ -21,6 +21,7 @@ class _RoleScreenState extends State<RoleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.secondary,
       body: Column(
         children: [
           Container(
