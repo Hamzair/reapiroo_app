@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/views/chat_screens/chat_screen_detail.dart';
 
 class ChatItem extends StatelessWidget {
   final String profileImage;
@@ -123,7 +125,7 @@ class ChatList extends StatelessWidget {
             SizedBox(height: 12.h),
             GestureDetector(
               onTap: (){
-
+Get.to(ChatScreenDetail());
               },
               child: ChatItem(
                 profileImage: chatItem['profileImage']!,
@@ -132,7 +134,7 @@ class ChatList extends StatelessWidget {
                 timestamp: chatItem['timestamp']!,
               ),
             ),
-            SizedBox(height: 12.h),
+            SizedBox(height: 12.5.h),
           ],
         );
       },

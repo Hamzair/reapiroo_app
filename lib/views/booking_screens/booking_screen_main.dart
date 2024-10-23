@@ -13,7 +13,7 @@ class BookingScreenMain extends StatefulWidget {
 }
 
 class _BookingScreenMainState extends State<BookingScreenMain> {
-  String? selectedOption; // To keep track of the selected option
+  String? selectedOption = 'Today'; // Default to "Today"
 
   @override
   Widget build(BuildContext context) {
@@ -40,27 +40,39 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                 // Dropdown Menu
                 DropdownButton<String>(
                   value: selectedOption,
-                  hint: Text(
-                    'Select',
-                    style: TextStyle(color: AppColors.primary),
+                  dropdownColor: AppColors.secondary, // Yellow background for dropdown items
+                  hint: Row(
+                    children: [
+                      Text(
+                        'Select',
+                        style: jost700(14.sp, AppColors.primary),
+                      ),
+                    ],
                   ),
-                  icon: Icon(
-                    Icons.keyboard_arrow_down_sharp,
-                    color: AppColors.primary, // Dropdown icon color
-                  ),
-                  isExpanded: false, // Change to true if you want it to expand
+                  isExpanded: false,
+                  underline: SizedBox(), // Remove the default underline
+                  icon: SizedBox.shrink(), // Remove the default icon
                   items: [
                     DropdownMenuItem(
                       value: 'Today',
-                      child: Text('Today'),
+                      child: Text(
+                        'Today',
+                        style: jost700(14.sp, AppColors.primary),
+                      ),
                     ),
                     DropdownMenuItem(
                       value: 'In Month',
-                      child: Text('In Month'),
+                      child: Text(
+                        'In Month',
+                        style: jost700(14.sp, AppColors.primary),
+                      ),
                     ),
                     DropdownMenuItem(
                       value: 'In Year',
-                      child: Text('In Year'),
+                      child: Text(
+                        'In Year',
+                        style: jost700(14.sp, AppColors.primary),
+                      ),
                     ),
                   ],
                   onChanged: (value) {
@@ -68,7 +80,28 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                       selectedOption = value; // Update the selected option
                     });
                   },
-                ),
+                  // Custom rendering for the selected item to underline it
+                  selectedItemBuilder: (BuildContext context) {
+                    return ['Today', 'In Month', 'In Year'].map((String value) {
+                      return Row(
+                        children: [
+                          Text(
+                            value,
+                            style: jost700(15.sp, AppColors.primary).copyWith(
+                              decoration: value == selectedOption ? TextDecoration.underline : TextDecoration.none,
+                              decorationColor: Colors.black, // Black underline
+                              decorationThickness: 2.0, // Thickness of underline
+                            ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down_sharp,
+                            color: AppColors.primary,
+                          ),
+                        ],
+                      );
+                    }).toList();
+                  },
+                )
               ],
             ),
             SizedBox(height: 20.h), // Spacing below the row

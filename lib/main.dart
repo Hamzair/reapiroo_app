@@ -31,15 +31,8 @@ class MyApp extends StatelessWidget {
         builder: (_, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-          home: const 
-          // SplashScreen(),
-          // EditProfileScreen(),
-          //     ProfileScreen(),
-          //     ChatsScreenMain(),
-          //     ChatScreenDetail(),
-          //    BookingScreenMain(),
-                SplashScreen(),
-
+          home: const
+          SplashScreen(),
             // initialBinding: UserBinding(),
           );
         });
