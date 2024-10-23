@@ -8,6 +8,7 @@ import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/views/home_screen/main_home.dart';
+import 'package:repairoo/views/home_screen/new_task_home.dart';
 import 'package:repairoo/views/home_screen/task_description_home.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_box.dart';
@@ -28,7 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-        ()=> homeVM.isHome.value == "main" ? MainHome() : TaskDescriptionHome(),
+        ()=> homeVM.isHome.value == "main"
+            ? MainHome()
+            : homeVM.isHome.value == "task"
+            ? TaskDescriptionHome()
+            : NewTaskHome(),
     );
   }
 }

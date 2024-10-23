@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:repairoo/const/color.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -7,6 +8,7 @@ class CustomElevatedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double? width; // Optional width
   final double? height; // Optional height
+  final double? fontSize; // Optional height
   final Color? backgroundColor; // Optional background color
   final Color? textColor; // Optional text color
   final BorderSide? borderSide; // Optional border side
@@ -18,7 +20,8 @@ class CustomElevatedButton extends StatelessWidget {
     this.height, // Add height
     this.backgroundColor, // Add background color
     this.textColor, // Add text color
-    this.borderSide, // Add border side
+    this.borderSide,
+    this.fontSize, // Add border side
   });
 
   @override
@@ -35,9 +38,10 @@ class CustomElevatedButton extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(
+        style: GoogleFonts.jost(
+          fontWeight: FontWeight.w500,
           color: textColor ?? AppColors.buttontext, // Use textColor or default text color
-          fontSize: 16.sp, // Text size
+          fontSize: fontSize ?? 16.sp, // Text size
         ),
       ),
     );

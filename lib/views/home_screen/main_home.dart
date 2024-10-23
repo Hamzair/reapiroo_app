@@ -110,7 +110,7 @@ class _MainHomeState extends State<MainHome> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 14.h),
+                              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 12.h),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(14.w),
@@ -143,7 +143,7 @@ class _MainHomeState extends State<MainHome> {
                             SizedBox(width: 15.w,),
                             Expanded(
                               child: Container(
-                                padding: EdgeInsets.symmetric( vertical: 14.h),
+                                padding: EdgeInsets.symmetric( vertical: 12.h),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(14.w),
@@ -165,10 +165,10 @@ class _MainHomeState extends State<MainHome> {
                                   homeVM.isHome.value = "task";
                                 },
                                 child: Container(
-                                  padding: EdgeInsets.symmetric( vertical: 14.h),
+                                  padding: EdgeInsets.symmetric( vertical: 12.h),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    borderRadius: BorderRadius.circular(14.w),
+                                    borderRadius: BorderRadius.circular(8.w),
                                   ),
                                   alignment: Alignment.center,
                                   child: Text("View", style: jost600(13.sp, AppColors.primary),),
@@ -178,10 +178,10 @@ class _MainHomeState extends State<MainHome> {
                             SizedBox(width: 15.w,),
                             Expanded(
                               child: Container(
-                                padding: EdgeInsets.symmetric( vertical: 14.h),
+                                padding: EdgeInsets.symmetric( vertical: 12.h),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(14.w),
+                                  borderRadius: BorderRadius.circular(8.w),
                                 ),
                                 alignment: Alignment.center,
                                 child: Text("Open Maps", style: jost600(13.sp, AppColors.primary),),
@@ -190,10 +190,10 @@ class _MainHomeState extends State<MainHome> {
                             SizedBox(width: 15.w,),
                             Expanded(
                               child: Container(
-                                padding: EdgeInsets.symmetric( vertical: 14.h),
+                                padding: EdgeInsets.symmetric( vertical: 12.h),
                                 decoration: BoxDecoration(
                                   color: AppColors.lightGrey,
-                                  borderRadius: BorderRadius.circular(14.w),
+                                  borderRadius: BorderRadius.circular(8.w),
                                 ),
                                 alignment: Alignment.center,
                                 child: Text("Reschedule", style: jost600(13.sp, AppColors.secondary),),
