@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/widgets/my_svg.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,6 +15,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.isTitle,
     this.title,
     required this.isSecondIcon,
+    this.onBackTap,
+    this.onMenuTap,
   });
 
   final bool isMenu;
@@ -20,15 +24,18 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isSecondIcon;
   final bool isTitle;
   final String? title;
+  final VoidCallback? onBackTap;
+  final VoidCallback? onMenuTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 110.h,
       padding: EdgeInsets.only(left: 13.w, right: 19.w, bottom: 10.h, top: 40.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(14.w),
-          bottomRight: Radius.circular(14.w),
+          bottomLeft: Radius.circular(15.w),
+          bottomRight: Radius.circular(15.w),
         ),
         color: Colors.white,
         boxShadow: [
@@ -43,11 +50,16 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          MySvg(
-            assetName: isMenu ? AppSvgs.menu : AppSvgs.back_button,
-            height: 38.h,
-            width: 38.w,
+          InkWell(
+            onTap: isMenu == true ? onMenuTap ?? (){} : onBackTap ?? (){},
+            child: MySvg(
+              assetName: isMenu ? AppSvgs.menu : AppSvgs.back_button,
+              height: 38.h,
+              width: 38.w,
+            ),
           ),
+          if (isTitle == true)
+            SizedBox(width: 12.w,),
           if (isTitle == true)
             Expanded(
               child: Text(
@@ -77,5 +89,5 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   // To set a fixed size for the AppBar
   @override
-  Size get preferredSize => Size.fromHeight(70.h); // Adjust height as needed
+  Size get preferredSize => Size.fromHeight(130.h);
 }
