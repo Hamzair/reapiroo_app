@@ -95,7 +95,7 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                           ),
                           Icon(
                             Icons.keyboard_arrow_down_sharp,
-                            color: AppColors.primary,
+                            color: AppColors.primary,size: 25,
                           ),
                         ],
                       );

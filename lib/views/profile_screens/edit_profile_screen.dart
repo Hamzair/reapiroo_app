@@ -102,7 +102,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         backgroundColor: AppColors.secondary,
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
+            padding: EdgeInsets.symmetric(horizontal: 23.w),
             child: Column(
               children: [
                 SizedBox(height: 44.h),

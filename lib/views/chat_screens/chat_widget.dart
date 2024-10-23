@@ -22,53 +22,60 @@ class ChatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 61.h,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 61.h, // Set your desired height for the image
-                  width: 61.w, // Set your desired width for the image
-                  child: Image.asset(
-                    profileImage, // Use the image asset path
-                    fit: BoxFit.cover, // Maintain aspect ratio
+    return GestureDetector(
+      onTap: (){
+        Get.to(ChatScreenDetail());
+      },
+      child: Container(
+        width: double.infinity,
+        height: 61.h,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.to(ChatScreenDetail());
+                    },
+                  child: Container(
+                    height: 61.h, // Set your desired height for the image
+                    width: 61.w, // Set your desired width for the image
+                    child: Image.asset(
+                      profileImage, // Use the image asset path
+                      fit: BoxFit.cover, // Maintain aspect ratio
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(width: 7.5),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    name,
-                    style: jost700(16.sp, AppColors.primary),
-                  ),
-                  Text(
-                    message,
-                    style: jost400(14.sp, AppColors.primary),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Align(
-            alignment: Alignment.topRight,
-            child: Text(
-              timestamp,
-              style: jost400(
-                12.sp,
-                AppColors.primary,
+                SizedBox(width: 7.5),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      name,
+                      style: jost700(16.sp, AppColors.primary),
+                    ),
+                    Text(
+                      message,
+                      style: jost400(14.sp, AppColors.primary),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Align(
+              alignment: Alignment.topRight,
+              child: Text(
+                timestamp,
+                style: jost400(
+                  12.sp,
+                  AppColors.primary,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -123,16 +130,11 @@ class ChatList extends StatelessWidget {
               ),
             ), // Use the divider as needed
             SizedBox(height: 12.h),
-            GestureDetector(
-              onTap: (){
-Get.to(ChatScreenDetail());
-              },
-              child: ChatItem(
-                profileImage: chatItem['profileImage']!,
-                name: chatItem['name']!,
-                message: chatItem['message']!,
-                timestamp: chatItem['timestamp']!,
-              ),
+            ChatItem(
+              profileImage: chatItem['profileImage']!,
+              name: chatItem['name']!,
+              message: chatItem['message']!,
+              timestamp: chatItem['timestamp']!,
             ),
             SizedBox(height: 12.5.h),
           ],
