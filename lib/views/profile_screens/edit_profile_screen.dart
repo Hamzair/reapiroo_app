@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart'; // Import the image_picker package
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/text_styles.dart';
@@ -52,15 +53,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             children: [
               TextButton(
                 onPressed: () {
-                  // Navigator.pop(context);
-                  // _pickImage(); // Pick image from gallery
+                  Navigator.pop(context);
+                  _pickImage(ImageSource.gallery); // Pick image from gallery
                 },
                 child: Text('Gallery', style: jost400(14.sp, AppColors.primary)),
               ),
               TextButton(
                 onPressed: () {
-                  // Navigator.pop(context);
-                  // _takePhoto(); // Take photo with camera
+                  Navigator.pop(context);
+                  _pickImage(ImageSource.camera); // Take photo with camera
                 },
                 child: Text('Camera', style: jost400(14.sp, AppColors.primary)),
               ),
@@ -72,6 +73,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     );
   }
 
+  /// Function to pick an image
+  Future<void> _pickImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source); // Use pickImage instead of getImage
+
+    if (pickedFile != null) {
+      setState(() {
+        _imagePath = pickedFile.path; // Update the image path
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -79,7 +92,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         FocusScope.of(context).unfocus(); // Close the keyboard when tapping outside
       },
       child: Scaffold(
-        appBar:  MyAppBar(
+        appBar: MyAppBar(
           isMenu: false,
           isNotification: true,
           isTitle: true,
@@ -109,7 +122,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 : AssetImage(AppImages.profileImage) as ImageProvider, // Use the image from AppImages
                             radius: 60, // Optional: customize radius if needed
                           ),
-
                         ),
                         /// Image Picker
                         Positioned(
@@ -129,7 +141,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 ),
                               ),
                             ),
-
                           ),
                         ),
                       ],
