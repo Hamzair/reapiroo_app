@@ -10,6 +10,7 @@ class CustomElevatedButton extends StatelessWidget {
   final double? height; // Optional height
   final double? fontSize; // Optional height
   final Color? backgroundColor; // Optional background color
+  final double? borderRadius; // Optional background color
   final Color? textColor; // Optional text color
   final BorderSide? borderSide; // Optional border side
 
@@ -21,7 +22,8 @@ class CustomElevatedButton extends StatelessWidget {
     this.backgroundColor, // Add background color
     this.textColor, // Add text color
     this.borderSide,
-    this.fontSize, // Add border side
+    this.fontSize,
+    this.borderRadius, // Add border side
   });
 
   @override
@@ -32,7 +34,7 @@ class CustomElevatedButton extends StatelessWidget {
         backgroundColor: backgroundColor ?? AppColors.primary, // Use backgroundColor or default color
         shape: RoundedRectangleBorder(
           side: borderSide ?? BorderSide(color: Colors.black, width: 1), // Use borderSide or default
-          borderRadius: BorderRadius.circular(13.31.r), // Border radius
+          borderRadius: BorderRadius.circular(borderRadius ?? 13.31.r), // Border radius
         ),
         minimumSize: Size(width ?? double.infinity, height ?? 51.h), // Use width and height or default values
       ),

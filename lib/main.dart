@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/controllers/home_controller.dart';
-import 'package:repairoo/views/home_screen/Home_screen.dart';
+import 'package:repairoo/views/home_screens_for_customers/CustomerHomeScreen.dart';
+import 'package:repairoo/views/home_screens_for_customers/customer_main_home.dart';
 import 'package:repairoo/views/splash_screen/splash_screen.dart';
 
 import 'views/booking_screens/booking_screen_main.dart';
 import 'views/chat_screens/chat_screen_detail.dart';
 import 'views/chat_screens/chat_screen_main.dart';
+import 'views/home_screen_for_tech/Home_screen.dart';
 import 'views/profile_screens/edit_profile_screen.dart';
 import 'views/profile_screens/profile_screen.dart';
 
 void main() {
 
+  Get.put(TechHomeController());
   Get.put(HomeController());
 
   runApp(const MyApp());
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
           //     ChatsScreenMain(),
           //     ChatScreenDetail(),
           //    BookingScreenMain(),
-                HomeScreen(),
+                Customerhomescreen(),
 
             // initialBinding: UserBinding(),
           );

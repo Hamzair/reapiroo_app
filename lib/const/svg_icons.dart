@@ -11,6 +11,9 @@ class AppSvgs {
   static const String total_earned = "./assets/svgs/total_earned.svg";
   static const String play_icon = "./assets/svgs/play_icon.svg";
   static const String audio_play_icon = "./assets/svgs/audio_play_icon.svg";
+  static const String search_icon = "./assets/svgs/search_icon.svg";
+  static const String upload = "./assets/svgs/upload.svg";
+  static const String location = "./assets/svgs/location.svg";
 
 
   // Midat

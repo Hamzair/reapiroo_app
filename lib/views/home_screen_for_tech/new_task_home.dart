@@ -10,22 +10,25 @@ import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_button.dart';
 import 'package:repairoo/widgets/my_svg.dart';
 
-class TaskDescriptionHome extends StatefulWidget {
-  const TaskDescriptionHome({super.key});
+import 'components/bid_bottom_sheet.dart';
+import 'components/cancel_dialog_box.dart';
+
+
+class NewTaskHome extends StatefulWidget {
+  const NewTaskHome({super.key});
 
   @override
-  State<TaskDescriptionHome> createState() => _TaskDescriptionHomeState();
+  State<NewTaskHome> createState() => _NewTaskHomeState();
 }
 
-class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
+class _NewTaskHomeState extends State<NewTaskHome> {
 
-  final HomeController homeVM = Get.find<HomeController>();
-
+  final TechHomeController homeVM = Get.find<TechHomeController>();
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      ()=> Scaffold(
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: AppColors.secondary,
         appBar: MyAppBar(
           isMenu: homeVM.isMenu.value,
@@ -34,8 +37,8 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
           isSecondIcon: homeVM.isSecondIcon.value,
           title: homeVM.title.value,
           onBackTap: (){
-            homeVM.updateAppBar(true, false, true, false, "");
-            homeVM.isHome.value = "main";
+            homeVM.updateAppBar(false, true, false, false, "Task Description");
+            homeVM.isHome.value = "task";
           },
         ),
         body: SafeArea(
@@ -154,11 +157,11 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                 child: Container(
                                   padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 8.h),
                                   decoration: BoxDecoration(
-                                    color: AppColors.secondary,
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(12.w,),
-                                      bottomRight: Radius.circular(12.w),
-                                    )
+                                      color: AppColors.secondary,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(12.w,),
+                                        bottomRight: Radius.circular(12.w),
+                                      )
 
                                   ),
                                   child: Text("video", style: montserrat400(11.sp, AppColors.primary),),
@@ -182,59 +185,13 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               child: Container(
                                 height: 36.h,
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(image: AssetImage(AppImages.audio), fit: BoxFit.fill)
+                                    image: DecorationImage(image: AssetImage(AppImages.audio), fit: BoxFit.fill)
                                 ),
                               ),
                             )
                           ],
                         ),
-                        SizedBox(height: 21.h,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: (){
-                                  homeVM.updateAppBar(false, true, false, false, "Task Description");
-                                  homeVM.isHome.value = "task";
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.symmetric( vertical: 12.h),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(8.w),
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Text("Chat", style: jost600(13.sp, AppColors.primary),),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 15.w,),
-                            Expanded(
-                              child: Container(
-                                padding: EdgeInsets.symmetric( vertical: 12.h),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(8.w),
-                                ),
-                                alignment: Alignment.center,
-                                child: Text("Open Maps", style: jost600(13.sp, AppColors.primary),),
-                              ),
-                            ),
-                            SizedBox(width: 15.w,),
-                            Expanded(
-                              child: Container(
-                                padding: EdgeInsets.symmetric( vertical: 12.h),
-                                decoration: BoxDecoration(
-                                  color: AppColors.lightGrey,
-                                  borderRadius: BorderRadius.circular(8.w),
-                                ),
-                                alignment: Alignment.center,
-                                child: Text("Reschedule", style: jost600(13.sp, AppColors.secondary),),
-                              ),
-                            ),
-                          ],
-                        )
+
                       ]
                   ),
                 ),
@@ -244,14 +201,13 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                   children: [
                     CustomElevatedButton(
                       width: 160.w,
-                        text: "Mark as done",
-                        backgroundColor: AppColors.primary,
-                        textColor: AppColors.secondary,
-                        fontSize: 19.sp,
-                        onPressed: (){
-                          homeVM.updateAppBar(false, true, false, false, "New Task");
-                          homeVM.isHome.value = "new task";
-                        },
+                      text: "Bid",
+                      backgroundColor: AppColors.primary,
+                      textColor: AppColors.secondary,
+                      fontSize: 19.sp,
+                      onPressed: (){
+                        Get.bottomSheet(BidBottomSheet());
+                      },
                     ),
 
                     CustomElevatedButton(
@@ -260,27 +216,26 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                       backgroundColor: AppColors.buttonGrey,
                       textColor: AppColors.primary,
                       borderSide: BorderSide(
-                        width: 0,
-                        color: Colors.transparent
+                          width: 0,
+                          color: Colors.transparent
                       ),
                       fontSize: 19.sp,
                       onPressed: (){
-                        homeVM.updateAppBar(true, false, true, false, "");
-                        homeVM.isHome.value = "main";
+                        showDialog(context: context, builder: (BuildContext context){
+                          return AlertDialog(
+                            backgroundColor: AppColors.secondary,
+                            contentPadding: EdgeInsets.zero,
+                            content: CancelDialogBox(),
+                          );
+                        });
                       },
                     ),
                   ],
                 )
-
-
-
-
-
               ],
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

@@ -23,6 +23,10 @@ class AppImages{
   static const jared_hughs = 'assets/images/jared_hughs.png';
   static const plumbing_thumbnail = 'assets/images/plumbing_thumbnail.png';
   static const audio = 'assets/images/audio.png';
+  static const house_cleaning = 'assets/images/house_cleaning.png';
+  static const tv_mounting = 'assets/images/tv_mounting.png';
+  static const gardening = 'assets/images/gardening.png';
+  static const plumbing = 'assets/images/plumbing.png';
 
 
 //midhat
