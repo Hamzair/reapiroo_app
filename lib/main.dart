@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:repairoo/controllers/tech_controller.dart';
 import 'package:repairoo/views/auth/login_view/login_screen.dart';
 import 'package:repairoo/views/auth/signup_view/role_screen.dart';
 import 'package:repairoo/views/splash_screen/splash_screen.dart';
@@ -12,6 +13,8 @@ import 'views/profile_screens/edit_profile_screen.dart';
 import 'views/profile_screens/profile_screen.dart';
 
 void main() {
+
+  Get.put(TechController());
   runApp(const MyApp());
 }
 

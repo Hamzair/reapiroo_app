@@ -5,7 +5,7 @@ import 'package:repairoo/const/color.dart';
 
 class CustomInputField extends StatefulWidget {
   final TextEditingController controller;
-  final String label;
+  final String? label;
   final bool obscureText;
   final String? svgIconPath; // Path to SVG icon
   final TextInputType keyboardType;
@@ -19,10 +19,11 @@ class CustomInputField extends StatefulWidget {
   final Widget? suffixIcon; // Suffix icon parameter
   final Widget? prefixIcon; // New parameter for prefix icon
   final ValueChanged<String>? onChanged;
+  final int? maxLines; // New parameter for max lines
 
   CustomInputField({
     required this.controller,
-    required this.label,
+     this.label,
     this.obscureText = false,
     this.svgIconPath,
     this.keyboardType = TextInputType.text,
@@ -34,8 +35,9 @@ class CustomInputField extends StatefulWidget {
     this.labelTextSize,
     this.alignLabelWithHint = false,
     this.suffixIcon,
-    this.prefixIcon, // Add this line
+    this.prefixIcon,
     this.onChanged,
+    this.maxLines, // Add maxLines to the constructor
   });
 
   @override
@@ -70,6 +72,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
         fontWeight: FontWeight.w400,
         fontFamily: 'Jost',
       ),
+      maxLines: widget.maxLines ?? 1, // Set maxLines here
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.never,
         fillColor: AppColors.fill,
