@@ -16,6 +16,8 @@ class AppImages{
   static const email_icon = 'assets/images/email_icon.png';
   static const Customer = 'assets/images/Customer.png';
   static const onboardingelipse = 'assets/images/onboardingelipse.png';
+  static const bigArrow = 'assets/images/bigArrow.png';
+  static const onboardingelipse2 = 'assets/images/onboardingelipse2.png';
 
   //balaj
   static const jared_hughs = 'assets/images/jared_hughs.png';

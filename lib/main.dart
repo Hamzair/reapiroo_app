@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:repairoo/views/auth/login_view/login_screen.dart';
+import 'package:repairoo/views/auth/signup_view/role_screen.dart';
 import 'package:repairoo/views/splash_screen/splash_screen.dart';
 
 import 'views/booking_screens/booking_screen_main.dart';
@@ -23,13 +25,13 @@ class MyApp extends StatelessWidget {
         builder: (_, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-          home: const 
-          // SplashScreen(),
-          // EditProfileScreen(),
-          //     ProfileScreen(),
-          //     ChatsScreenMain(),
-          //     ChatScreenDetail(),
-              BookingScreenMain(),
+          home: const
+          RoleScreen(),
+        // EditProfileScreen(),
+   // ProfileScreen(),
+   //      ChatsScreenMain(),
+   //            ChatScreenDetail(),
+   //           BookingScreenMain(),
 
             // initialBinding: UserBinding(),
           );
