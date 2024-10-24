@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
-import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/widgets/my_svg.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -17,7 +15,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.isSecondIcon,
     this.onBackTap,
     this.onMenuTap,
-    this.isTextField = false,
+    this.isTextField = false, this.secondIcon,
   });
 
   final bool isMenu;
@@ -26,6 +24,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isTitle;
   final bool isTextField;
   final String? title;
+  final String? secondIcon;
   final VoidCallback? onBackTap;
   final VoidCallback? onMenuTap;
 
@@ -114,6 +113,12 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 23.h,
                 width: 23.w,
               ),
+            ),
+          if(isSecondIcon == true && isNotification == false)
+            MySvg(
+              assetName: secondIcon ?? AppSvgs.menu,
+              height: 38.h,
+              width: 38.w,
             ),
         ],
       ),

@@ -56,4 +56,8 @@ class AppImages{
   static const pinlocation = 'assets/images/pin_location_icon.png';
   static const calendericon = 'assets/images/calender_icon.png';
   static const clockicon = 'assets/images/clock_icon.png';
+  static const backIcon = 'assets/images/back_icon.png';
+  static const notificationIcon = 'assets/images/notification_icon.png';
+  static const star_icon = 'assets/images/star_icon.png';
+  static const reports_icon = 'assets/images/reports_icon.png';
 }

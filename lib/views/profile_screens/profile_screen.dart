@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
+import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/views/profile_screens/bio_and_experience/bio_and_experience_main.dart';
 import 'package:repairoo/views/profile_screens/edit_profile_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_button.dart';
@@ -47,10 +49,11 @@ class _EditProfileScreenState extends State<ProfileScreen> {
       child: Scaffold(
         appBar:  MyAppBar(
           isMenu: true,
-          isNotification: true,
+          isNotification: false,
           isTitle: true,
           title: 'Profile',
-          isSecondIcon: false,
+          isSecondIcon: true,
+          secondIcon: AppSvgs.settings,
         ),
         backgroundColor: AppColors.secondary,
         body: SingleChildScrollView(
@@ -88,40 +91,49 @@ class _EditProfileScreenState extends State<ProfileScreen> {
                 label: "My Profile",
                 iconPath: AppImages.name_icon,
               ),
-              SizedBox(height: 20.h),
-              /// My Listed Services
+              SizedBox(height: 10.h),
+              /// Bio and Experience
               ProfileButton(
                 onPressed: () {
-                  // Navigate to the SettingsScreen
+                  Get.to(BioAndExperienceMain());
                 },
-                label: "My Listed Services",
+                label: "Bio and Experience",
                 iconPath: AppImages.bagicon,
               ),
-              SizedBox(height: 20.h),
-              /// Terms of service
+              SizedBox(height: 10.h),
+              /// Reviews
               ProfileButton(
                 onPressed: () {
                   // Navigate to the SettingsScreen
                 },
-                label: "Terms of service",
-                iconPath: AppImages.hearticon,
+                label: "Reviews",
+                iconPath: AppImages.star_icon,
               ),
-              SizedBox(height: 20.h),
-              /// Privacy Policy
+              SizedBox(height: 10.h),
+              /// Reports
               ProfileButton(
                 onPressed: () {
                   // Navigate to the SettingsScreen
                 },
-                label: "Privacy Policy",
+                label: "Reports",
+                iconPath: AppImages.reports_icon,
+              ),
+              SizedBox(height: 10.h),
+              /// Terms/Policy
+              ProfileButton(
+                onPressed: () {
+                  // Navigate to the SettingsScreen
+                },
+                label: "Terms/Policy",
                 iconPath: AppImages.privacyicon,
               ),
-              SizedBox(height: 20.h),
-              /// elp & Support
+              SizedBox(height: 10.h),
+              /// Help/Contact Us
               ProfileButton(
                 onPressed: () {
                   // Navigate to the SettingsScreen
                 },
-                label: "Help & Support",
+                label: "Help/Contact Us",
                 iconPath: AppImages.questionicon,
               ),
             ],

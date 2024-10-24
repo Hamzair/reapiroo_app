@@ -94,7 +94,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       child: Scaffold(
         appBar: MyAppBar(
           isMenu: false,
-          isNotification: true,
+          isNotification: false,
           isTitle: true,
           title: 'Profile',
           isSecondIcon: false,
@@ -136,7 +136,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               width: 46.w,
                               height: 46.h,
                               child: CircleAvatar(
-                                backgroundColor: AppColors.orange,
+                                backgroundColor: AppColors.primary,
                                 child: SizedBox(
                                   width: 23.w,
                                   height: 20.7.h,

@@ -23,8 +23,9 @@ class ChatItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Get.to(ChatScreenDetail());
+      onTap: () {
+        // Navigate to ChatScreenDetail and pass profile image and name
+        Get.to(ChatScreenDetail(profileImage: profileImage, name: name));
       },
       child: Container(
         width: double.infinity,
@@ -36,8 +37,8 @@ class ChatItem extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.to(ChatScreenDetail());
-                    },
+                    Get.to(ChatScreenDetail(profileImage: profileImage, name: name));
+                  },
                   child: Container(
                     height: 61.h, // Set your desired height for the image
                     width: 61.w, // Set your desired width for the image
