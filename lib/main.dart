@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/views/bottom_nav/bottom_nav.dart';
 import 'package:repairoo/views/home_screens_for_customers/CustomerHomeScreen.dart';
 import 'package:repairoo/views/home_screens_for_customers/customer_main_home.dart';
+import 'package:repairoo/views/home_screens_for_customers/customer_task_home.dart';
 import 'package:repairoo/views/splash_screen/splash_screen.dart';
 
 import 'views/booking_screens/booking_screen_main.dart';
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
           home: const
-          SplashScreen(),
+          CustomerTaskHome(),
             // initialBinding: UserBinding(),
           );
         });

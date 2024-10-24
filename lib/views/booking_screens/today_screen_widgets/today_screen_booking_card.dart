@@ -61,9 +61,14 @@ class BookingCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Text(
-                      description,
-                      style: jost400(9.sp, AppColors.buttontext),
+                    SizedBox(
+                      width: 180,
+                      child: Text(
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        description,
+                        style: jost400(9.sp, AppColors.buttontext),
+                      ),
                     ),
                   ],
                 ),
