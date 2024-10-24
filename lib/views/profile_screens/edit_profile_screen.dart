@@ -98,6 +98,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           isTitle: true,
           title: 'Profile',
           isSecondIcon: false,
+          onBackTap: (){
+            Get.back();
+          },
         ),
         backgroundColor: AppColors.secondary,
         body: SingleChildScrollView(

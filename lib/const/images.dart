@@ -32,6 +32,9 @@ class AppImages{
   static const gardening = 'assets/images/gardening.png';
   static const plumbing = 'assets/images/plumbing.png';
   static const loading = 'assets/images/loading.png';
+  static const upload = 'assets/images/upload.png';
+  static const location_icon = 'assets/images/location_icon.png';
+  static const star = 'assets/images/star.png';
   static const natalie_hales = 'assets/images/natalie_hales.png';
   static const sara_jones = 'assets/images/sara_jones.png';
   static const ibrahim_zafar = 'assets/images/ibrahim_zafar.png';

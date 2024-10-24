@@ -7,6 +7,7 @@ import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/widgets/app_bars.dart';
+import 'package:repairoo/widgets/audio_note.dart';
 import 'package:repairoo/widgets/custom_button.dart';
 import 'package:repairoo/widgets/my_svg.dart';
 import 'package:repairoo/widgets/video_player.dart';
@@ -190,21 +191,22 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                         //   ),
                         // ),
                         SizedBox(height: 19.h,),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            MySvg(assetName: AppSvgs.audio_play_icon, height: 36.h, width: 36.w,),
-                            SizedBox(width: 12.w,),
-                            Expanded(
-                              child: Container(
-                                height: 36.h,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(image: AssetImage(AppImages.audio), fit: BoxFit.fill)
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                        AudioNote(),
+                        // Row(
+                        //   mainAxisSize: MainAxisSize.min,
+                        //   children: [
+                        //     MySvg(assetName: AppSvgs.audio_play_icon, height: 36.h, width: 36.w,),
+                        //     SizedBox(width: 12.w,),
+                        //     Expanded(
+                        //       child: Container(
+                        //         height: 36.h,
+                        //         decoration: BoxDecoration(
+                        //             image: DecorationImage(image: AssetImage(AppImages.audio), fit: BoxFit.fill)
+                        //         ),
+                        //       ),
+                        //     )
+                        //   ],
+                        // ),
 
                       ]
                   ),

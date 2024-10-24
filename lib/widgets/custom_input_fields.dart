@@ -66,6 +66,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
       obscureText: _obscureText,
       keyboardType: widget.keyboardType,
       textAlign: TextAlign.start,
+      cursorColor: AppColors.primary,
       style: TextStyle(
         color: AppColors.primary,
         fontSize: widget.hintTextSize ?? 14.65.sp,

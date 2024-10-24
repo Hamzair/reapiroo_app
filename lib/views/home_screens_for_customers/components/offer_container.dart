@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
+import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/views/home_screen_for_tech/components/bid_bottom_sheet.dart';
@@ -56,7 +57,7 @@ class _OfferContainerState extends State<OfferContainer> {
                   SizedBox(
                     child: Row(
                       children: [
-                        MySvg(assetName: AppSvgs.star, width: 18.w, height: 18.h,),
+                        Image.asset(AppImages.star, height: 18.h, width: 18.w),
                         SizedBox(width: 4.w,),
                         Text(widget.rating, style: jost600(14.sp, Colors.white),),
                         SizedBox(width: 3.w,),
