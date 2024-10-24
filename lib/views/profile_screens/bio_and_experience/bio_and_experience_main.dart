@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/controllers/tech_controller.dart';
-import 'package:repairoo/views/auth/signup_view/components/details_screen.dart';
-import 'package:repairoo/views/auth/signup_view/components/document_screen.dart';
-import 'package:repairoo/views/auth/signup_view/components/personal_detail.dart';
 import 'package:repairoo/views/auth/signup_view/components/service_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
-
 import '../../../const/color.dart';
-import '../../../const/images.dart';
 import '../../../const/text_styles.dart';
 
 class BioAndExperienceMain extends StatefulWidget {
@@ -58,6 +53,7 @@ class _BioAndExperienceMainState extends State<BioAndExperienceMain> { // Use th
           child: Column(
             children: [
               SizedBox(height: 24.h),
+              /// Personal, Service, detail, documents Container
               Container(
                 width: double.infinity,
                 height: 35.h,

@@ -23,6 +23,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
     'Plumbing Services',
     'Electrical Services',
     'Cleaning Services',
+
   ];
 
   @override
@@ -35,7 +36,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
         ),
         SizedBox(height: 30.h),
         Expanded(
-          // Use Expanded to fill available space
+          /// Use Expanded to fill available space
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: services.length,
@@ -46,16 +47,25 @@ class _ServicesScreenState extends State<ServicesScreen> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.r),
                   color: AppColors.secondary,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3), // Shadow color with opacity
+                      blurRadius: 12.0, // Softness of the shadow
+                      offset: Offset(0, 4), // Horizontal and vertical offset of the shadow
+                    ),
+                  ],
                 ),
-                margin: EdgeInsets.symmetric(
-                    vertical: 8.h), // Add margin between items
+                margin: EdgeInsets.symmetric(vertical: 8.h), // Add margin between items
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset(AppImages
-                          .role1), // You may want to change this based on service
+                      Image.asset(
+                        AppImages.role1,
+                        height: 73.h,
+                        width: 110.w,
+                      ), // You may want to change this based on service
                       SizedBox(width: 16.w),
                       Expanded(
                         child: Text(
@@ -63,10 +73,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                           style: jost700(16.sp, AppColors.primary),
                         ),
                       ),
-                      // SizedBox(width: 16.w),
-
                       Radio<String>(
-                        // fillColor:WidgetStatePropertyAll(Color(0xffF8F8F8)),
                         value: services[index],
                         groupValue: selectedService,
                         onChanged: (String? value) {
@@ -74,13 +81,13 @@ class _ServicesScreenState extends State<ServicesScreen> {
                             selectedService = value; // Update selected service
                           });
                         },
-                        activeColor: AppColors.primary,
-                        // Set your active color
+                        activeColor: AppColors.primary, // Set your active color
                       ),
                     ],
                   ),
                 ),
               );
+
             },
           ),
         ),

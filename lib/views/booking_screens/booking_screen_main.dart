@@ -13,7 +13,7 @@ class BookingScreenMain extends StatefulWidget {
 }
 
 class _BookingScreenMainState extends State<BookingScreenMain> {
-  String? selectedOption = 'Today'; // Default to "Today"
+  String? selectedOption = 'In Progress'; // Default to "In Progress"
 
   @override
   Widget build(BuildContext context) {
@@ -37,70 +37,80 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                   "Bookings",
                   style: jost700(24.sp, AppColors.primary),
                 ),
-                // Dropdown Menu
-                DropdownButton<String>(
-                  value: selectedOption,
-                  dropdownColor: AppColors.secondary, // Yellow background for dropdown items
-                  hint: Row(
-                    children: [
-                      Text(
-                        'Select',
-                        style: jost700(14.sp, AppColors.primary),
+                /// Dropdown Menu
+                Container(
+                  height: 26.h,
+                  width: 87.w,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(8.83.r),
+                  ),
+                  child: DropdownButton<String>(
+                    value: selectedOption,
+                    dropdownColor: AppColors.secondary, // Yellow background for dropdown items
+                    hint: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Select',
+                          style: jost700(14.sp, AppColors.primary),
+                        ),
+                      ],
+                    ),
+                    isExpanded: false,
+                    underline: SizedBox(), // Remove the default underline
+                    icon: SizedBox.shrink(), // Remove the default icon
+                    items: [
+                      DropdownMenuItem(
+                        value: 'In Progress',
+                        child: Text(
+                          'In Progress',
+                          style: jost700(14.sp, AppColors.primary),
+                        ),
+                      ),
+                      DropdownMenuItem(
+                        value: 'In Month',
+                        child: Text(
+                          'In Month',
+                          style: jost700(14.sp, AppColors.primary),
+                        ),
+                      ),
+                      DropdownMenuItem(
+                        value: 'In Year',
+                        child: Text(
+                          'In Year',
+                          style: jost700(14.sp, AppColors.primary),
+                        ),
                       ),
                     ],
-                  ),
-                  isExpanded: false,
-                  underline: SizedBox(), // Remove the default underline
-                  icon: SizedBox.shrink(), // Remove the default icon
-                  items: [
-                    DropdownMenuItem(
-                      value: 'Today',
-                      child: Text(
-                        'Today',
-                        style: jost700(14.sp, AppColors.primary),
-                      ),
-                    ),
-                    DropdownMenuItem(
-                      value: 'In Month',
-                      child: Text(
-                        'In Month',
-                        style: jost700(14.sp, AppColors.primary),
-                      ),
-                    ),
-                    DropdownMenuItem(
-                      value: 'In Year',
-                      child: Text(
-                        'In Year',
-                        style: jost700(14.sp, AppColors.primary),
-                      ),
-                    ),
-                  ],
-                  onChanged: (value) {
-                    setState(() {
-                      selectedOption = value; // Update the selected option
-                    });
-                  },
-                  // Custom rendering for the selected item to underline it
-                  selectedItemBuilder: (BuildContext context) {
-                    return ['Today', 'In Month', 'In Year'].map((String value) {
-                      return Row(
-                        children: [
-                          Text(
-                            value,
-                            style: jost700(15.sp, AppColors.primary).copyWith(
-                              decoration: value == selectedOption ? TextDecoration.underline : TextDecoration.none,
-                              decorationColor: Colors.black, // Black underline
-                              decorationThickness: 2.0, // Thickness of underline
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value; // Update the selected option
+                      });
+                    },
+                    // Custom rendering for the selected item to underline it
+                    selectedItemBuilder: (BuildContext context) {
+                      return ['In Progress', 'In Month', 'In Year'].map((String value) {
+                        return Container(
+                          width: 87.w,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 7.w),
+                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  value,
+                                  style: jost400(11.sp, AppColors.secondary),
+                                ),
+                                Icon(
+                                  Icons.keyboard_arrow_down_sharp,
+                                  color: AppColors.secondary,size: 20,
+                                ),
+                              ],
                             ),
                           ),
-                          Icon(
-                            Icons.keyboard_arrow_down_sharp,
-                            color: AppColors.primary,size: 25,
-                          ),
-                        ],
-                      );
-                    }).toList();
-                  },
+                        );
+                      }).toList();
+                    },
+                  ),
                 )
               ],
             ),
@@ -117,7 +127,7 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
   Widget _getBodyContent(String? option) {
     // Returns the body content based on the selected option
     switch (option) {
-      case 'Today':
+      case 'In Progress':
         return TodayContent(); // Ensure this returns a Widget
       case 'In Month':
         return Center(

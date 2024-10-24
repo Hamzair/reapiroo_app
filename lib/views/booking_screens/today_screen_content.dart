@@ -28,24 +28,8 @@ class TodayContent extends StatelessWidget {
       'time': '14:30',
       'image': AppImages.jared_hughs, // Replace with your image path
     },
-    {
-      'name': 'Pam Beesly',
-      'location': 'Beach Road, Dubai.',
-      'description':
-      'Our kitchen sink is clogged, and the\nplumbing system needs checking urgently.',
-      'date': 'Fri, Feb 15',
-      'time': '09:00',
-      'image': AppImages.jared_hughs, // Replace with your image path
-    },
-    {
-      'name': 'Pam Beesly',
-      'location': 'Beach Road, Dubai.',
-      'description':
-      'Our kitchen sink is clogged, and the\nplumbing system needs checking urgently.',
-      'date': 'Fri, Feb 15',
-      'time': '09:00',
-      'image': AppImages.jared_hughs, // Replace with your image path
-    },
+
+
   ];
 
   @override
@@ -58,7 +42,7 @@ class TodayContent extends StatelessWidget {
         itemBuilder: (context, index) {
           final booking = bookingData[index];
           return Padding(
-            padding: EdgeInsets.only(bottom: index != bookingData.length - 1 ? 8.h : 0),
+            padding: EdgeInsets.only(bottom: index != bookingData.length - 1 ? 12.h : 0),
             child: BookingCard(
               name: booking['name']!,
               location: booking['location']!,

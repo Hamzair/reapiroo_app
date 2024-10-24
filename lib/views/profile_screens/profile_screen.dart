@@ -7,12 +7,12 @@ import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/views/profile_screens/bio_and_experience/bio_and_experience_main.dart';
 import 'package:repairoo/views/profile_screens/edit_profile_screen.dart';
+import 'package:repairoo/views/profile_screens/reports/reports_screen.dart';
+import 'package:repairoo/views/profile_screens/reviews/reviews_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
-import 'package:repairoo/widgets/custom_button.dart';
-import 'package:repairoo/widgets/drop_down_widget.dart';
 import 'package:repairoo/widgets/profile_button_widget.dart';
 import 'dart:io';
-import '../../widgets/custom_input_fields.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -104,7 +104,7 @@ class _EditProfileScreenState extends State<ProfileScreen> {
               /// Reviews
               ProfileButton(
                 onPressed: () {
-                  // Navigate to the SettingsScreen
+                  Get.to(ReviewsScreen());
                 },
                 label: "Reviews",
                 iconPath: AppImages.star_icon,
@@ -113,7 +113,7 @@ class _EditProfileScreenState extends State<ProfileScreen> {
               /// Reports
               ProfileButton(
                 onPressed: () {
-                  // Navigate to the SettingsScreen
+                  Get.to(ReportsScreen());
                 },
                 label: "Reports",
                 iconPath: AppImages.reports_icon,

@@ -53,6 +53,7 @@ dependencies:
   audioplayers: ^6.1.0
   audio_wave: ^0.1.5
   voice_message_package: ^2.2.1
+  font_awesome_flutter: ^10.2.1
 
 dev_dependencies:
   flutter_test:

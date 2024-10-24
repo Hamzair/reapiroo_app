@@ -107,7 +107,7 @@ class _AppNavBarState extends State<AppNavBar> {
             activeItem: Image.asset(
               AppImages.bookingicon,
             ),
-            itemLabel: 'Bookings'.tr,
+            itemLabel: 'Request'.tr,
           ),
           BottomBarItem(
             inActiveItem: Image.asset(AppImages.chaticon),
