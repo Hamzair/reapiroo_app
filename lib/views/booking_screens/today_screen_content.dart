@@ -53,6 +53,7 @@ class TodayContent extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.secondary,
       body: ListView.builder(
+        shrinkWrap: true,
         itemCount: bookingData.length,
         itemBuilder: (context, index) {
           final booking = bookingData[index];

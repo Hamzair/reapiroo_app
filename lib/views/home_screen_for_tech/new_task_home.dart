@@ -7,8 +7,10 @@ import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/widgets/app_bars.dart';
+import 'package:repairoo/widgets/audio_note.dart';
 import 'package:repairoo/widgets/custom_button.dart';
 import 'package:repairoo/widgets/my_svg.dart';
+import 'package:repairoo/widgets/video_player.dart';
 
 import 'components/bid_bottom_sheet.dart';
 import 'components/cancel_dialog_box.dart';
@@ -143,54 +145,68 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                         ),
                         SizedBox(height: 10.h,),
                         Container(
-                          height: 138.h,
-                          width: double.infinity,
+                          alignment: Alignment.center,
+                          height: 160.h,
+                          // width: 328.w,
                           decoration: BoxDecoration(
-                            color: AppColors.lightGrey,
-                            image: DecorationImage(image: AssetImage(AppImages.plumbing_thumbnail), fit: BoxFit.fill),
-                            borderRadius: BorderRadius.circular(12.w),
+                            color: Colors.black, // Add a background color to make the border radius more visible
+                            borderRadius: BorderRadius.circular(20), // Add circular border radius
                           ),
-                          child: Column(
-                            children: [
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 8.h),
-                                  decoration: BoxDecoration(
-                                      color: AppColors.secondary,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(12.w,),
-                                        bottomRight: Radius.circular(12.w),
-                                      )
-
-                                  ),
-                                  child: Text("video", style: montserrat400(11.sp, AppColors.primary),),
-                                ),
-                              ),
-                              SizedBox(height: 16.h,),
-                              Align(
-                                alignment: Alignment.center,
-                                child: MySvg(assetName: AppSvgs.play_icon, height: 50.h, width: 47.5.w,),
-                              )
-                            ],
+                          clipBehavior: Clip.hardEdge, // To clip the child within the rounded border
+                          child: VideoPlayer(
+                            videoUrl: 'assets/video/videotest.mp4', // Provide your video URL directly here
                           ),
                         ),
+                        // Container(
+                        //   height: 138.h,
+                        //   width: double.infinity,
+                        //   decoration: BoxDecoration(
+                        //     color: AppColors.lightGrey,
+                        //     image: DecorationImage(image: AssetImage(AppImages.plumbing_thumbnail), fit: BoxFit.fill),
+                        //     borderRadius: BorderRadius.circular(12.w),
+                        //   ),
+                        //   child: Column(
+                        //     children: [
+                        //       Align(
+                        //         alignment: Alignment.topLeft,
+                        //         child: Container(
+                        //           padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 8.h),
+                        //           decoration: BoxDecoration(
+                        //               color: AppColors.secondary,
+                        //               borderRadius: BorderRadius.only(
+                        //                 topLeft: Radius.circular(12.w,),
+                        //                 bottomRight: Radius.circular(12.w),
+                        //               )
+                        //
+                        //           ),
+                        //           child: Text("video", style: montserrat400(11.sp, AppColors.primary),),
+                        //         ),
+                        //       ),
+                        //       SizedBox(height: 16.h,),
+                        //       Align(
+                        //         alignment: Alignment.center,
+                        //         child: MySvg(assetName: AppSvgs.play_icon, height: 50.h, width: 47.5.w,),
+                        //       )
+                        //     ],
+                        //   ),
+                        // ),
                         SizedBox(height: 19.h,),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            MySvg(assetName: AppSvgs.audio_play_icon, height: 36.h, width: 36.w,),
-                            SizedBox(width: 12.w,),
-                            Expanded(
-                              child: Container(
-                                height: 36.h,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(image: AssetImage(AppImages.audio), fit: BoxFit.fill)
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                        AudioNote(),
+                        // Row(
+                        //   mainAxisSize: MainAxisSize.min,
+                        //   children: [
+                        //     MySvg(assetName: AppSvgs.audio_play_icon, height: 36.h, width: 36.w,),
+                        //     SizedBox(width: 12.w,),
+                        //     Expanded(
+                        //       child: Container(
+                        //         height: 36.h,
+                        //         decoration: BoxDecoration(
+                        //             image: DecorationImage(image: AssetImage(AppImages.audio), fit: BoxFit.fill)
+                        //         ),
+                        //       ),
+                        //     )
+                        //   ],
+                        // ),
 
                       ]
                   ),

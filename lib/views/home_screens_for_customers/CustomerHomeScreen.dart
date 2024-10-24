@@ -4,6 +4,7 @@ import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/views/home_screen_for_tech/main_home.dart';
 import 'package:repairoo/views/home_screens_for_customers/customer_main_home.dart';
 import 'package:repairoo/views/home_screens_for_customers/customer_task_home.dart';
+import 'package:repairoo/views/home_screens_for_customers/search_offer_screen.dart';
 
 class Customerhomescreen extends StatefulWidget {
   const Customerhomescreen({super.key});
@@ -21,7 +22,7 @@ class _CustomerhomescreenState extends State<Customerhomescreen> {
   Widget build(BuildContext context) {
     return Obx(()=> customerVM.isHome.value == "customer main"
                 ? CustomerMainHome()
-                : CustomerTaskHome(service: customerVM.service.value,
+                : customerVM.isHome.value == "search offer" ? SearchOfferScreen(field: customerVM.service.value) : CustomerTaskHome(service: customerVM.service.value,
             )
     );
   }

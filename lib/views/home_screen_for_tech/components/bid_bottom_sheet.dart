@@ -12,7 +12,6 @@ class BidBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final TextEditingController bid = TextEditingController();
-    bid.text = "Your offer";
 
     return Container(
       width: double.infinity,
@@ -28,7 +27,7 @@ class BidBottomSheet extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 29.h,),
+            SizedBox(height: 10.h,),
             Text("Bid", style: jost600(32.sp, AppColors.primary),),
             SizedBox(height: 20.h,),
             Align(
@@ -38,7 +37,7 @@ class BidBottomSheet extends StatelessWidget {
             SizedBox(height: 15.h,),
             CustomInputField(
                 controller: bid,
-                label: "",
+                label: "Your offer",
                 keyboardType: TextInputType.number,
             ),
             SizedBox(height: 21.h,),

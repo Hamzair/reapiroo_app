@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:repairoo/controllers/audio_controller.dart';
 import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/controllers/user_controller.dart';
+import 'package:repairoo/views/bottom_nav/bottom_nav.dart';
 import 'package:repairoo/views/home_screens_for_customers/CustomerHomeScreen.dart';
 import 'package:repairoo/views/home_screens_for_customers/customer_main_home.dart';
+import 'package:repairoo/views/home_screens_for_customers/customer_task_home.dart';
+import 'package:repairoo/views/home_screens_for_customers/search_offer_screen.dart';
 import 'package:repairoo/views/splash_screen/splash_screen.dart';
 
 import 'views/booking_screens/booking_screen_main.dart';
@@ -14,7 +19,8 @@ import 'views/profile_screens/edit_profile_screen.dart';
 import 'views/profile_screens/profile_screen.dart';
 
 void main() {
-
+  Get.put(UserController());
+  Get.put(AudioController());
   Get.put(TechHomeController());
   Get.put(HomeController());
 
@@ -31,8 +37,7 @@ class MyApp extends StatelessWidget {
         builder: (_, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-          home: const
-          SplashScreen(),
+          home: SplashScreen(),
             // initialBinding: UserBinding(),
           );
         });
