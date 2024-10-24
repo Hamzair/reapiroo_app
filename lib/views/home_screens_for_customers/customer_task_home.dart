@@ -5,6 +5,7 @@ import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/views/home_screens_for_customers/search_offer_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_button.dart';
 import 'package:repairoo/widgets/custom_input_fields.dart';
@@ -368,7 +369,7 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                   Container(
                     // height: 40.h,
                     // width: 40.w,
-                    padding: EdgeInsets.all(10.w),
+                    padding: EdgeInsets.all(8.w),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(width: 4.w, color: Colors.black)),
@@ -497,7 +498,9 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
               padding: EdgeInsets.symmetric(horizontal: 12.0.w),
               child: CustomElevatedButton(
                 text: "Next",
-                onPressed: () {},
+                onPressed: () {
+                  customerVM.isHome.value = "search offer";
+                },
                 fontSize: 19.sp,
               ),
             ),

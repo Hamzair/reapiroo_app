@@ -76,8 +76,8 @@ class _VideoPlayerState extends State<VideoPlayer> {
         await _controller.initialize();
         _chewieController = ChewieController(
           videoPlayerController: _controller,
-          autoPlay: true,
-          looping: true,
+          autoPlay: false,
+          looping: false,
         );
         setState(() {
           _isInitialized = true; // Ensure initialization happens only once

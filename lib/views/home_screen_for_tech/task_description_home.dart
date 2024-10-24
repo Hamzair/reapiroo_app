@@ -153,7 +153,6 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                             ),
                             clipBehavior: Clip.hardEdge, // To clip the child within the rounded border
                             child: VideoPlayer(
-
                               videoUrl: 'assets/video/videotest.mp4', // Provide your video URL directly here
                             ),
                           ),

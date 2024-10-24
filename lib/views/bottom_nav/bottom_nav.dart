@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
+import 'package:repairoo/controllers/user_controller.dart';
 import 'package:repairoo/views/booking_screens/booking_screen_main.dart';
 import 'package:repairoo/views/chat_screens/chat_screen_main.dart';
 import 'package:repairoo/views/home_screen_for_tech/Home_screen.dart';
+import 'package:repairoo/views/home_screens_for_customers/CustomerHomeScreen.dart';
 import 'package:repairoo/views/profile_screens/profile_screen.dart';
 
 import '../../const/images.dart';
@@ -19,6 +21,8 @@ class AppNavBar extends StatefulWidget {
 }
 
 class _AppNavBarState extends State<AppNavBar> {
+  final UserController userVM = Get.put(UserController());
+
   final _pageController = PageController(initialPage: 0);
 
   final _controller = NotchBottomBarController(index: 0);
@@ -31,13 +35,6 @@ class _AppNavBarState extends State<AppNavBar> {
     super.dispose();
   }
 
-  /// widget list
-  List<Widget> bottomBarPages = [
-    const HomeScreen(),
-    const BookingScreenMain(),
-    const ChatsScreenMain(),
-    const ProfileScreen(),
-  ];
   final NavBarController navBarController = Get.put(NavBarController());
 
   void _navigateToPage(int pageIndex) {
@@ -56,81 +53,82 @@ class _AppNavBarState extends State<AppNavBar> {
 
     // Determine the scale factor for the icons
     double iconScale = iconHeight / 20;
+
+    // Move bottomBarPages into build method to ensure userVM is accessible
+    List<Widget> bottomBarPages = [
+      userVM.userRole.value == "Customer" ? Customerhomescreen() : HomeScreen(),
+      const BookingScreenMain(),
+      const ChatsScreenMain(),
+      const ProfileScreen(),
+    ];
+
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        key: navBarController.scaffoldKey,
-        body: PageView(
-          controller: _pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: List.generate(
-              bottomBarPages.length, (index) => bottomBarPages[index]),
+      resizeToAvoidBottomInset: false,
+      key: navBarController.scaffoldKey,
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: List.generate(
+          bottomBarPages.length,
+              (index) => bottomBarPages[index],
         ),
-        extendBody: true,
-        bottomNavigationBar: AnimatedNotchBottomBar(
-          showBlurBottomBar: false,
-          showShadow: false,
-          itemLabelStyle: TextStyle(
-            color: AppColors.secondary,
-            fontWeight: FontWeight.w400,
-            fontSize: isIpad ? 5.sp : 8.sp,
+      ),
+      extendBody: true,
+      bottomNavigationBar: AnimatedNotchBottomBar(
+        showBlurBottomBar: false,
+        showShadow: false,
+        itemLabelStyle: TextStyle(
+          color: AppColors.secondary,
+          fontWeight: FontWeight.w400,
+          fontSize: isIpad ? 5.sp : 8.sp,
+        ),
+        blurFilterY: 10,
+        blurFilterX: 10,
+        notchBottomBarController: _controller,
+        notchColor: AppColors.primary,
+        color: AppColors.primary,
+        showLabel: true,
+        shadowElevation: 0,
+        kBottomRadius: 15.0,
+        bottomBarWidth: 100.w,
+        bottomBarHeight: 11.h,
+        removeMargins: false,
+        durationInMilliSeconds: 300,
+        bottomBarItems: [
+          BottomBarItem(
+            inActiveItem: Image.asset(AppImages.homeicon),
+            activeItem: Image.asset(
+              AppImages.homeicon,
+            ),
+            itemLabel: 'Home'.tr,
           ),
-          blurFilterY: 10,
-          blurFilterX: 10,
-          notchBottomBarController: _controller,
-          notchColor: AppColors.primary,
-          color: AppColors.primary,
-          showLabel: true,
-          shadowElevation: 0,
-          kBottomRadius: 15.0,
-          bottomBarWidth: 100.w,
-          bottomBarHeight: 11.h,
-          removeMargins: false,
-          durationInMilliSeconds: 300,
-          bottomBarItems: [
-            BottomBarItem(
-              inActiveItem: Image.asset(AppImages.homeicon),
-              activeItem: Image.asset(
-                AppImages.homeicon,
-                // color: primaryColor,
-                // scale: iconScale, // Apply the scale factor
-              ),
-              itemLabel: 'Home'.tr,
+          BottomBarItem(
+            inActiveItem: Image.asset(AppImages.bookingicon),
+            activeItem: Image.asset(
+              AppImages.bookingicon,
             ),
-            BottomBarItem(
-              inActiveItem: Image.asset(AppImages.bookingicon),
-              activeItem: Image.asset(
-                AppImages.bookingicon,
-                // color: primaryColor,
-                // scale: iconScale, // Apply the scale factor
-              ),
-              itemLabel: 'Bookings'.tr,
+            itemLabel: 'Bookings'.tr,
+          ),
+          BottomBarItem(
+            inActiveItem: Image.asset(AppImages.chaticon),
+            activeItem: Image.asset(
+              AppImages.chaticon,
             ),
-            BottomBarItem(
-              inActiveItem: Image.asset(AppImages.chaticon),
-              activeItem: Image.asset(
-                AppImages.chaticon,
-                // color: primaryColor,
-                // alignment: Alignment.center,
-                // scale: iconScale, // Apply the scale factor
-              ),
-              itemLabel: 'Chat'.tr,
+            itemLabel: 'Chat'.tr,
+          ),
+          BottomBarItem(
+            inActiveItem: Image.asset(AppImages.profileicon),
+            activeItem: Image.asset(
+              AppImages.profileicon,
             ),
-            BottomBarItem(
-              inActiveItem: Image.asset(AppImages.profileicon),
-              activeItem: Image.asset(
-                AppImages.profileicon,
-                // color: primaryColor,
-                // scale: iconScale, // Apply the scale factor
-              ),
-              itemLabel: 'Profile'.tr,
-            ),
-          ],
-          onTap: (index) {
-            // joinchatcontroller.comingfromhome.value = false;
-            _pageController.jumpToPage(index);
-          },
-          kIconSize: 22.sp,
-          // kIconSize: 8.h,
-        ));
+            itemLabel: 'Profile'.tr,
+          ),
+        ],
+        onTap: (index) {
+          _pageController.jumpToPage(index);
+        },
+        kIconSize: 22.sp,
+      ),
+    );
   }
 }

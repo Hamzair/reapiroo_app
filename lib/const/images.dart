@@ -31,6 +31,10 @@ class AppImages{
   static const tv_mounting = 'assets/images/tv_mounting.png';
   static const gardening = 'assets/images/gardening.png';
   static const plumbing = 'assets/images/plumbing.png';
+  static const loading = 'assets/images/loading.png';
+  static const natalie_hales = 'assets/images/natalie_hales.png';
+  static const sara_jones = 'assets/images/sara_jones.png';
+  static const ibrahim_zafar = 'assets/images/ibrahim_zafar.png';
 
 
 //midhat

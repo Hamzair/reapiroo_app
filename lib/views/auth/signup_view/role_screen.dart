@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/controllers/user_controller.dart';
 import 'package:repairoo/views/auth/signup_view/tech_signup.dart';
 
 import '../../../const/color.dart';
@@ -17,7 +19,11 @@ class RoleScreen extends StatefulWidget {
 }
 
 class _RoleScreenState extends State<RoleScreen> {
+
+  final UserController userVM = Get.find<UserController>();
+
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +64,7 @@ class _RoleScreenState extends State<RoleScreen> {
             children: [
               GestureDetector(
                 onTap: () {
+                  userVM.userRole.value = "Customer";
                   setState(() {
                     selectedIndex = 0;
                   });
@@ -73,6 +80,7 @@ class _RoleScreenState extends State<RoleScreen> {
               ),
               GestureDetector(
                 onTap: () {
+                  userVM.userRole.value = "Tech";
                   setState(() {
                     selectedIndex = 1;
                   });

@@ -29,6 +29,7 @@ class CancelDialogBox extends StatelessWidget {
             maxLines: 6,
             style: jost400(15.sp, AppColors.primary),
             decoration: InputDecoration(
+              hintText: "Write your reason",
               fillColor: AppColors.fill,
               filled: true,
               border: OutlineInputBorder(
