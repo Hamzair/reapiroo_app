@@ -57,84 +57,87 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
           isNotification: true,
           isTitle: false,
           isTextField: true,
-          isSecondIcon: false,
+          isSecondIcon: true,
+          secondIcon: AppSvgs.white_wallet,
           title: "",
         ),
         backgroundColor: AppColors.secondary,
-        body: SafeArea(child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 13.5.w),
-          child: Column(
-            children: [
-              SizedBox(height: 6.h,),
-              Container(
-                height: 99.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.w),
-                    image: DecorationImage(image: AssetImage(AppImages.home_ad), fit: BoxFit.fill)
-                ),
-              ),
-              SizedBox(height: 8.h,),
-              Container(
-                height: 100.h,
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 6.h),
-                decoration: BoxDecoration(
-                    color: AppColors.textFieldGrey,
-                    borderRadius: BorderRadius.circular(12.w),
-                    border: Border.all(
-                        width: 1,
-                        color: AppColors.lightGrey
-                    )
-                ),
-                child: ListView.builder(
-                    itemCount: string.length,
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index){
-                      return Padding(
-                        padding: EdgeInsets.only(left: index != 0 ? 8.w : 0),
-                        child: AnnouncementContainers(type: string[index],),
-                      );
-                    }),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Top Services", style: jost700(16.sp, AppColors.primary),),
-                  CustomElevatedButton(
-                    width: 72.w,
-                      height: 24.h,
-                      text: "View",
-                      onPressed: (){},
-                      fontSize: 12.sp,
-                    borderRadius: 8.r,
+        body: SafeArea(child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 13.5.w),
+            child: Column(
+              children: [
+                SizedBox(height: 6.h,),
+                Container(
+                  height: 99.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.w),
+                      image: DecorationImage(image: AssetImage(AppImages.home_ad), fit: BoxFit.fill)
                   ),
-                ],
-              ),
-              MasonryGridView.count(
-                shrinkWrap: true,
-                padding: EdgeInsets.zero,
-                physics: NeverScrollableScrollPhysics(),
-                crossAxisCount: 2, // Number of items in a row
-                mainAxisSpacing: 20.w, // Vertical spacing between items
-                crossAxisSpacing: 20.w, // Horizontal spacing between items
-                itemCount: dummy.length, // Number of items
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: (){
-                      customerVM.isHome.value = "customer task";
-                      customerVM.service.value =  dummy[index]["title"];
-                    },
-                    child: ServicesContainer(
-                      image: dummy[index]["image"],
-                      title: dummy[index]["title"],
+                ),
+                SizedBox(height: 8.h,),
+                Container(
+                  height: 100.h,
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 6.h),
+                  decoration: BoxDecoration(
+                      color: AppColors.textFieldGrey,
+                      borderRadius: BorderRadius.circular(12.w),
+                      border: Border.all(
+                          width: 1,
+                          color: AppColors.lightGrey
+                      )
+                  ),
+                  child: ListView.builder(
+                      itemCount: string.length,
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index){
+                        return Padding(
+                          padding: EdgeInsets.only(left: index != 0 ? 8.w : 0),
+                          child: AnnouncementContainers(type: string[index],),
+                        );
+                      }),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Top Services", style: jost700(16.sp, AppColors.primary),),
+                    CustomElevatedButton(
+                        width: 72.w,
+                        height: 24.h,
+                        text: "View",
+                        onPressed: (){},
+                        fontSize: 12.sp,
+                      borderRadius: 8.r,
                     ),
-                  );
-                },
-              ),
-            ],
+                  ],
+                ),
+                MasonryGridView.count(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2, // Number of items in a row
+                  mainAxisSpacing: 20.w, // Vertical spacing between items
+                  crossAxisSpacing: 20.w, // Horizontal spacing between items
+                  itemCount: dummy.length, // Number of items
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: (){
+                        customerVM.isHome.value = "customer task";
+                        customerVM.service.value =  dummy[index]["title"];
+                      },
+                      child: ServicesContainer(
+                        image: dummy[index]["image"],
+                        title: dummy[index]["title"],
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         )),
       );

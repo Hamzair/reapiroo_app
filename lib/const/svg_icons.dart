@@ -15,6 +15,7 @@ class AppSvgs {
   static const String upload = "./assets/svgs/upload.svg";
   static const String location = "./assets/svgs/location.svg";
   static const String star = "./assets/svgs/star.svg";
+  static const String white_wallet = "./assets/svgs/white_wallet.svg";
 
 
   // Midat

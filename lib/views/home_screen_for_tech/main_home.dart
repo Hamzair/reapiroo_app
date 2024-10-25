@@ -199,6 +199,43 @@ class _MainHomeState extends State<MainHome> {
                     ),
                   ),
                   SizedBox(height: 14.h,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 4.h),
+                        decoration: BoxDecoration(
+                          color: AppColors.primary,
+                          borderRadius: BorderRadius.circular(12.w),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text("Plumbing", style: jost400(12.sp, AppColors.secondary),),
+                            SizedBox(width: 7.w,),
+                            Icon(Icons.keyboard_arrow_down, size: 25.w, color: AppColors.secondary,)
+                          ],
+                        ),
+                      ),
+                      Container(
+                       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 4.h),
+                        decoration: BoxDecoration(
+                          color: AppColors.primary,
+                          borderRadius: BorderRadius.circular(12.w),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text("Nearest", style: jost400(12.sp, AppColors.secondary),),
+                            SizedBox(width: 7.w,),
+                            Icon(Icons.keyboard_arrow_down, size: 25.w, color: AppColors.secondary,)
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 7.h,),
                   Container(
                     decoration: BoxDecoration(
                       color: AppColors.primary,
