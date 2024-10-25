@@ -7,6 +7,7 @@ import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/views/home_screen_for_tech/components/announcement_containers.dart';
 import 'package:repairoo/views/home_screens_for_customers/components/services_container.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_button.dart';
@@ -43,6 +44,11 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
     },
   ];
 
+  List<String> string = [
+    "announcement",
+    "offer"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +66,39 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
           child: Column(
             children: [
               SizedBox(height: 6.h,),
+              Container(
+                height: 99.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.w),
+                    image: DecorationImage(image: AssetImage(AppImages.home_ad), fit: BoxFit.fill)
+                ),
+              ),
+              SizedBox(height: 8.h,),
+              Container(
+                height: 100.h,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 6.h),
+                decoration: BoxDecoration(
+                    color: AppColors.textFieldGrey,
+                    borderRadius: BorderRadius.circular(12.w),
+                    border: Border.all(
+                        width: 1,
+                        color: AppColors.lightGrey
+                    )
+                ),
+                child: ListView.builder(
+                    itemCount: string.length,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index){
+                      return Padding(
+                        padding: EdgeInsets.only(left: index != 0 ? 8.w : 0),
+                        child: AnnouncementContainers(type: string[index],),
+                      );
+                    }),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

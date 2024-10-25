@@ -99,6 +99,12 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           if(isTextField == true && isTitle == false)
             SizedBox(width: 12.w,),
+          if(isSecondIcon == true )
+            MySvg(
+              assetName: secondIcon ?? AppSvgs.menu,
+              height: 38.h,
+              width: 38.w,
+            ),
           if (isNotification == true)
             Container(
               height: 38.h,
@@ -114,12 +120,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 width: 23.w,
               ),
             ),
-          if(isSecondIcon == true && isNotification == false)
-            MySvg(
-              assetName: secondIcon ?? AppSvgs.menu,
-              height: 38.h,
-              width: 38.w,
-            ),
+
         ],
       ),
     );

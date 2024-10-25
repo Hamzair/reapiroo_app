@@ -38,6 +38,10 @@ class AppImages{
   static const natalie_hales = 'assets/images/natalie_hales.png';
   static const sara_jones = 'assets/images/sara_jones.png';
   static const ibrahim_zafar = 'assets/images/ibrahim_zafar.png';
+  static const wallet = 'assets/images/wallet.png';
+  static const offer = 'assets/images/offer.png';
+  static const announcement = 'assets/images/announcement.png';
+  static const home_ad = 'assets/images/home_ad.png';
 
 
 //midhat
