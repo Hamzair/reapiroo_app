@@ -6,6 +6,7 @@ import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/views/home_screen_for_tech/components/bid_bottom_sheet.dart';
+import 'package:repairoo/views/home_screens_for_customers/search_offer_view.dart';
 import 'package:repairoo/widgets/custom_button.dart';
 import 'package:repairoo/widgets/my_svg.dart';
 
@@ -83,16 +84,28 @@ class _OfferContainerState extends State<OfferContainer> {
                   SizedBox(
                     child: Row(
                       children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 8.w),
-                          width: 60.w,
-                          height: 27.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.w),
-                            color: AppColors.secondary,
-                          ),
-                          alignment: Alignment.center,
-                          child: Text("Accept", style: jost500(13.sp, AppColors.primary),
+                        GestureDetector(
+                          onTap: (){
+                            Get.to(SearchOfferView(
+                                name: widget.name,
+                                image: widget.image,
+                                experience: widget.experience,
+                                price: widget.price,
+                                rating: widget.rating,
+                                reviews: widget.reviews
+                            ));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(right: 8.w),
+                            width: 60.w,
+                            height: 27.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.w),
+                              color: AppColors.secondary,
+                            ),
+                            alignment: Alignment.center,
+                            child: Text("Accept", style: jost500(13.sp, AppColors.primary),
+                            ),
                           ),
                         ),
                         GestureDetector(

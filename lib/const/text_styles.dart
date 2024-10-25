@@ -36,6 +36,7 @@ TextStyle jost500(double fontSize, Color color) {
     fontSize: fontSize,
     fontWeight: FontWeight.w500,
     color: color,
+
   );
 }
 

@@ -105,6 +105,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               height: 38.h,
               width: 38.w,
             ),
+          if(isSecondIcon == true )
+            SizedBox(width: 12.w,),
           if (isNotification == true)
             Container(
               height: 38.h,

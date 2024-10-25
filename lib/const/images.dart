@@ -48,6 +48,9 @@ class AppImages{
   static const offer = 'assets/images/offer.png';
   static const announcement = 'assets/images/announcement.png';
   static const home_ad = 'assets/images/home_ad.png';
+  static const white_wallet = 'assets/images/white_wallet.png';
+  static const card = 'assets/images/card.png';
+  static const apple_pay = 'assets/images/apple_pay.png';
 
 
 //midhat

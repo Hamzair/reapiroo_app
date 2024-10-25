@@ -80,9 +80,30 @@ class _SearchOfferScreenState extends State<SearchOfferScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 16.h),
-                Text(
-                  "Searching best offer",
-                  style: jost700(24.sp, AppColors.primary),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Searching best offer",
+                      style: jost700(24.sp, AppColors.primary),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 4.h),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary,
+                        borderRadius: BorderRadius.circular(9.w),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Lowest price", style: jost400(10.sp, AppColors.secondary),),
+                          SizedBox(width: 1.w,),
+                          Icon(Icons.keyboard_arrow_down, size: 20.w, color: AppColors.secondary,)
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 10.h),
                 Image.asset(
