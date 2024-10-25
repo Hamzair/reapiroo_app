@@ -17,8 +17,38 @@ class _AudioNoteState extends State<AudioNote> {
   final AudioPlayer _audioPlayer = AudioPlayer();
   String audioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"; // Replace with your audio URL
 
+  late final VoiceController _voiceController;
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize the VoiceController here
+    _voiceController = VoiceController(
+      noiseCount: 70,
+      audioSrc: audioUrl,
+      maxDuration: Duration(seconds: 60),
+      isFile: false,
+      onComplete: () {
+        // Handle audio complete
+      },
+      onPause: () {
+        // Handle pause
+      },
+      onPlaying: () {
+        // Handle playing state
+      },
+      onError: (err) {
+        // Handle errors
+      },
+    );
+  }
+
   @override
   void dispose() {
+    // Dispose of VoiceController and AudioPlayer
+    _voiceController.dispose();
     _audioPlayer.dispose();
     super.dispose();
   }
@@ -41,93 +71,117 @@ class _AudioNoteState extends State<AudioNote> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // Play/Pause Button
-        Obx(
-        ()=> GestureDetector(
-            onTap: _togglePlayPause,
-            child: Container(
-              height: 36.w,
-              width: 36.w,
-              decoration: BoxDecoration(
-                color: AppColors.secondary,
-                shape: BoxShape.circle,
-              ),
-              alignment: Alignment.center,
-              child: Icon(
-                audioVM.isPLaying.value ? Icons.pause : Icons.play_arrow,
-                size: 30,
-                color: AppColors.primary,
-              ),
-            ),
+        // Obx(
+        //   () => GestureDetector(
+        //     onTap: _togglePlayPause,
+        //     child: Container(
+        //       height: 36.w,
+        //       width: 36.w,
+        //       decoration: BoxDecoration(
+        //         color: AppColors.secondary,
+        //         shape: BoxShape.circle,
+        //       ),
+        //       alignment: Alignment.center,
+        //       child: Icon(
+        //         audioVM.isPLaying.value ? Icons.pause : Icons.play_arrow,
+        //         size: 30,
+        //         color: AppColors.primary,
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        // SizedBox(width: 10.h),
+        VoiceMessageView(
+          size: 40,
+          backgroundColor: Colors.black,
+          activeSliderColor: Colors.white,
+          circlesColor: Colors.white,
+          playPauseButtonLoadingColor: AppColors.primary,
+          playIcon: Icon(Icons.play_arrow, size: 30.w, color: Colors.black,),
+          pauseIcon: Icon(Icons.pause, size: 30.w, color: Colors.black,),
+          circlesTextStyle: TextStyle(
+            color: Colors.transparent,
+            fontSize: 10,
+            fontWeight: FontWeight.bold,
           ),
+          counterTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 11,
+            fontWeight: FontWeight.w500,
+          ),
+          controller: _voiceController,
+          innerPadding: 0,
+          cornerRadius: 20,
+// waveformHeight: 60,
         ),
-        SizedBox(width: 10.h),
-        //Audio Waveform
-        Obx(() {
-          bool isPlaying = audioVM.isPLaying.value;
 
-          return AudioWave(
-            height: 40,
-            width: MediaQuery.of(context).size.width * 0.7,
-            spacing: 2,
-            bars: [
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.2, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.2, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.2, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
-              AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
-            ],
-            animation: isPlaying, // Animate only when audio is playing
-          );
-        }),
+        // Audio Waveform
+        // Obx(() {
+        //   bool isPlaying = audioVM.isPLaying.value;
+        //
+        //   return AudioWave(
+        //     height: 40,
+        //     width: MediaQuery.of(context).size.width * 0.7,
+        //     spacing: 2,
+        //     bars: [
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.2, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.2, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.2, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.4, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.1, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.3, color: isPlaying ? Colors.white : Colors.grey),
+        //       AudioWaveBar(heightFactor: 0.7, color: isPlaying ? Colors.white : Colors.grey),
+        //     ],
+        //     animation: isPlaying, // Animate only when audio is playing
+        //   );
+        // }),
       ],
     );
   }
