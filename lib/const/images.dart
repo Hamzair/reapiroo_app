@@ -56,4 +56,13 @@ class AppImages{
   static const pinlocation = 'assets/images/pin_location_icon.png';
   static const calendericon = 'assets/images/calender_icon.png';
   static const clockicon = 'assets/images/clock_icon.png';
+  static const backIcon = 'assets/images/back_icon.png';
+  static const notificationIcon = 'assets/images/notification_icon.png';
+  static const star_icon = 'assets/images/star_icon.png';
+  static const reports_icon = 'assets/images/reports_icon.png';
+  static const review_coments_image = 'review_coments_image.png';
+  static const today_appointment = 'assets/images/today_appointment_icon.png';
+  static const happy_customers = 'assets/images/happy_customers.png';
+  static const jobs_completed = 'assets/images/jobs_completed.png';
+  static const total_earned = 'assets/images/total_earned.png';
 }

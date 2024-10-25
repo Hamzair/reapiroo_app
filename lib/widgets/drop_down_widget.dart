@@ -87,7 +87,7 @@ class GenderDropdownField extends StatelessWidget {
         iconEnabledColor: Colors.black, // Set icon color to black
         style: TextStyle(color: AppColors.primary), // Set the selected item text color
         icon: Icon(Icons.keyboard_arrow_down_sharp,
-          color: AppColors.primary,
+          color: AppColors.primary,size: 28,
         ), // Default dropdown icon
       ),
     ));

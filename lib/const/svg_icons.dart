@@ -18,6 +18,7 @@ class AppSvgs {
 
 
   // Midat
+  static const String settings = "./assets/svgs/settings.svg";
 
 
 

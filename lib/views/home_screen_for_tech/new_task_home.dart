@@ -37,6 +37,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
           isNotification: homeVM.isNotification.value,
           isTitle: homeVM.isTitle.value,
           isSecondIcon: homeVM.isSecondIcon.value,
+          secondIcon: "",
           title: homeVM.title.value,
           onBackTap: (){
             homeVM.updateAppBar(false, true, false, false, "Task Description");

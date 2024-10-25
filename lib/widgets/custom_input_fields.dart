@@ -86,7 +86,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
           fontFamily: 'Jost',
         ),
         labelStyle: TextStyle(
-          color: widget.labelTextColor ?? Color.fromRGBO(0, 0, 0, 1),
+          color: widget.labelTextColor ?? AppColors.primary,
           fontSize: widget.labelTextSize ?? 14.65.sp,
           fontWeight: FontWeight.w400,
           fontFamily: 'Jost',

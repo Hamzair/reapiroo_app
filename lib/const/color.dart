@@ -13,6 +13,7 @@ class AppColors {
   static const Color fill = Color.fromRGBO(250, 250, 250, 1);
   static const Color buttontext = Color.fromRGBO(255, 255, 255, 1);
   static const Color buttonGrey= Color(0xFFB3B3B3);
+  static const Color goldenstar= Color.fromRGBO(253, 200, 61, 1);
 
 
 }
