@@ -22,6 +22,12 @@ class AppImages{
   static const homeicon = 'assets/images/homeicon.png';
   static const profileicon = 'assets/images/profileicon.png';
   static const onboardingelipse2 = 'assets/images/onboardingelipse2.png';
+  static const wallet = 'assets/images/wallet.png';
+  static const logout = 'assets/images/logout.png';
+  static const walletbg = 'assets/images/walletbg.png';
+  static const history = 'assets/images/history.png';
+  static const arrow_down = 'assets/images/arrow_down.png';
+  static const invoice = 'assets/images/invoice.png';
 
   //balaj
   static const jared_hughs = 'assets/images/jared_hughs.png';
@@ -38,7 +44,7 @@ class AppImages{
   static const natalie_hales = 'assets/images/natalie_hales.png';
   static const sara_jones = 'assets/images/sara_jones.png';
   static const ibrahim_zafar = 'assets/images/ibrahim_zafar.png';
-  static const wallet = 'assets/images/wallet.png';
+  // static const wallet = 'assets/images/wallet.png';
   static const offer = 'assets/images/offer.png';
   static const announcement = 'assets/images/announcement.png';
   static const home_ad = 'assets/images/home_ad.png';

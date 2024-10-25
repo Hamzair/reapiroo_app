@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/views/home_screen_for_tech/task_description_home.dart';
 
 class BookingCard extends StatelessWidget {
   final String name;
@@ -173,17 +175,22 @@ class BookingCard extends StatelessWidget {
                       ),
                     ),
                     // View Container
-                    Container(
-                      height: 35.h,
-                      width: 94.w,
-                      decoration: BoxDecoration(
-                        color: AppColors.secondary,
-                        borderRadius: BorderRadius.circular(14.r),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'View',
-                          style: jost600(13.sp, AppColors.primary),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(TaskDescriptionHome());
+                      },
+                      child: Container(
+                        height: 35.h,
+                        width: 94.w,
+                        decoration: BoxDecoration(
+                          color: AppColors.secondary,
+                          borderRadius: BorderRadius.circular(14.r),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'View',
+                            style: jost600(13.sp, AppColors.primary),
+                          ),
                         ),
                       ),
                     ),

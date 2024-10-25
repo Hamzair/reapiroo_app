@@ -5,6 +5,8 @@ import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/controllers/user_controller.dart';
+import 'package:repairoo/views/customer_wallet_screen/wallet_screen.dart';
 import 'package:repairoo/views/profile_screens/bio_and_experience/bio_and_experience_main.dart';
 import 'package:repairoo/views/profile_screens/edit_profile_screen.dart';
 import 'package:repairoo/views/profile_screens/reports/reports_screen.dart';
@@ -12,7 +14,6 @@ import 'package:repairoo/views/profile_screens/reviews/reviews_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/profile_button_widget.dart';
 import 'dart:io';
-
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -28,6 +29,7 @@ class _EditProfileScreenState extends State<ProfileScreen> {
   final TextEditingController firstname = TextEditingController();
   final TextEditingController lastname = TextEditingController();
   final TextEditingController email = TextEditingController();
+  final UserController userVM = Get.put(UserController());
 
   @override
   void dispose() {
@@ -38,16 +40,15 @@ class _EditProfileScreenState extends State<ProfileScreen> {
     super.dispose();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context).unfocus(); // Close the keyboard when tapping outside
+        FocusScope.of(context)
+            .unfocus(); // Close the keyboard when tapping outside
       },
       child: Scaffold(
-        appBar:  MyAppBar(
+        appBar: MyAppBar(
           isMenu: true,
           isNotification: false,
           isTitle: true,
@@ -60,6 +61,7 @@ class _EditProfileScreenState extends State<ProfileScreen> {
           child: Column(
             children: [
               SizedBox(height: 44.h),
+
               /// Profile Image
               Align(
                 alignment: Alignment.center,
@@ -71,54 +73,76 @@ class _EditProfileScreenState extends State<ProfileScreen> {
                     child: CircleAvatar(
                       backgroundImage: _imagePath != null
                           ? FileImage(File(_imagePath!))
-                          : AssetImage(AppImages.profileImage) as ImageProvider, // Use the image from AppImages
+                          : AssetImage(AppImages.profileImage)
+                              as ImageProvider, // Use the image from AppImages
                       radius: 60, // Optional: customize radius if needed
                     ),
-
                   ),
                 ),
               ),
-              Text("Merrill Kervin",
-              style: jost700(23.1.sp, AppColors.primary),
+              Text(
+                "Merrill Kervin",
+                style: jost700(23.1.sp, AppColors.primary),
               ),
               SizedBox(height: 30.h),
+
               /// My Profile
-              ProfileButton(
+              userVM.userRole.value == "Customer"
+                  ?ProfileButton(
                 onPressed: () {
                   // Navigate to the EditProfileScreen
                   Get.to(EditProfileScreen());
                 },
-                label: "My Profile",
+                label: "General Information",
                 iconPath: AppImages.name_icon,
-              ),
+              ): ProfileButton(
+                      onPressed: () {
+                        // Navigate to the EditProfileScreen
+                        Get.to(EditProfileScreen());
+                      },
+                      label: "My Profile",
+                      iconPath: AppImages.name_icon,
+                    ),
+
               SizedBox(height: 10.h),
+
               /// Bio and Experience
-              ProfileButton(
-                onPressed: () {
-                  Get.to(BioAndExperienceMain());
-                },
-                label: "Bio and Experience",
-                iconPath: AppImages.bagicon,
-              ),
+              userVM.userRole.value == "Customer"
+                  ? ProfileButton(
+                      onPressed: () {
+                        // Get.to(BioAndExperienceMain());
+                      },
+                      label: "Saved Address",
+                      iconPath: AppImages.bagicon,
+                    )
+                  : ProfileButton(
+                      onPressed: () {
+                        Get.to(BioAndExperienceMain());
+                      },
+                      label: "Bio and Experience",
+                      iconPath: AppImages.bagicon,
+                    ),
               SizedBox(height: 10.h),
+
               /// Reviews
-              ProfileButton(
-                onPressed: () {
-                  Get.to(ReviewsScreen());
-                },
-                label: "Reviews",
-                iconPath: AppImages.star_icon,
-              ),
+              userVM.userRole.value == "Customer"
+                  ? ProfileButton(
+                      onPressed: () {
+                        Get.to(WalletScreen());
+                      },
+                      label: "Wallet",
+                      iconPath: AppImages.wallet,
+                    )
+                  : ProfileButton(
+                      onPressed: () {
+                        Get.to(ReviewsScreen());
+                      },
+                      label: "Reviews",
+                      iconPath: AppImages.star_icon,
+                    ),
+
               SizedBox(height: 10.h),
-              /// Reports
-              ProfileButton(
-                onPressed: () {
-                  Get.to(ReportsScreen());
-                },
-                label: "Reports",
-                iconPath: AppImages.reports_icon,
-              ),
-              SizedBox(height: 10.h),
+
               /// Terms/Policy
               ProfileButton(
                 onPressed: () {
@@ -128,14 +152,46 @@ class _EditProfileScreenState extends State<ProfileScreen> {
                 iconPath: AppImages.privacyicon,
               ),
               SizedBox(height: 10.h),
+
               /// Help/Contact Us
-              ProfileButton(
+              userVM.userRole.value == "Customer"
+                  ?ProfileButton(
                 onPressed: () {
                   // Navigate to the SettingsScreen
                 },
-                label: "Help/Contact Us",
+                label: "Help & Support",
                 iconPath: AppImages.questionicon,
-              ),
+              ): ProfileButton(
+                      onPressed: () {
+                        // Navigate to the SettingsScreen
+                      },
+                      label: "Help/Contact Us",
+                      iconPath: AppImages.questionicon,
+                    )
+                  ,
+
+              SizedBox(height: 30.h),
+              userVM.userRole.value == "Customer"?       Padding(
+                padding: EdgeInsets.symmetric(horizontal: 21.w),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      AppImages.logout,
+                      height: 25.h,
+                      width: 25.w,
+                    ),
+                    SizedBox(
+                      width: 15.w,
+                    ),
+                    Text(
+                      'Logout',
+                      style: jost500(16.sp, AppColors.primary),
+                    )
+                  ],
+                ),
+              ):SizedBox.shrink(),
+
+              SizedBox(height: 120.h),
             ],
           ),
         ),
