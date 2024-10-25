@@ -10,6 +10,7 @@ import 'package:repairoo/views/home_screens_for_customers/customer_main_home.dar
 import 'package:repairoo/views/home_screens_for_customers/customer_task_home.dart';
 import 'package:repairoo/views/home_screens_for_customers/search_offer_screen.dart';
 import 'package:repairoo/views/splash_screen/splash_screen.dart';
+import 'package:repairoo/views/tech_wallet/wallet_screen.dart';
 
 import 'views/booking_screens/booking_screen_main.dart';
 import 'views/chat_screens/chat_screen_detail.dart';

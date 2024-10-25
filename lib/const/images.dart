@@ -28,6 +28,10 @@ class AppImages{
   static const history = 'assets/images/history.png';
   static const arrow_down = 'assets/images/arrow_down.png';
   static const invoice = 'assets/images/invoice.png';
+  static const bank = 'assets/images/bank.png';
+  static const editicon = 'assets/images/editicon.png';
+  static const withdraw = 'assets/images/withdraw.png';
+  static const arrow_right = 'assets/images/arrow_right.png';
 
   //balaj
   static const jared_hughs = 'assets/images/jared_hughs.png';
