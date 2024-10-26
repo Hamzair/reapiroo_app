@@ -61,12 +61,13 @@ class CancelDialogBox extends StatelessWidget {
                   textColor: AppColors.secondary,
               ),
               CustomElevatedButton(
+                borderSide: BorderSide(color: Colors.transparent),
                 width: 101.w,
                   text: "No",
                   onPressed: (){
                     Get.back();
                   },
-                  backgroundColor: AppColors.buttonGrey,
+                  backgroundColor: Color(0xffDDDDDD),
                   fontSize: 19.sp,
                   textColor: AppColors.primary,
               ),

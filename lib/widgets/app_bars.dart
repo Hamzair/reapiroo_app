@@ -99,6 +99,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           if(isTextField == true && isTitle == false)
             SizedBox(width: 12.w,),
+          if(isTextField == false && isTitle == false)
+            Expanded(child: SizedBox()),
           if(isSecondIcon == true )
             MySvg(
               assetName: secondIcon ?? AppSvgs.menu,

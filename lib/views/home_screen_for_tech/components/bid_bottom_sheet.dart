@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/widgets/custom_button.dart';
 import 'package:repairoo/widgets/custom_input_fields.dart';
+
+import 'customer_bid.dart';
 
 class BidBottomSheet extends StatelessWidget {
   const BidBottomSheet({super.key});
@@ -44,7 +47,15 @@ class BidBottomSheet extends StatelessWidget {
             CustomElevatedButton(
                 text: "Send Bid",
                 fontSize: 16.sp,
-                onPressed: (){},
+                onPressed: (){
+                  Get.back();
+                  Get.bottomSheet(
+                      isScrollControlled: true,
+                      isDismissible: true,
+                      enableDrag: true,
+                      CustomerBidBottomSheet()
+                  );
+                },
             ),
             SizedBox(height: 29.h,),
           ],

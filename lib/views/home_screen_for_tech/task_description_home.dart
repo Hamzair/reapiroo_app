@@ -38,9 +38,9 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
         isSecondIcon: false,
         title: 'Task Description',
         onBackTap: () {
-          Get.back();
+          // Get.back();
           // homeVM.updateAppBar(true, false, true, false, "");
-          // homeVM.isHome.value = "main";
+          homeVM.isHome.value = "main";
         },
       ),
       body: SingleChildScrollView(

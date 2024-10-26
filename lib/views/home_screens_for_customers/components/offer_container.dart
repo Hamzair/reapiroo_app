@@ -123,12 +123,12 @@ class _OfferContainerState extends State<OfferContainer> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.w),
                               border: Border.all(
-                                color: AppColors.secondary
+                                color: AppColors.secondary,width: 1
                               ),
-                              color: AppColors.buttonGrey,
+                              color: Color(0xffDDDDDD),
                             ),
                             alignment: Alignment.center,
-                            child: Text("Bid", style: jost500(13.sp, AppColors.secondary),
+                            child: Text("Bid", style: jost500(13.sp, AppColors.primary),
                             ),
                           ),
                         ),
