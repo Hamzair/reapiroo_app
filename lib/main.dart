@@ -6,6 +6,7 @@ import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/controllers/user_controller.dart';
 import 'package:repairoo/views/auth/login_view/login_screen.dart';
 import 'package:repairoo/views/bottom_nav/bottom_nav.dart';
+import 'package:repairoo/views/home_screen_for_tech/task_description_home.dart';
 import 'package:repairoo/views/home_screens_for_customers/CustomerHomeScreen.dart';
 import 'package:repairoo/views/home_screens_for_customers/customer_main_home.dart';
 import 'package:repairoo/views/home_screens_for_customers/customer_task_home.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         builder: (_, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: TaskDescriptionHome(),
             // initialBinding: UserBinding(),
           );
         });

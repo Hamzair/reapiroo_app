@@ -26,7 +26,7 @@ class _AudioNoteState extends State<AudioNote> {
 
     // Initialize the VoiceController here
     _voiceController = VoiceController(
-      noiseCount: 70,
+      noiseCount: 55,
       audioSrc: audioUrl,
       maxDuration: Duration(seconds: 60),
       isFile: false,
