@@ -103,6 +103,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.dark().copyWith(
+            timePickerTheme: TimePickerThemeData(
+                dialBackgroundColor: AppColors.textFieldGrey),
             primaryColor: Colors.black, // Background color
             colorScheme: ColorScheme.light(
               primary: Colors.black,
@@ -133,6 +135,7 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: AppColors.primary,
             primaryColor: Colors.black, // Background color
             colorScheme: ColorScheme.light(
               primary: Colors.black,
