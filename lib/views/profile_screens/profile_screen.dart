@@ -129,10 +129,10 @@ class _EditProfileScreenState extends State<ProfileScreen> {
                   ? SizedBox.shrink()
                   : ProfileButton(
                       onPressed: () {
-                        Get.to(Wallet());
+                        Get.to(ReportsScreen());
                       },
-                      label: "Wallet",
-                      iconPath: AppImages.wallet,
+                      label: "Reports",
+                      iconPath: AppImages.reports_icon,
                     ),
               SizedBox(height: 10.h),
 

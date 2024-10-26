@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -84,6 +85,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
       _progressValue = 0.0; // Reset progress indicator
     });
   }
+  DateTime? selectedDateTime;
+
 
   Future<DateTime?> showDateTimePicker({
     required BuildContext context,
@@ -91,7 +94,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
     DateTime? firstDate,
     DateTime? lastDate,
     ThemeData? theme, // Optional theme parameter
-  }) async {
+  })
+  async {
     initialDate ??= DateTime.now();
     firstDate ??= initialDate.subtract(const Duration(days: 365 * 100));
     lastDate ??= firstDate.add(const Duration(days: 365 * 200));
@@ -102,7 +106,9 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
       initialTime: TimeOfDay.fromDateTime(initialDate),
       builder: (BuildContext context, Widget? child) {
         return Theme(
-          data: ThemeData.dark().copyWith(
+          data: ThemeData.light().copyWith(
+            scaffoldBackgroundColor: Colors.red,
+            bannerTheme: MaterialBannerThemeData(backgroundColor: Colors.red),
             timePickerTheme: TimePickerThemeData(
                 dialBackgroundColor: AppColors.textFieldGrey),
             primaryColor: Colors.black, // Background color
@@ -253,9 +259,27 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
 //       });
 //     }
 //   }
+  Future<void> _pickDateTime() async {
+    DateTime? dateTime = await showDateTimePicker(
+      context: context,
+      theme: ThemeData.light(), // Optional: Pass a custom theme if desired
+    );
+
+    // Update selectedDateTime if a date and time was picked
+    if (dateTime != null) {
+      setState(() {
+        selectedDateTime = dateTime;
+      });
+    }
+  }
+  String getFormattedDateTime() {
+    if (selectedDateTime == null) return "Select Date & Time";
+    return DateFormat('MM/dd/yyyy hh:mm a').format(selectedDateTime!);
+  }
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -280,6 +304,7 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 SizedBox(
                   height: 10.h,
                 ),
@@ -383,11 +408,15 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Select Time"),
+                      Text(
+                        getFormattedDateTime(),
+
+                      ),
+
                       Row(
                         children: [
                           GestureDetector(
-                            onTap: () => showDateTimePicker(context: context),
+                            onTap: () => _pickDateTime(),
                             child: Container(
                               width: 73.w,
                               height: 30.h,
