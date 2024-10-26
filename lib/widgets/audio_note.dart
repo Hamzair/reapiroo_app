@@ -26,7 +26,7 @@ class _AudioNoteState extends State<AudioNote> {
 
     // Initialize the VoiceController here
     _voiceController = VoiceController(
-      noiseCount: 55,
+      noiseCount: 50,
       audioSrc: audioUrl,
       maxDuration: Duration(seconds: 60),
       isFile: false,
@@ -91,28 +91,32 @@ class _AudioNoteState extends State<AudioNote> {
         //   ),
         // ),
         // SizedBox(width: 10.h),
-        VoiceMessageView(
-          size: 40,
-          backgroundColor: Colors.black,
-          activeSliderColor: Colors.white,
-          circlesColor: Colors.white,
-          playPauseButtonLoadingColor: AppColors.primary,
-          playIcon: Icon(Icons.play_arrow, size: 30.w, color: Colors.black,),
-          pauseIcon: Icon(Icons.pause, size: 30.w, color: Colors.black,),
-          circlesTextStyle: TextStyle(
-            color: Colors.transparent,
-            fontSize: 10,
-            fontWeight: FontWeight.bold,
+        SizedBox(
+          width: Get.width * 0.82,
+          child: VoiceMessageView(
+            size: 40,
+            backgroundColor: Colors.black,
+            activeSliderColor: Colors.white,
+            circlesColor: Colors.white,
+            playPauseButtonLoadingColor: AppColors.primary,
+            playIcon: Icon(Icons.play_arrow, size: 30.w, color: Colors.black,),
+            pauseIcon: Icon(Icons.pause, size: 30.w, color: Colors.black,),
+            circlesTextStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+            ),
+
+            counterTextStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 11,
+              fontWeight: FontWeight.w500,
+            ),
+            controller: _voiceController,
+            innerPadding: 0,
+            cornerRadius: 20,
+          // waveformHeight: 60,
           ),
-          counterTextStyle: TextStyle(
-            color: Colors.black,
-            fontSize: 11,
-            fontWeight: FontWeight.w500,
-          ),
-          controller: _voiceController,
-          innerPadding: 0,
-          cornerRadius: 20,
-// waveformHeight: 60,
         ),
 
         // Audio Waveform
