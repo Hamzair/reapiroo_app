@@ -19,12 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-        ()=> homeVM.isHome.value == "main"
-            ? MainHome()
-            : homeVM.isHome.value == "task"
-            ? TaskDescriptionHome()
-            : NewTaskHome(),
-    );
+    return MainHome();
   }
 }

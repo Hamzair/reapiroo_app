@@ -20,10 +20,6 @@ class _CustomerhomescreenState extends State<Customerhomescreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(()=> customerVM.isHome.value == "customer main"
-                ? CustomerMainHome()
-                : customerVM.isHome.value == "search offer" ? SearchOfferScreen(field: customerVM.service.value) : CustomerTaskHome(service: customerVM.service.value,
-            )
-    );
+    return CustomerMainHome();
   }
 }
