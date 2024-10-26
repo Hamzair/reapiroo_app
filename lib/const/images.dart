@@ -82,4 +82,6 @@ class AppImages{
   static const happy_customers = 'assets/images/happy_customers.png';
   static const jobs_completed = 'assets/images/jobs_completed.png';
   static const total_earned = 'assets/images/total_earned.png';
+  static const dialogue_boximage = 'assets/images/spareparts_dialogue_boximage.png';
+  static const upload_icon = 'assets/images/upload_icon.png';
 }

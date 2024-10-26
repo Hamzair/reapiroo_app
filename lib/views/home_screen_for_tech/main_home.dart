@@ -360,7 +360,7 @@ class _MainHomeState extends State<MainHome> {
                                   Expanded(
                                     child: GestureDetector(
                                       onTap: (){
-                                        Get.to(TaskDescriptionHome());
+                                        Get.to(TaskDescriptionHome(comingFrom: "tech",));
                                       },
                                       child: Container(
                                         height: 35.h,
