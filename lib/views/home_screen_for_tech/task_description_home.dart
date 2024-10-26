@@ -65,8 +65,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                   height: 9.h,
                 ),
                 Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
+                  padding: EdgeInsets.only(bottom: 16.h),
                   decoration: BoxDecoration(
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(12.w),
@@ -76,328 +75,398 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Jared Hughs",
-                              style: jost600(18.sp, AppColors.secondary),
-                            ),
-                            SizedBox(
-                              height: 6.h,
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.location_on_outlined,
-                                  size: 20.w,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Text(
-                                  "Downtown Road, Dubai.",
-                                  style:
-                                      montserrat400(11.sp, AppColors.secondary),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 6.h,
-                            ),
-                            SizedBox(
-                                width: 174.w,
-                                child: Text(
-                                  "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
-                                  style: montserrat(9.sp, AppColors.secondary,
-                                      FontWeight.w300),
-                                )),
-                          ],
+                        Container(
+                          height: 21.h,
+                          width: 108.w,
+                          decoration: BoxDecoration(
+                              color: AppColors.textFieldGrey,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(12.w),
+                                bottomRight: Radius.circular(12.w),
+                              )),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "New",
+                            style: montserrat600(11.sp, AppColors.primary),
+                          ),
                         ),
                         Container(
-                          height: 82.h,
-                          width: 92.w,
+                          height: 21.h,
+                          width: 108.w,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.w),
-                              image: DecorationImage(
-                                  image: AssetImage(AppImages.jared_hughs),
-                                  fit: BoxFit.contain)),
-                        )
+                              color: AppColors.textFieldGrey,
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(12.w),
+                                bottomLeft: Radius.circular(12.w),
+                              )),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Plumbing",
+                            style: montserrat600(11.sp, AppColors.primary),
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(
                       height: 10.h,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 8.w, vertical: 12.h),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(14.w),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                child: Row(
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 14.w,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
-                                    MySvg(assetName: AppSvgs.calender),
-                                    SizedBox(
-                                      width: 8.w,
+                                    Text(
+                                      "Jared Hughs",
+                                      style:
+                                      jost600(18.sp, AppColors.secondary),
                                     ),
                                     Text(
-                                      "Mon, Dec 23",
-                                      style: montserrat600(
-                                          11.sp, AppColors.primary),
+                                      "ID #2145",
+                                      style:
+                                      jost600(12.sp, AppColors.secondary),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(
-                                width: 45.w,
-                              ),
-                              SizedBox(
-                                child: Row(
+                                SizedBox(
+                                  height: 6.h,
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    MySvg(assetName: AppSvgs.clock),
+                                    Icon(
+                                      Icons.location_on_outlined,
+                                      size: 20.w,
+                                      color: Colors.white,
+                                    ),
                                     SizedBox(
-                                      width: 8.w,
+                                      width: 2,
                                     ),
                                     Text(
-                                      "12:00",
-                                      style: montserrat600(
-                                          11.sp, AppColors.primary),
+                                      "Downtown Road, Dubai.",
+                                      style: montserrat400(
+                                          11.sp, AppColors.secondary),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  height: 6.h,
+                                ),
+                                SizedBox(
+                                    width: 174.w,
+                                    child: Text(
+                                      "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
+                                      style: montserrat(9.sp,
+                                          AppColors.secondary, FontWeight.w300),
+                                    )),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 15.w,
-                        ),
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              if (widget.comingFrom == "booking") {
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: true, // Allows dialog dismissal on outside tap
-                                  builder: (BuildContext context) {
-                                    return Dialog(
+                          SizedBox(
+                            width: 20.w,
+                          ),
+                          Container(
+                            height: 82.h,
+                            width: 92.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.w),
+                                image: DecorationImage(
+                                    image: AssetImage(AppImages.jared_hughs),
+                                    fit: BoxFit.contain)),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 14.w,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 35.h,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 8.w,),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(14.w),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  child: Row(
+                                    children: [
+                                      MySvg(assetName: AppSvgs.calender),
+                                      SizedBox(
+                                        width: 8.w,
+                                      ),
+                                      Text(
+                                        "Mon, Dec 23",
+                                        style: montserrat600(
+                                            11.sp, AppColors.primary),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 45.w,
+                                ),
+                                SizedBox(
+                                  child: Row(
+                                    children: [
+                                      MySvg(assetName: AppSvgs.clock),
+                                      SizedBox(
+                                        width: 8.w,
+                                      ),
+                                      Text(
+                                        "12:00",
+                                        style: montserrat600(
+                                            11.sp, AppColors.primary),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: 15.w,
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                if (widget.comingFrom == "booking") {
+                                  showDialog(
+                                    context: context,
+                                    barrierDismissible: true, // Allows dialog dismissal on outside tap
+                                    builder: (BuildContext context) {
+                                      return Dialog(
 
-                                      backgroundColor: Colors.transparent,
-                                      insetPadding: EdgeInsets.all(16),
-                                      child: Center(
-                                        child: Container(
-                                          width: MediaQuery.of(context).size.width,
-                                          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(16.r),
-                                          ),
-                                          child: SparepartDialogueBox(),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              } else {
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: true, // Allows dialog dismissal on outside tap
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      backgroundColor: AppColors.secondary,
-                                      title: Center(
-                                        child: Text(
-                                          "Spare Parts",
-                                          style: jost700(18.sp, AppColors.primary),
-                                        ),
-                                      ),
-                                      content: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text(
-                                            "James has purchased the spare part you requested, please check the invoice thoroughly and select how you would like to pay for it",
-                                            style: jost400(12.sp, AppColors.primary),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                          SizedBox(height: 20.h),
-                                          SizedBox(
-                                            height: 193.h,
-                                            child: Stack(
-                                              alignment: Alignment.bottomCenter,
-                                              children: [
-                                                Image.asset(AppImages.invoice),
-                                                CustomElevatedButton(
-                                                  borderSide: BorderSide(color: Color(0xffA6A6A6), width: 1),
-                                                  width: 90.w,
-                                                  text: "Open",
-                                                  backgroundColor: Color(0xffDDDDDD),
-                                                  textColor: AppColors.primary,
-                                                  fontSize: 19.sp,
-                                                  onPressed: () {
-                                                    Get.back();
-                                                  },
-                                                ),
-                                              ],
+                                        backgroundColor: Colors.transparent,
+                                        insetPadding: EdgeInsets.all(16),
+                                        child: Center(
+                                          child: Container(
+                                            width: MediaQuery.of(context).size.width,
+                                            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.circular(16.r),
                                             ),
+                                            child: SparepartDialogueBox(),
                                           ),
-                                          SizedBox(height: 20.h),
-                                          Text(
-                                            "20 AED",
-                                            style: jost700(22.sp, AppColors.primary),
-                                          )
-                                        ],
-                                      ),
-                                      actions: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                        ),
+                                      );
+                                    },
+                                  );
+                                } else if (widget.comingFrom == "tech") {
+                                  showDialog(
+                                    context: context,
+                                    barrierDismissible: true, // Allows dialog dismissal on outside tap
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        backgroundColor: AppColors.secondary,
+                                        title: Center(
+                                          child: Text(
+                                            "Spare Parts",
+                                            style: jost700(18.sp, AppColors.primary),
+                                          ),
+                                        ),
+                                        content: Column(
+                                          mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            CustomElevatedButton(
-                                              width: 101.w,
-                                              text: "Pay",
-                                              backgroundColor: AppColors.primary,
-                                              textColor: AppColors.secondary,
-                                              fontSize: 19.sp,
-                                              onPressed: () {
-                                                Get.back();
-                                                showDialog(
-                                                  context: context,
-                                                  barrierDismissible: true, // Allows dialog dismissal on outside tap
-                                                  builder: (BuildContext context) {
-                                                    return AlertDialog(
-                                                      backgroundColor: AppColors.secondary,
-                                                      title: Center(
-                                                        child: Text(
-                                                          "Leave a Review",
-                                                          style: jost700(18.sp, AppColors.primary),
+                                            Text(
+                                              "James has purchased the spare part you requested, please check the invoice thoroughly and select how you would like to pay for it",
+                                              style: jost400(12.sp, AppColors.primary),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            SizedBox(height: 20.h),
+                                            SizedBox(
+                                              height: 193.h,
+                                              child: Stack(
+                                                alignment: Alignment.bottomCenter,
+                                                children: [
+                                                  Image.asset(AppImages.invoice),
+                                                  CustomElevatedButton(
+                                                    borderSide: BorderSide(color: Color(0xffA6A6A6), width: 1),
+                                                    width: 90.w,
+                                                    text: "Open",
+                                                    backgroundColor: Color(0xffDDDDDD),
+                                                    textColor: AppColors.primary,
+                                                    fontSize: 19.sp,
+                                                    onPressed: () {
+                                                      Get.back();
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(height: 20.h),
+                                            Text(
+                                              "20 AED",
+                                              style: jost700(22.sp, AppColors.primary),
+                                            )
+                                          ],
+                                        ),
+                                        actions: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              CustomElevatedButton(
+                                                width: 101.w,
+                                                text: "Pay",
+                                                backgroundColor: AppColors.primary,
+                                                textColor: AppColors.secondary,
+                                                fontSize: 19.sp,
+                                                onPressed: () {
+                                                  Get.back();
+                                                  showDialog(
+                                                    context: context,
+                                                    barrierDismissible: true, // Allows dialog dismissal on outside tap
+                                                    builder: (BuildContext context) {
+                                                      return AlertDialog(
+                                                        backgroundColor: AppColors.secondary,
+                                                        title: Center(
+                                                          child: Text(
+                                                            "Leave a Review",
+                                                            style: jost700(18.sp, AppColors.primary),
+                                                          ),
                                                         ),
-                                                      ),
-                                                      content: Column(
-                                                        mainAxisSize: MainAxisSize.min,
-                                                        children: [
-                                                          Container(
-                                                            width: double.infinity,
-                                                            height: 55.h,
-                                                            decoration: BoxDecoration(
-                                                              color: AppColors.primary,
-                                                              borderRadius: BorderRadius.circular(22.r),
-                                                            ),
-                                                            child: Row(
-                                                              children: [
-                                                                Row(
-                                                                  children: List.generate(
-                                                                    5,
-                                                                        (index) => Padding(
-                                                                      padding: EdgeInsets.symmetric(horizontal: 8.w),
-                                                                      child: Icon(
-                                                                        index < 4
-                                                                            ? Icons.star
-                                                                            : Icons.star_border,
-                                                                        color: AppColors.goldenstar,
-                                                                        size: 20.w,
+                                                        content: Column(
+                                                          mainAxisSize: MainAxisSize.min,
+                                                          children: [
+                                                            Container(
+                                                              width: double.infinity,
+                                                              height: 55.h,
+                                                              decoration: BoxDecoration(
+                                                                color: AppColors.primary,
+                                                                borderRadius: BorderRadius.circular(22.r),
+                                                              ),
+                                                              child: Row(
+                                                                children: [
+                                                                  Row(
+                                                                    children: List.generate(
+                                                                      5,
+                                                                          (index) => Padding(
+                                                                        padding: EdgeInsets.symmetric(horizontal: 8.w),
+                                                                        child: Icon(
+                                                                          index < 4
+                                                                              ? Icons.star
+                                                                              : Icons.star_border,
+                                                                          color: AppColors.goldenstar,
+                                                                          size: 20.w,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                                Text(
-                                                                  '4 out of 5',
-                                                                  style: jost500(9.sp, AppColors.buttontext),
-                                                                ),
-                                                              ],
+                                                                  Text(
+                                                                    '4 out of 5',
+                                                                    style: jost500(9.sp, AppColors.buttontext),
+                                                                  ),
+                                                                ],
+                                                              ),
                                                             ),
-                                                          ),
-                                                          SizedBox(height: 16.h),
-                                                          CustomInputField(
-                                                            hintText: 'Write your comments',
-                                                            maxLines: 4,
-                                                            controller: description,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      actions: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: [
-                                                            CustomElevatedButton(
-                                                              width: 101.w,
-                                                              text: "Done",
-                                                              backgroundColor: AppColors.primary,
-                                                              textColor: AppColors.secondary,
-                                                              fontSize: 19.sp,
-                                                              onPressed: () {
-                                                                Get.back();
-                                                              },
-                                                            ),
-                                                            SizedBox(width: 10.w),
-                                                            CustomElevatedButton(
-                                                              borderSide: BorderSide(color: Color(0xffA6A6A6), width: 1),
-                                                              width: 101.w,
-                                                              text: "Cancel",
-                                                              backgroundColor: Color(0xffDDDDDD),
-                                                              textColor: AppColors.primary,
-                                                              fontSize: 19.sp,
-                                                              onPressed: () {
-                                                                Get.back();
-                                                              },
+                                                            SizedBox(height: 16.h),
+                                                            CustomInputField(
+                                                              hintText: 'Write your comments',
+                                                              maxLines: 4,
+                                                              controller: description,
                                                             ),
                                                           ],
                                                         ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                            SizedBox(width: 10.w),
-                                            CustomElevatedButton(
-                                              borderSide: BorderSide(color: Color(0xffA6A6A6), width: 1),
-                                              width: 101.w,
-                                              text: "Cancel",
-                                              backgroundColor: Color(0xffDDDDDD),
-                                              textColor: AppColors.primary,
-                                              fontSize: 19.sp,
-                                              onPressed: () {
-                                                Get.back();
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              }
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 12.h),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(14.w),
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                "Spare Parts",
-                                style: jost600(13.sp, AppColors.primary),
+                                                        actions: [
+                                                          Row(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: [
+                                                              CustomElevatedButton(
+                                                                width: 101.w,
+                                                                text: "Done",
+                                                                backgroundColor: AppColors.primary,
+                                                                textColor: AppColors.secondary,
+                                                                fontSize: 19.sp,
+                                                                onPressed: () {
+                                                                  Get.back();
+                                                                },
+                                                              ),
+                                                              SizedBox(width: 10.w),
+                                                              CustomElevatedButton(
+                                                                borderSide: BorderSide(color: Color(0xffA6A6A6), width: 1),
+                                                                width: 101.w,
+                                                                text: "Cancel",
+                                                                backgroundColor: Color(0xffDDDDDD),
+                                                                textColor: AppColors.primary,
+                                                                fontSize: 19.sp,
+                                                                onPressed: () {
+                                                                  Get.back();
+                                                                },
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              ),
+                                              SizedBox(width: 10.w),
+                                              CustomElevatedButton(
+                                                borderSide: BorderSide(color: Color(0xffA6A6A6), width: 1),
+                                                width: 101.w,
+                                                text: "Cancel",
+                                                backgroundColor: Color(0xffDDDDDD),
+                                                textColor: AppColors.primary,
+                                                fontSize: 19.sp,
+                                                onPressed: () {
+                                                  Get.back();
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
+                              },
+                              child: Container(
+                                height: 35.h,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(14.w),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "View",
+                                  style: jost600(13.sp, AppColors.primary),
+                                ),
                               ),
                             ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 10.h,
                     ),
                     Container(
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 14.w,
+                      ),
                       alignment: Alignment.center,
                       height: 160.h,
                       // width: 328.w,
@@ -451,33 +520,45 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                     SizedBox(
                       height: 19.h,
                     ),
-                    AudioNote(),
-                    // Row(
-                    //   mainAxisSize: MainAxisSize.min,
-                    //   children: [
-                    //     MySvg(assetName: AppSvgs.audio_play_icon, height: 36.h, width: 36.w,),
-                    //     SizedBox(width: 12.w,),
-                    //     Expanded(
-                    //       child: Container(
-                    //         height: 36.h,
-                    //         decoration: BoxDecoration(
-                    //           image: DecorationImage(image: AssetImage(AppImages.audio), fit: BoxFit.fill)
-                    //         ),
-                    //       ),
-                    //     )
-                    //   ],
-                    // ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 14.w,
+                      ),
+                      child: AudioNote(),
+                    ),
                     SizedBox(
                       height: 21.h,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to(NewTaskHome());
-                            },
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 14.w,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.to(NewTaskHome());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 12.h),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(8.w),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Chat",
+                                  style: jost600(13.sp, AppColors.primary),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 15.w,
+                          ),
+                          Expanded(
                             child: Container(
                               padding: EdgeInsets.symmetric(vertical: 12.h),
                               decoration: BoxDecoration(
@@ -486,47 +567,30 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               ),
                               alignment: Alignment.center,
                               child: Text(
-                                "Chat",
+                                "Open Maps",
                                 style: jost600(13.sp, AppColors.primary),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 15.w,
-                        ),
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 12.h),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8.w),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Open Maps",
-                              style: jost600(13.sp, AppColors.primary),
+                          SizedBox(
+                            width: 15.w,
+                          ),
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12.h),
+                              decoration: BoxDecoration(
+                                color: AppColors.buttonLightGrey,
+                                borderRadius: BorderRadius.circular(8.w),
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Reschedule",
+                                style: jost600(13.sp, AppColors.secondary),
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 15.w,
-                        ),
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 12.h),
-                            decoration: BoxDecoration(
-                              color: AppColors.lightGrey,
-                              borderRadius: BorderRadius.circular(8.w),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Reschedule",
-                              style: jost600(13.sp, AppColors.secondary),
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   ]),
                 ),
@@ -534,7 +598,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                   height: 26.h,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomElevatedButton(
                       width: 160.w,

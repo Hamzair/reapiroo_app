@@ -43,7 +43,7 @@ class CustomElevatedButton extends StatelessWidget {
         style: GoogleFonts.jost(
           fontWeight: FontWeight.w500,
           color: textColor ?? AppColors.buttontext, // Use textColor or default text color
-          fontSize: fontSize ?? 16.sp, // Text size
+          fontSize: fontSize ?? 19.sp, // Text size
         ),
       ),
     );

@@ -186,7 +186,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                 ),
                 SizedBox(height: 26.h,),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomElevatedButton(
                       width: 160.w,

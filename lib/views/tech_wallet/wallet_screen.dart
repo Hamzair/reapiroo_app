@@ -44,7 +44,7 @@ class _WalletState extends State<Wallet> {
         backgroundColor: AppColors.secondary,
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +55,7 @@ class _WalletState extends State<Wallet> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
                   // height: 356.h,
-                  width: 322.w,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                       color: AppColors.primary,
                       borderRadius: BorderRadius.circular(12.r)),
