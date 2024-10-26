@@ -15,6 +15,8 @@ import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/profile_button_widget.dart';
 import 'dart:io';
 
+import '../tech_wallet/wallet_screen.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -121,6 +123,16 @@ class _EditProfileScreenState extends State<ProfileScreen> {
                       },
                       label: "Bio and Experience",
                       iconPath: AppImages.bagicon,
+                    ),
+              // SizedBox(height: 10.h),
+ userVM.userRole.value == "Customer"
+                  ? SizedBox.shrink()
+                  : ProfileButton(
+                      onPressed: () {
+                        Get.to(Wallet());
+                      },
+                      label: "Wallet",
+                      iconPath: AppImages.wallet,
                     ),
               SizedBox(height: 10.h),
 

@@ -108,7 +108,7 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
                     CustomElevatedButton(
                         width: 72.w,
                         height: 24.h,
-                        text: "View",
+                        text: "View all",
                         onPressed: (){},
                         fontSize: 12.sp,
                       borderRadius: 8.r,

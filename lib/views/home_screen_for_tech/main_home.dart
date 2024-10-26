@@ -60,7 +60,8 @@ class _MainHomeState extends State<MainHome> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.secondary,
-        appBar: MyAppBar(isMenu: homeVM.isMenu.value, isNotification: homeVM.isNotification.value, isTitle: homeVM.isTitle.value, isSecondIcon: homeVM.isSecondIcon.value, title: homeVM.title.value,),
+        appBar: MyAppBar(isMenu: true, isNotification: true, isTitle: false, isSecondIcon: true, title: '',secondIcon: AppSvgs.white_wallet,
+        ),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Padding(

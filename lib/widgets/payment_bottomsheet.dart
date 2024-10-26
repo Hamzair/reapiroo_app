@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/widgets/custom_button.dart';
 import 'package:repairoo/widgets/custom_input_fields.dart';
+import 'package:repairoo/widgets/promo_bottomsheet.dart';
 
 class PaymentBottomsheet extends StatefulWidget {
   const PaymentBottomsheet({super.key, required this.price, });
@@ -144,12 +146,23 @@ class _PaymentBottomsheetState extends State<PaymentBottomsheet> {
                 ],
               ),
             ),
-            Text("Use a promo Code", style: GoogleFonts.jost(
-              fontSize: 19.sp,
-              fontWeight: FontWeight.w500,
-              color: AppColors.primary,
-              decoration: TextDecoration.underline,
-            ), ),
+            GestureDetector(
+              onTap: () {
+                Get.back();
+                Get.bottomSheet(
+                    isScrollControlled: true,
+                    isDismissible: true,
+                    enableDrag: true,
+                    PromoBottomsheet()
+                );
+              },
+              child: Text("Use a promo Code", style: GoogleFonts.jost(
+                fontSize: 19.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColors.primary,
+                decoration: TextDecoration.underline,
+              ), ),
+            ),
             SizedBox(height: 29.h,),
           ],
         ),

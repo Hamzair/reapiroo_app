@@ -66,7 +66,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
     // Start a timer that updates the progress every 100 milliseconds over 1 minute
     _progressTimer = Timer.periodic(Duration(milliseconds: 100), (timer) {
       setState(() {
-        _progressValue += 100 / 60000; // Increment progress based on 1 minute (60,000 ms)
+        _progressValue +=
+            100 / 60000; // Increment progress based on 1 minute (60,000 ms)
       });
 
       if (_progressValue >= 1.0) {
@@ -74,7 +75,6 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
       }
     });
   }
-
 
   Future<void> _stopRecording() async {
     await _recorder?.stopRecorder();
@@ -84,7 +84,6 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
       _progressValue = 0.0; // Reset progress indicator
     });
   }
-
 
   Future<DateTime?> showDateTimePicker({
     required BuildContext context,
@@ -255,7 +254,7 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
@@ -273,9 +272,9 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
         ),
         body: SafeArea(
             child: SingleChildScrollView(
-              child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 13.5.w),
-                      child: Column(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 13.5.w),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
@@ -304,8 +303,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                       Text("Upload Picture/Video"),
                       Container(
                         height: 30.h,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 5.w, vertical: 6.h),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 5.w, vertical: 6.h),
                         decoration: BoxDecoration(
                             color: AppColors.primary,
                             borderRadius: BorderRadius.circular(8.w)),
@@ -313,7 +312,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(AppImages.upload, height: 18.h, width: 18.w),
+                            Image.asset(AppImages.upload,
+                                height: 18.h, width: 18.w),
                             SizedBox(
                               width: 8.w,
                             ),
@@ -343,8 +343,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                       Text("Select location"),
                       Container(
                         height: 30.h,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 5.w, vertical: 6.h),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 5.w, vertical: 6.h),
                         decoration: BoxDecoration(
                             color: AppColors.primary,
                             borderRadius: BorderRadius.circular(8.w)),
@@ -352,7 +352,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(AppImages.location_icon, height: 15.h, width: 15.w),
+                            Image.asset(AppImages.location_icon,
+                                height: 15.h, width: 15.w),
                             SizedBox(
                               width: 9.w,
                             ),
@@ -433,39 +434,43 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Record Voice Note"),
-                    InkWell(
-                      onTap: () async {
-                        if (_isRecording) {
-                          await _stopRecording();
-                        } else {
-                          await _startRecording();
-                        }
-                      },
-                      child: Center(
-                        child: CircularPercentIndicator(
-
-                          radius: 20.0, // Radius of the circular indicator
-                          lineWidth: 4.w, // Thickness of the circular indicator
-                          percent: _progressValue, // Progress percentage from 0 to 1
-                          animation: true,
-                          animateFromLastPercent: true,
-                          circularStrokeCap: CircularStrokeCap.round,
-                          progressColor: Colors.grey, // Color that fills up as recording progresses
-                          backgroundColor: Colors.black, // Initial color of the indicator
-                          center: CircleAvatar(
-                            radius: 10.w,
-                            backgroundColor: AppColors.primary,
+                      InkWell(
+                        onTap: () async {
+                          if (_isRecording) {
+                            await _stopRecording();
+                          } else {
+                            await _startRecording();
+                          }
+                        },
+                        child: Center(
+                          child: CircularPercentIndicator(
+                            radius: 20.0, // Radius of the circular indicator
+                            lineWidth:
+                                4.w, // Thickness of the circular indicator
+                            percent:
+                                _progressValue, // Progress percentage from 0 to 1
+                            animation: true,
+                            animateFromLastPercent: true,
+                            circularStrokeCap: CircularStrokeCap.round,
+                            progressColor: Colors
+                                .grey, // Color that fills up as recording progresses
+                            backgroundColor:
+                                Colors.black, // Initial color of the indicator
+                            center: CircleAvatar(
+                              radius: 10.w,
+                              backgroundColor: AppColors.primary,
+                            ),
                           ),
                         ),
                       ),
-                    ),
                     ],
                   ),
                 ),
                 Obx(
                   () => Container(
-                    height:
-                        customerVM.uploadSpareParts.value == true ? 108.h : 55.h,
+                    height: customerVM.uploadSpareParts.value == true
+                        ? 130.h
+                        : 55.h,
                     margin: EdgeInsets.only(bottom: 6.h),
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(horizontal: 15.w),
@@ -495,11 +500,13 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                                         horizontal: 5.w, vertical: 6.h),
                                     decoration: BoxDecoration(
                                         color: AppColors.buttonGrey,
-                                        borderRadius: BorderRadius.circular(8.w)),
+                                        borderRadius:
+                                            BorderRadius.circular(8.w)),
                                     alignment: Alignment.center,
                                     child: Text(
                                       "Yes",
-                                      style: sora600(10.sp, AppColors.secondary),
+                                      style:
+                                          sora600(10.sp, AppColors.secondary),
                                     ),
                                   ),
                                 ),
@@ -515,11 +522,13 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                                         horizontal: 5.w, vertical: 6.h),
                                     decoration: BoxDecoration(
                                         color: AppColors.primary,
-                                        borderRadius: BorderRadius.circular(8.w)),
+                                        borderRadius:
+                                            BorderRadius.circular(8.w)),
                                     alignment: Alignment.center,
                                     child: Text(
                                       "No",
-                                      style: sora600(10.sp, AppColors.secondary),
+                                      style:
+                                          sora600(10.sp, AppColors.secondary),
                                     ),
                                   ),
                                 ),
@@ -532,32 +541,48 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                             height: 17.h,
                           ),
                         if (customerVM.uploadSpareParts.value == true)
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          Column(
                             children: [
-                              Text("Upload Picture/Video"),
-                              Container(
-                                height: 30.h,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 5.w, vertical: 6.h),
-                                decoration: BoxDecoration(
-                                    color: AppColors.primary,
-                                    borderRadius: BorderRadius.circular(8.w)),
-                                alignment: Alignment.center,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(AppImages.upload, height: 18.h, width: 18.w),
-                                    SizedBox(
-                                      width: 8.w,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Upload Picture/Video"),
+                                  Container(
+                                    height: 30.h,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 5.w, vertical: 6.h),
+                                    decoration: BoxDecoration(
+                                        color: AppColors.primary,
+                                        borderRadius:
+                                            BorderRadius.circular(8.w)),
+                                    alignment: Alignment.center,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset(AppImages.upload,
+                                            height: 18.h, width: 18.w),
+                                        SizedBox(
+                                          width: 8.w,
+                                        ),
+                                        Text(
+                                          "Upload    ",
+                                          style: sora600(
+                                              10.sp, AppColors.secondary),
+                                        )
+                                      ],
                                     ),
-                                    Text(
-                                      "Upload    ",
-                                      style: sora600(10.sp, AppColors.secondary),
-                                    )
-                                  ],
-                                ),
-                              )
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 5.h,
+                              ),
+                              Text(
+                                "Spare Parts cost is NOT included in the offers, as technician will attach a proof of invoice for you to pay after he buys it",
+                                style: jost400(10.sp, Color(0xff4B4B4B)),
+                              ),
                             ],
                           ),
                       ],
@@ -582,9 +607,9 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                   ),
                 ),
               ],
-                      ),
-                    ),
-            )),
+            ),
+          ),
+        )),
       ),
     );
   }
