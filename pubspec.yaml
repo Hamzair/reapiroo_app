@@ -54,6 +54,9 @@ dependencies:
   audio_wave: ^0.1.5
   voice_message_package: ^2.2.1
   font_awesome_flutter: ^10.2.1
+  flutter_sound: ^9.16.3
+  permission_handler: ^11.3.1
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:
