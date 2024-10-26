@@ -73,17 +73,29 @@ class _ServicesScreenState extends State<ServicesScreen> {
                           style: jost700(16.sp, AppColors.primary),
                         ),
                       ),
-                      Radio<String>(
-                        value: services[index],
-                        groupValue: selectedService,
-                        onChanged: (String? value) {
-                          setState(() {
-                            selectedService = value; // Update selected service
-                          });
+                  Transform.scale(
+                    scale: 1.5, // Adjust this value to increase or decrease the size
+                    child: Radio<String>(
+                      value: services[index],
+                      groupValue: selectedService,
+                      onChanged: (String? value) {
+                        setState(() {
+                          selectedService = value; // Update selected service
+                        });
+                      },
+                      activeColor: AppColors.primary, // Set your active color for selected state
+                      fillColor: MaterialStateProperty.resolveWith<Color>(
+                            (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return AppColors.primary; // Use active color when selected
+                          }
+                          return AppColors.outline; // Use red color when unselected
                         },
-                        activeColor: AppColors.primary, // Set your active color
                       ),
-                    ],
+                    ),
+                  ),
+
+                  ],
                   ),
                 ),
               );

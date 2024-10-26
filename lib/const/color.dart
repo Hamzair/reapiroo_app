@@ -17,6 +17,7 @@ class AppColors {
   static const Color goldenstar= Color.fromRGBO(253, 200, 61, 1);
   static const Color switchGreen = Color(0xFF00D407);
   static const Color buttonborder = Color(0xFFA6A6A6);
+  static const Color outline = Color(0xFFD7D7D7);
 
 
 
