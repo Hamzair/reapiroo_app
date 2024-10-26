@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -84,6 +85,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
       _progressValue = 0.0; // Reset progress indicator
     });
   }
+  DateTime? selectedDateTime;
+
 
   Future<DateTime?> showDateTimePicker({
     required BuildContext context,
@@ -91,7 +94,8 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
     DateTime? firstDate,
     DateTime? lastDate,
     ThemeData? theme, // Optional theme parameter
-  }) async {
+  })
+  async {
     initialDate ??= DateTime.now();
     firstDate ??= initialDate.subtract(const Duration(days: 365 * 100));
     lastDate ??= firstDate.add(const Duration(days: 365 * 200));
@@ -102,7 +106,9 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
       initialTime: TimeOfDay.fromDateTime(initialDate),
       builder: (BuildContext context, Widget? child) {
         return Theme(
-          data: ThemeData.dark().copyWith(
+          data: ThemeData.light().copyWith(
+            scaffoldBackgroundColor: Colors.red,
+            bannerTheme: MaterialBannerThemeData(backgroundColor: Colors.red),
             timePickerTheme: TimePickerThemeData(
                 dialBackgroundColor: AppColors.textFieldGrey),
             primaryColor: Colors.black, // Background color
@@ -253,227 +259,63 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
 //       });
 //     }
 //   }
+  Future<void> _pickDateTime() async {
+    DateTime? dateTime = await showDateTimePicker(
+      context: context,
+      theme: ThemeData.light(), // Optional: Pass a custom theme if desired
+    );
+
+    // Update selectedDateTime if a date and time was picked
+    if (dateTime != null) {
+      setState(() {
+        selectedDateTime = dateTime;
+      });
+    }
+  }
+  String getFormattedDateTime() {
+    if (selectedDateTime == null) return "Select Date & Time";
+    return DateFormat('MM/dd/yyyy hh:mm a').format(selectedDateTime!);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        backgroundColor: AppColors.secondary,
-        appBar: MyAppBar(
-          isMenu: false,
-          isNotification: false,
-          isTitle: true,
-          isTextField: false,
-          isSecondIcon: false,
-          title: "Task Description",
-          onBackTap: () {
-            customerVM.isHome.value = "customer main";
-          },
-        ),
-        body: SafeArea(
-            child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 13.5.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 10.h,
-                ),
-                Text(
-                  widget.service ?? "",
-                  style: jost700(24.sp, AppColors.primary),
-                ),
-                SizedBox(
-                  height: 13.w,
-                ),
-                Container(
-                  height: 55.h,
-                  margin: EdgeInsets.only(bottom: 6.h),
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  decoration: BoxDecoration(
-                    color: Color(0xffFAFAFA),
-                    border: Border.all(color: Color(0xffE2E2E2), width: 1),
-                    borderRadius: BorderRadius.circular(8.r),
+    return Obx(
+        ()=> GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Scaffold(
+          backgroundColor: AppColors.secondary,
+          appBar: MyAppBar(
+            isMenu: false,
+            isNotification: false,
+            isTitle: true,
+            isTextField: false,
+            isSecondIcon: false,
+            title: "Task Description",
+            onBackTap: () {
+                Get.back();
+             },
+          ),
+          body: SafeArea(
+              child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 13.5.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 10.h,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Upload Picture/Video"),
-                      Container(
-                        height: 30.h,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 5.w, vertical: 6.h),
-                        decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            borderRadius: BorderRadius.circular(8.w)),
-                        alignment: Alignment.center,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(AppImages.upload,
-                                height: 18.h, width: 18.w),
-                            SizedBox(
-                              width: 8.w,
-                            ),
-                            Text(
-                              "Upload    ",
-                              style: sora600(10.sp, AppColors.secondary),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
+                  Text(
+                    widget.service ?? "",
+                    style: jost700(24.sp, AppColors.primary),
                   ),
-                ),
-                Container(
-                  height: 55.h,
-                  margin: EdgeInsets.only(bottom: 6.h),
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  decoration: BoxDecoration(
-                    color: Color(0xffFAFAFA),
-                    border: Border.all(color: Color(0xffE2E2E2), width: 1),
-                    borderRadius: BorderRadius.circular(8.r),
+                  SizedBox(
+                    height: 13.w,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Select location"),
-                      Container(
-                        height: 30.h,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 5.w, vertical: 6.h),
-                        decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            borderRadius: BorderRadius.circular(8.w)),
-                        alignment: Alignment.center,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(AppImages.location_icon,
-                                height: 15.h, width: 15.w),
-                            SizedBox(
-                              width: 9.w,
-                            ),
-                            Text(
-                              "Select on Maps",
-                              style: sora600(10.sp, AppColors.secondary),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 55.h,
-                  margin: EdgeInsets.only(bottom: 6.h),
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  decoration: BoxDecoration(
-                    color: Color(0xffFAFAFA),
-                    border: Border.all(color: Color(0xffE2E2E2), width: 1),
-                    borderRadius: BorderRadius.circular(8.r),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Select Time"),
-                      Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () => showDateTimePicker(context: context),
-                            child: Container(
-                              width: 73.w,
-                              height: 30.h,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5.w, vertical: 6.h),
-                              decoration: BoxDecoration(
-                                  color: AppColors.primary,
-                                  borderRadius: BorderRadius.circular(8.w)),
-                              alignment: Alignment.center,
-                              child: Text(
-                                "Now",
-                                style: sora600(10.sp, AppColors.secondary),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 73.w,
-                            height: 30.h,
-                            margin: EdgeInsets.only(left: 8.w),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 5.w, vertical: 6.h),
-                            decoration: BoxDecoration(
-                                color: AppColors.buttonGrey,
-                                borderRadius: BorderRadius.circular(8.w)),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Later",
-                              style: sora600(10.sp, AppColors.secondary),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 55.h,
-                  margin: EdgeInsets.only(bottom: 6.h),
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  decoration: BoxDecoration(
-                    color: Color(0xffFAFAFA),
-                    border: Border.all(color: Color(0xffE2E2E2), width: 1),
-                    borderRadius: BorderRadius.circular(8.r),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Record Voice Note"),
-                      InkWell(
-                        onTap: () async {
-                          if (_isRecording) {
-                            await _stopRecording();
-                          } else {
-                            await _startRecording();
-                          }
-                        },
-                        child: Center(
-                          child: CircularPercentIndicator(
-                            radius: 20.0, // Radius of the circular indicator
-                            lineWidth:
-                                4.w, // Thickness of the circular indicator
-                            percent:
-                                _progressValue, // Progress percentage from 0 to 1
-                            animation: true,
-                            animateFromLastPercent: true,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            progressColor: Colors
-                                .grey, // Color that fills up as recording progresses
-                            backgroundColor:
-                                Colors.black, // Initial color of the indicator
-                            center: CircleAvatar(
-                              radius: 10.w,
-                              backgroundColor: AppColors.primary,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Obx(
-                  () => Container(
-                    height: customerVM.uploadSpareParts.value == true
-                        ? 130.h
-                        : 55.h,
+                  Container(
+                    height: 55.h,
                     margin: EdgeInsets.only(bottom: 6.h),
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(horizontal: 15.w),
@@ -482,137 +324,320 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                       border: Border.all(color: Color(0xffE2E2E2), width: 1),
                       borderRadius: BorderRadius.circular(8.r),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Do you need spare parts?"),
-                            Row(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    customerVM.uploadSpareParts.value = true;
-                                  },
-                                  child: Container(
-                                    width: 52.w,
-                                    height: 30.h,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 5.w, vertical: 6.h),
-                                    decoration: BoxDecoration(
-                                        color: AppColors.buttonGrey,
-                                        borderRadius:
-                                            BorderRadius.circular(8.w)),
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "Yes",
-                                      style:
-                                          sora600(10.sp, AppColors.secondary),
-                                    ),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    customerVM.uploadSpareParts.value = false;
-                                  },
-                                  child: Container(
-                                    width: 52.w,
-                                    height: 30.h,
-                                    margin: EdgeInsets.only(left: 8.w),
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 5.w, vertical: 6.h),
-                                    decoration: BoxDecoration(
-                                        color: AppColors.primary,
-                                        borderRadius:
-                                            BorderRadius.circular(8.w)),
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "No",
-                                      style:
-                                          sora600(10.sp, AppColors.secondary),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        if (customerVM.uploadSpareParts.value == true)
-                          SizedBox(
-                            height: 17.h,
-                          ),
-                        if (customerVM.uploadSpareParts.value == true)
-                          Column(
+                        Text("Upload Picture/Video"),
+                        Container(
+                          height: 30.h,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 5.w, vertical: 6.h),
+                          decoration: BoxDecoration(
+                              color: AppColors.primary,
+                              borderRadius: BorderRadius.circular(8.w)),
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("Upload Picture/Video"),
-                                  Container(
-                                    height: 30.h,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 5.w, vertical: 6.h),
-                                    decoration: BoxDecoration(
-                                        color: AppColors.primary,
-                                        borderRadius:
-                                            BorderRadius.circular(8.w)),
-                                    alignment: Alignment.center,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset(AppImages.upload,
-                                            height: 18.h, width: 18.w),
-                                        SizedBox(
-                                          width: 8.w,
-                                        ),
-                                        Text(
-                                          "Upload    ",
-                                          style: sora600(
-                                              10.sp, AppColors.secondary),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
+                              Image.asset(AppImages.upload,
+                                  height: 18.h, width: 18.w),
                               SizedBox(
-                                height: 5.h,
+                                width: 8.w,
                               ),
                               Text(
-                                "Spare Parts cost is NOT included in the offers, as technician will attach a proof of invoice for you to pay after he buys it",
-                                style: jost400(10.sp, Color(0xff4B4B4B)),
-                              ),
+                                "Upload    ",
+                                style: sora600(10.sp, AppColors.secondary),
+                              )
                             ],
                           ),
+                        )
                       ],
                     ),
                   ),
-                ),
-                CustomInputField(
-                  controller: task,
-                  label: "Describe your task",
-                ),
-                SizedBox(
-                  height: 72.h,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12.0.w),
-                  child: CustomElevatedButton(
-                    text: "Next",
-                    onPressed: () {
-                      customerVM.isHome.value = "search offer";
-                    },
-                    fontSize: 19.sp,
+                  Container(
+                    height: 55.h,
+                    margin: EdgeInsets.only(bottom: 6.h),
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(horizontal: 15.w),
+                    decoration: BoxDecoration(
+                      color: Color(0xffFAFAFA),
+                      border: Border.all(color: Color(0xffE2E2E2), width: 1),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Select location"),
+                        Container(
+                          height: 30.h,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 5.w, vertical: 6.h),
+                          decoration: BoxDecoration(
+                              color: AppColors.primary,
+                              borderRadius: BorderRadius.circular(8.w)),
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(AppImages.location_icon,
+                                  height: 15.h, width: 15.w),
+                              SizedBox(
+                                width: 9.w,
+                              ),
+                              Text(
+                                "Select on Maps",
+                                style: sora600(10.sp, AppColors.secondary),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  Container(
+                    height: 55.h,
+                    margin: EdgeInsets.only(bottom: 6.h),
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(horizontal: 15.w),
+                    decoration: BoxDecoration(
+                      color: Color(0xffFAFAFA),
+                      border: Border.all(color: Color(0xffE2E2E2), width: 1),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Select Time"),
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () => showDateTimePicker(context: context),
+                              child: Container(
+                                width: 73.w,
+                                height: 30.h,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 5.w, vertical: 6.h),
+                                decoration: BoxDecoration(
+                                    color: AppColors.primary,
+                                    borderRadius: BorderRadius.circular(8.w)),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Now",
+                                  style: sora600(10.sp, AppColors.secondary),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 73.w,
+                              height: 30.h,
+                              margin: EdgeInsets.only(left: 8.w),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 5.w, vertical: 6.h),
+                              decoration: BoxDecoration(
+                                  color: AppColors.buttonGrey,
+                                  borderRadius: BorderRadius.circular(8.w)),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Later",
+                                style: sora600(10.sp, AppColors.secondary),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 55.h,
+                    margin: EdgeInsets.only(bottom: 6.h),
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(horizontal: 15.w),
+                    decoration: BoxDecoration(
+                      color: Color(0xffFAFAFA),
+                      border: Border.all(color: Color(0xffE2E2E2), width: 1),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Record Voice Note"),
+                        InkWell(
+                          onTap: () async {
+                            if (_isRecording) {
+                              await _stopRecording();
+                            } else {
+                              await _startRecording();
+                            }
+                          },
+                          child: Center(
+                            child: CircularPercentIndicator(
+                              radius: 20.0, // Radius of the circular indicator
+                              lineWidth:
+                                  4.w, // Thickness of the circular indicator
+                              percent:
+                                  _progressValue, // Progress percentage from 0 to 1
+                              animation: true,
+                              animateFromLastPercent: true,
+                              circularStrokeCap: CircularStrokeCap.round,
+                              progressColor: Colors
+                                  .grey, // Color that fills up as recording progresses
+                              backgroundColor:
+                                  Colors.black, // Initial color of the indicator
+                              center: CircleAvatar(
+                                radius: 10.w,
+                                backgroundColor: AppColors.primary,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Obx(
+                    () => Container(
+                      height: customerVM.uploadSpareParts.value == true
+                          ? 130.h
+                          : 55.h,
+                      margin: EdgeInsets.only(bottom: 6.h),
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(horizontal: 15.w),
+                      decoration: BoxDecoration(
+                        color: Color(0xffFAFAFA),
+                        border: Border.all(color: Color(0xffE2E2E2), width: 1),
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Do you need spare parts?"),
+                              Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      customerVM.uploadSpareParts.value = true;
+                                    },
+                                    child: Container(
+                                      width: 52.w,
+                                      height: 30.h,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 5.w, vertical: 6.h),
+                                      decoration: BoxDecoration(
+                                          color: AppColors.buttonGrey,
+                                          borderRadius:
+                                              BorderRadius.circular(8.w)),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Yes",
+                                        style:
+                                            sora600(10.sp, AppColors.secondary),
+                                      ),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      customerVM.uploadSpareParts.value = false;
+                                    },
+                                    child: Container(
+                                      width: 52.w,
+                                      height: 30.h,
+                                      margin: EdgeInsets.only(left: 8.w),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 5.w, vertical: 6.h),
+                                      decoration: BoxDecoration(
+                                          color: AppColors.primary,
+                                          borderRadius:
+                                              BorderRadius.circular(8.w)),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "No",
+                                        style:
+                                            sora600(10.sp, AppColors.secondary),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          if (customerVM.uploadSpareParts.value == true)
+                            SizedBox(
+                              height: 17.h,
+                            ),
+                          if (customerVM.uploadSpareParts.value == true)
+                            Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Upload Picture/Video"),
+                                    Container(
+                                      height: 30.h,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 5.w, vertical: 6.h),
+                                      decoration: BoxDecoration(
+                                          color: AppColors.primary,
+                                          borderRadius:
+                                              BorderRadius.circular(8.w)),
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(AppImages.upload,
+                                              height: 18.h, width: 18.w),
+                                          SizedBox(
+                                            width: 8.w,
+                                          ),
+                                          Text(
+                                            "Upload    ",
+                                            style: sora600(
+                                                10.sp, AppColors.secondary),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(
+                                  "Spare Parts cost is NOT included in the offers, as technician will attach a proof of invoice for you to pay after he buys it",
+                                  style: jost400(10.sp, Color(0xff4B4B4B)),
+                                ),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  CustomInputField(
+                    controller: task,
+                    label: "Describe your task",
+                  ),
+                  SizedBox(
+                    height: 72.h,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.0.w),
+                    child: CustomElevatedButton(
+                      text: "Next",
+                      onPressed: () {
+                        Get.to(SearchOfferScreen(field: widget.service!));
+                      },
+                      fontSize: 19.sp,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        )),
+          )),
+        ),
       ),
     );
   }

@@ -7,6 +7,8 @@ import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/views/home_screen_for_tech/main_home.dart';
+import 'package:repairoo/views/home_screen_for_tech/new_task_home.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/audio_note.dart';
 import 'package:repairoo/widgets/custom_button.dart';
@@ -38,9 +40,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
         isSecondIcon: false,
         title: 'Task Description',
         onBackTap: () {
-          // Get.back();
-          // homeVM.updateAppBar(true, false, true, false, "");
-          homeVM.isHome.value = "main";
+           Get.back();
         },
       ),
       body: SingleChildScrollView(
@@ -432,58 +432,10 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                       ),
                     ),
 
-                    // Container(
-                    //   height: 138.h,
-                    //   width: double.infinity,
-                    //   decoration: BoxDecoration(
-                    //     color: AppColors.lightGrey,
-                    //     image: DecorationImage(image: AssetImage(AppImages.plumbing_thumbnail), fit: BoxFit.fill),
-                    //     borderRadius: BorderRadius.circular(12.w),
-                    //   ),
-                    //   child: Column(
-                    //     children: [
-                    //       Align(
-                    //         alignment: Alignment.topLeft,
-                    //         child: Container(
-                    //           padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 8.h),
-                    //           decoration: BoxDecoration(
-                    //             color: AppColors.secondary,
-                    //             borderRadius: BorderRadius.only(
-                    //               topLeft: Radius.circular(12.w,),
-                    //               bottomRight: Radius.circular(12.w),
-                    //             )
-                    //
-                    //           ),
-                    //           child: Text("video", style: montserrat400(11.sp, AppColors.primary),),
-                    //         ),
-                    //       ),
-                    //       SizedBox(height: 16.h,),
-                    //       Align(
-                    //         alignment: Alignment.center,
-                    //         child: MySvg(assetName: AppSvgs.play_icon, height: 50.h, width: 47.5.w,),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
                     SizedBox(
                       height: 19.h,
                     ),
                     AudioNote(),
-                    // Row(
-                    //   mainAxisSize: MainAxisSize.min,
-                    //   children: [
-                    //     MySvg(assetName: AppSvgs.audio_play_icon, height: 36.h, width: 36.w,),
-                    //     SizedBox(width: 12.w,),
-                    //     Expanded(
-                    //       child: Container(
-                    //         height: 36.h,
-                    //         decoration: BoxDecoration(
-                    //           image: DecorationImage(image: AssetImage(AppImages.audio), fit: BoxFit.fill)
-                    //         ),
-                    //       ),
-                    //     )
-                    //   ],
-                    // ),
                     SizedBox(
                       height: 21.h,
                     ),
@@ -493,9 +445,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              homeVM.updateAppBar(false, true, false, false,
-                                  "Task Description");
-                              homeVM.isHome.value = "task";
+                              Get.to(NewTaskHome());
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(vertical: 12.h),
@@ -562,9 +512,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                       textColor: AppColors.secondary,
                       fontSize: 19.sp,
                       onPressed: () {
-                        homeVM.updateAppBar(
-                            false, true, false, false, "New Task");
-                        homeVM.isHome.value = "new task";
+                        Get.to(NewTaskHome());
                       },
                     ),
                     CustomElevatedButton(
@@ -576,8 +524,8 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                           BorderSide(width: 0, color: Colors.transparent),
                       fontSize: 19.sp,
                       onPressed: () {
-                        homeVM.updateAppBar(true, false, true, false, "");
-                        homeVM.isHome.value = "main";
+                        Get.to(MainHome());
+
                       },
                     ),
                   ],

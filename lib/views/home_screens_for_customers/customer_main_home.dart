@@ -9,6 +9,7 @@ import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/views/home_screen_for_tech/components/announcement_containers.dart';
 import 'package:repairoo/views/home_screens_for_customers/components/services_container.dart';
+import 'package:repairoo/views/home_screens_for_customers/search_offer_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_button.dart';
 
@@ -126,8 +127,7 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: (){
-                        customerVM.isHome.value = "customer task";
-                        customerVM.service.value =  dummy[index]["title"];
+                        Get.to(SearchOfferScreen(field: dummy[index]["title"]));
                       },
                       child: ServicesContainer(
                         image: dummy[index]["image"],
