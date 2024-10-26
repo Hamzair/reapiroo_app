@@ -15,7 +15,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.isSecondIcon,
     this.onBackTap,
     this.onMenuTap,
-    this.isTextField = false, this.secondIcon,
+    this.isTextField = false, this.secondIcon, this.onSecondTap,
   });
 
   final bool isMenu;
@@ -27,6 +27,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? secondIcon;
   final VoidCallback? onBackTap;
   final VoidCallback? onMenuTap;
+  final VoidCallback? onSecondTap;
 
   @override
   Widget build(BuildContext context) {
@@ -102,10 +103,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           if(isTextField == false && isTitle == false)
             Expanded(child: SizedBox()),
           if(isSecondIcon == true )
-            MySvg(
-              assetName: secondIcon ?? AppSvgs.menu,
-              height: 38.h,
-              width: 38.w,
+            GestureDetector(
+              onTap: onSecondTap,
+              child: MySvg(
+                assetName: secondIcon ?? AppSvgs.menu,
+                height: 38.h,
+                width: 38.w,
+              ),
             ),
           if(isSecondIcon == true )
             SizedBox(width: 12.w,),

@@ -16,6 +16,8 @@ import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_box.dart';
 import 'package:repairoo/widgets/my_svg.dart';
 
+import '../tech_wallet/wallet_screen.dart';
+
 class MainHome extends StatefulWidget {
   const MainHome({super.key});
 
@@ -44,18 +46,10 @@ class _MainHomeState extends State<MainHome> {
       "title": "Jobs Completed",
       "value": '170'
     },
-    {
-      "image": AppSvgs.total_earned,
-      "title": "Total Earned",
-      "value": '\$400'
-    },
+    {"image": AppSvgs.total_earned, "title": "Total Earned", "value": '\$400'},
   ];
 
-  List<String> string = [
-    "announcement",
-    "offer"
-  ];
-
+  List<String> string = ["announcement", "offer"];
 
   @override
   Widget build(BuildContext context) {
