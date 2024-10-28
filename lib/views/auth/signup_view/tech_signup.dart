@@ -88,53 +88,72 @@ class _TechSignupState extends State<TechSignup> {
           child: Column(
             children: [
               Container(
-                width: double.infinity,
-                height: 45.h,
-                padding: EdgeInsets.all(7),
-                decoration: BoxDecoration(
+                  width: double.infinity,
+                  height: 45.h,
+                  padding: EdgeInsets.all(6),
+                  decoration: BoxDecoration(
                     color: AppColors.primary,
-                    borderRadius: BorderRadius.circular(12.r)),
-                child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: index.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, val) {
-                    return GestureDetector(
-                      onTap: () {
-                        techController.selectedIndex.value = index[val];
-                      },
-                      child: Obx(() {
-                        return Container(
-                          width: 77.w,
-                          padding: EdgeInsets.symmetric(vertical: 5.h),
-                          decoration: BoxDecoration(
-                              color: techController.selectedIndex.value ==
-                                      index[val]
-                                  ? AppColors.secondary
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.circular(7.58.r),
-                              border: Border.all(
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: index.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, val) {
+                      return Obx(() {
+                        return Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                techController.selectedIndex.value = index[val];
+                              },
+                              child: Container(
+                                width: 77.5.w,
+                                padding: EdgeInsets.symmetric(vertical: 5.h),
+                                decoration: BoxDecoration(
                                   color: techController.selectedIndex.value ==
                                           index[val]
-                                      ? AppColors.skyBlue
+                                      ? AppColors.secondary
                                       : Colors.transparent,
-                                  width: 0.41)),
-                          alignment: Alignment.center,
-                          child: Text(
-                            name[val],
-                            style: jost700(
-                                10.sp,
-                                techController.selectedIndex.value == index[val]
-                                    ? AppColors.primary
-                                    : AppColors.secondary),
-                          ),
+                                  borderRadius: BorderRadius.circular(7.58.r),
+                                  border: Border.all(
+                                    color: techController.selectedIndex.value ==
+                                            index[val]
+                                        ? AppColors.skyBlue
+                                        : Colors.transparent,
+                                    width: 0.41,
+                                  ),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  name[val],
+                                  style: jost700(
+                                    10.sp,
+                                    techController.selectedIndex.value ==
+                                            index[val]
+                                        ? AppColors.primary
+                                        : AppColors.secondary,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // Add divider only if it's not the last item and not selected
+                            if (val < index.length - 1 &&
+                                techController.selectedIndex.value !=
+                                    index[val] &&
+                                techController.selectedIndex.value !=
+                                    index[val + 1])
+                              SizedBox(
+                                width: 1,
+                                height: 20.h,
+                                child: Container(color: AppColors.secondary),
+                              ),
+                          ],
                         );
-                      }),
-                    );
-                  },
-                ),
-              ),
+                      });
+                    },
+                  )),
               SizedBox(height: 30.h),
               Expanded(
                 child: Obx(() {

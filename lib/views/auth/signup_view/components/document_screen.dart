@@ -72,9 +72,12 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
                               child: Icon(Icons.close, color: Colors.red),
                             )
                           : ElevatedButton(
+
                               onPressed: () => _openGallery(index),
                               style: ElevatedButton.styleFrom(
+                                minimumSize: Size(76.w,   30),
                                 backgroundColor: AppColors.primary,
+
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.r),
                                 ),

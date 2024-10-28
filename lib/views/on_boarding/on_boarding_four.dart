@@ -27,10 +27,14 @@ class OnBoardingFour extends StatelessWidget {
           SizedBox(
             height: 29.h,
           ),
-          Text(
-            'Pay securely using your preferred method. Your\npayment is held until the job is completed to\nyour satisfaction.',
-            style: jost600(15.17.sp, Color(0xff6B7280)),
-            textAlign: TextAlign.center,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 11.w),
+
+            child: Text(
+              'Pay securely using your preferred method. Your\npayment is held until the job is completed to\nyour satisfaction.',
+              style: jost600(15.17.sp, Color(0xff6B7280)),
+              textAlign: TextAlign.center,
+            ),
           ),
           Expanded(
             child: SizedBox(

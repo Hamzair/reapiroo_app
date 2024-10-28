@@ -29,6 +29,7 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor ?? AppColors.primary, // Use backgroundColor or default color
@@ -38,12 +39,15 @@ class CustomElevatedButton extends StatelessWidget {
         ),
         minimumSize: Size(width ?? double.infinity, height ?? 51.h), // Use width and height or default values
       ),
-      child: Text(
-        text,
-        style: GoogleFonts.jost(
-          fontWeight: FontWeight.w500,
-          color: textColor ?? AppColors.buttontext, // Use textColor or default text color
-          fontSize: fontSize ?? 19.sp, // Text size
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 16.h),
+        child: Text(
+          text,
+          style: GoogleFonts.jost(
+            fontWeight: FontWeight.w500,
+            color: textColor ?? AppColors.buttontext, // Use textColor or default text color
+            fontSize: fontSize ?? 19.sp, // Text size
+          ),
         ),
       ),
     );

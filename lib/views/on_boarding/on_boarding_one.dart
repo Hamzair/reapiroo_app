@@ -40,7 +40,7 @@ class OnBoardingOne extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 11.w),
             child: Text(
               'Connecting you with trusted local technicians\nfor any service. Choose from cleaning,\nplumbing, electrical work, and more!',
-              style: jost700(15.17.sp, Color(0xff6B7280)),
+              style: jost600(15.17.sp, Color(0xff6B7280)),
               textAlign: TextAlign.center,
             ),
           ),

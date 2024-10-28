@@ -58,7 +58,7 @@ class _RoleScreenState extends State<RoleScreen> {
               ],
             ),
           ),
-          SizedBox(height: 30.h),
+          SizedBox(height: 40.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -137,7 +137,7 @@ class _RoleScreenState extends State<RoleScreen> {
                   ),
                   TextSpan(
                     text: 'Terms of Services',
-                    style: jost700(14.sp, AppColors.primary),
+                    style: jost500(14.sp, AppColors.primary),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         // Navigate to Terms of Services
@@ -150,7 +150,7 @@ class _RoleScreenState extends State<RoleScreen> {
                   ),
                   TextSpan(
                     text: 'Privacy Policy',
-                    style: jost700(14.sp, AppColors.primary),
+                    style: jost500(14.sp, AppColors.primary),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         // Navigate to Privacy Policy

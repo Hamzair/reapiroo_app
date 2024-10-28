@@ -27,10 +27,14 @@ class OnBoardingFive extends StatelessWidget {
           SizedBox(
             height: 29.h,
           ),
-          Text(
-            'Stay updated with new orders, respond quickly,\nand grow your wallet with each successful job.\nStart earning today!',
-            style: jost600(15.17.sp, Color(0xff6B7280)),
-            textAlign: TextAlign.center,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 11.w),
+
+            child: Text(
+              'Stay updated with new orders, respond quickly,\nand grow your wallet with each successful job.\nStart earning today!',
+              style: jost600(15.17.sp, Color(0xff6B7280)),
+              textAlign: TextAlign.center,
+            ),
           ),
           Expanded(
             child: SizedBox(

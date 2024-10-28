@@ -27,10 +27,14 @@ class OnBoardingThree extends StatelessWidget {
           SizedBox(
             height: 29.h,
           ),
-          Text(
-            'Compare offers from multiple technicians and\npick the one that fits your needs and budget.\nNo hassle, no guessing!',
-            style: jost600(15.17.sp, Color(0xff6B7280)),
-            textAlign: TextAlign.center,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 11.w),
+
+            child: Text(
+              'Compare offers from multiple technicians and\npick the one that fits your needs and budget.\nNo hassle, no guessing!',
+              style: jost600(15.17.sp, Color(0xff6B7280)),
+              textAlign: TextAlign.center,
+            ),
           ),
           Expanded(
             child: SizedBox(

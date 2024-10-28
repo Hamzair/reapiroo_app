@@ -31,9 +31,11 @@ class _PersonalDetailsFormState extends State<PersonalDetailsForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Enter Your Personal Details here.',
-            style: jost600(15.17.sp, Color(0xff6B7280)),
+          Center(
+            child: Text(
+              'Enter Your Personal Details here.',
+              style: jost600(15.17.sp, Color(0xff6B7280)),
+            ),
           ),
           SizedBox(height: 56.h),
 
@@ -80,11 +82,14 @@ class _PersonalDetailsFormState extends State<PersonalDetailsForm> {
           SizedBox(height: 25.h),
 
           /// Gender Drop Down Field
-          GenderDropdownField(
-            label: 'Gender',
-            iconPath: 'assets/images/gender_icon.png',
-            iconHeight: 18.h,
-            iconWidth: 18.w,
+          SizedBox(
+            height: 70.h,
+            child: GenderDropdownField(
+              label: 'Gender',
+              iconPath: 'assets/images/gender_icon.png',
+              iconHeight: 18.h,
+              iconWidth: 18.w,
+            ),
           ),
           SizedBox(height: 120.h),
 
@@ -97,6 +102,7 @@ class _PersonalDetailsFormState extends State<PersonalDetailsForm> {
             },
             backgroundColor: AppColors.primary,
           ),
+
         ],
       ),
     );

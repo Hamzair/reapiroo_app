@@ -91,11 +91,14 @@ class _CustomerSignupState extends State<CustomerSignup> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
 
-                child: GenderDropdownField(
-                  label: 'Gender',
-                  iconPath: 'assets/images/gender_icon.png', // Specify the image asset path
-                  iconHeight: 18.h, // Set your desired height
-                  iconWidth: 18.w,  // Set your desired width
+                child: SizedBox(
+                  height: 70.h,
+                  child: GenderDropdownField(
+                    label: 'Gender',
+                    iconPath: 'assets/images/gender_icon.png', // Specify the image asset path
+                    iconHeight: 18.h, // Set your desired height
+                    iconWidth: 18.w,  // Set your desired width
+                  ),
                 ),
               ),
 
@@ -135,7 +138,7 @@ class _CustomerSignupState extends State<CustomerSignup> {
                       ),
                       TextSpan(
                         text: 'Terms of Services',
-                        style: jost700(14.sp, AppColors.primary),
+                        style: jost500(14.sp, AppColors.primary),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                             // Navigate to Terms of Services
@@ -148,7 +151,7 @@ class _CustomerSignupState extends State<CustomerSignup> {
                       ),
                       TextSpan(
                         text: 'Privacy Policy',
-                        style: jost700(14.sp, AppColors.primary),
+                        style: jost500(14.sp, AppColors.primary),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                             // Navigate to Privacy Policy
