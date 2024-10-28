@@ -112,64 +112,117 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text("Jared Hughs", style: jost600(18.sp, AppColors.secondary),),
-                                      SizedBox(height: 3.h,),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Icon(Icons.location_on_outlined, size: 20.w, color: Colors.white,),
-                                          SizedBox(width: 2,),
-                                          Text("Downtown Road, Dubai.", style: montserrat400(11.sp, AppColors.secondary),),
-                                        ],
-                                      ),
-                                      SizedBox(height: 3.h,),
-                                      SizedBox(
-                                          width: 174.w,
-                                          child: Text("I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.", style: montserrat(9.sp, AppColors.secondary, FontWeight.w300),)),
-                                    ],
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Jared Hughs",
+                                              style:
+                                              jost600(18.sp, AppColors.secondary),
+                                            ),
+                                            Text(
+                                              "ID #2145",
+                                              style:
+                                              jost600(12.sp, AppColors.secondary),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 6.h,
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Image.asset(AppImages.pinlocation, width: 15.w, height: 15.h,),
+                                            SizedBox(
+                                              width: 3.w,
+                                            ),
+                                            Text(
+                                              "Downtown Road, Dubai.",
+                                              style: montserrat400(
+                                                  11.sp, AppColors.secondary),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 6.h,
+                                        ),
+                                        SizedBox(
+                                            width: 174.w,
+                                            child: Text(
+                                              "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
+                                              style: montserrat(9.sp,
+                                                  AppColors.secondary, FontWeight.w300),
+                                            )),
+                                      ],
+                                    ),
                                   ),
+
                                   Container(
+                                    margin: EdgeInsets.only(left: 16.w),
                                     height: 82.h,
                                     width: 98.w,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(12.w),
-                                        image: DecorationImage(image: AssetImage(AppImages.jared_hughs), fit: BoxFit.contain)
-                                    ),
+                                        image: DecorationImage(
+                                            image: AssetImage(AppImages.jared_hughs),
+                                            fit: BoxFit.fill)),
                                   )
                                 ],
                               ),
-                              SizedBox(height: 9.h,),
+                              SizedBox(
+                                height: 10.h,
+                              ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    height:35.h,
-                                    width: 199.w,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.secondary,
-                                      borderRadius: BorderRadius.circular(12.r),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                                  Expanded(
+                                    child: Container(
+                                      height: 35.h,
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 8.w,),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(14.w),
+                                      ),
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Row(
-                                            children: [
-                                              MySvg(assetName: AppSvgs.calender),
-                                              SizedBox(width: 8.w,),
-                                              Text("Mon, Dec 23", style: montserrat600(11.sp, AppColors.primary),),
-                                            ],
+                                          SizedBox(
+                                            child: Row(
+                                              children: [
+                                                MySvg(assetName: AppSvgs.calender),
+                                                SizedBox(
+                                                  width: 8.w,
+                                                ),
+                                                Text(
+                                                  "Mon, Dec 23",
+                                                  style: montserrat600(
+                                                      11.sp, AppColors.primary),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                          Row(
-                                            children: [
-                                              MySvg(assetName: AppSvgs.clock),
-                                              SizedBox(width: 8.w,),
-                                              Text("12:00", style: montserrat600(11.sp, AppColors.primary),),
-                                            ],
+
+                                          SizedBox(
+                                            child: Row(
+                                              children: [
+                                                MySvg(assetName: AppSvgs.clock),
+                                                SizedBox(
+                                                  width: 8.w,
+                                                ),
+                                                Text(
+                                                  "12:00",
+                                                  style: montserrat600(
+                                                      11.sp, AppColors.primary),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -203,6 +256,8 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                     child: Container(
                                       height:35.h ,
                                       width: 98.w,
+                                      margin: EdgeInsets.only(left: 16.w),
+
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(12.r),
@@ -210,6 +265,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                       child: Center(child: Text("Spare Parts", style: jost600(13.sp, AppColors.primary),)),
                                     ),
                                   ),
+
                                 ],
                               ),
                               SizedBox(height: 12.h),
@@ -233,6 +289,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                               ),
                               SizedBox(height: 12.h),
                               AudioNote(),
+                              SizedBox(height: 8.h),
                             ],
                           ),
                         ),
@@ -246,6 +303,8 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                   children: [
                     CustomElevatedButton(
                       width: 160.w,
+                      height: 51.h,
+
                       text: "Bid",
                       backgroundColor: AppColors.primary,
                       textColor: AppColors.secondary,
@@ -254,12 +313,13 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                         Get.bottomSheet(
                             isScrollControlled: true,
                             isDismissible: true,
-                            BidBottomSheet()
+                            BidBottomSheet(comingFrom: "tech",)
                         );
                       },
                     ),
                     CustomElevatedButton(
                       width: 160.w,
+                      height: 51.h,
                       text: "Cancel",
                       backgroundColor: AppColors.buttonGrey,
                       textColor: AppColors.primary,

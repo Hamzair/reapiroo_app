@@ -126,9 +126,9 @@ class _MainHomeState extends State<MainHome> {
                   height: 90.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: AppColors.textFieldGrey,
+                      color: AppColors.containerLightGrey,
                       borderRadius: BorderRadius.circular(12.w),
-                      border: Border.all(width: 1, color: AppColors.lightGrey)),
+                      border: Border.all(width: 1, color: AppColors.textFieldGrey)),
                   alignment: Alignment.center,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -457,13 +457,9 @@ class _MainHomeState extends State<MainHome> {
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Icon(
-                                      Icons.location_on_outlined,
-                                      size: 20.w,
-                                      color: Colors.white,
-                                    ),
+                                    Image.asset(AppImages.pinlocation, width: 15.w, height: 15.h,),
                                     SizedBox(
-                                      width: 2,
+                                      width: 3.w,
                                     ),
                                     Text(
                                       "Downtown Road, Dubai.",

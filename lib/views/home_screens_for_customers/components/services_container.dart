@@ -17,9 +17,9 @@ class _ServicesContainerState extends State<ServicesContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 7.79.h),
         width: 163.12.w,
-        height: 157.h,
+        height: 150.h,
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(widget.image), fit: BoxFit.fill),
         borderRadius: BorderRadius.circular(20.r),
@@ -27,7 +27,7 @@ class _ServicesContainerState extends State<ServicesContainer> {
       alignment: Alignment.bottomCenter,
       child: Container(
         width: 140.w,
-        height: 38.h,
+        height: 36.04.h,
         decoration: BoxDecoration(
           color: AppColors.secondary,
           borderRadius: BorderRadius.circular(20.r),

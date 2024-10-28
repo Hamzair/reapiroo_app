@@ -25,7 +25,7 @@ class CustomerBidBottomSheet extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.0.w),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -62,7 +62,7 @@ class CustomerBidBottomSheet extends StatelessWidget {
             ),
             SizedBox(height: 29.h,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
               CustomElevatedButton(
                 width: 155.w,
@@ -75,10 +75,8 @@ class CustomerBidBottomSheet extends StatelessWidget {
                   Get.back();
                 },
               ),
-                SizedBox(width: 8.w,),
                 CustomElevatedButton(
                 width: 155.w,
-
                 backgroundColor: Color(0xffDDDDDD),
                 text: "Bid",
                 textColor: AppColors.primary,

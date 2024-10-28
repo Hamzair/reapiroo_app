@@ -55,6 +55,9 @@ class AppImages{
   static const white_wallet = 'assets/images/white_wallet.png';
   static const card = 'assets/images/card.png';
   static const apple_pay = 'assets/images/apple_pay.png';
+  static const star_yellow = 'assets/images/star_yellow.png';
+  static const star_grey = 'assets/images/star_grey.png';
+  static const black_tick = 'assets/images/black_tick.png';
 
 
 //midhat

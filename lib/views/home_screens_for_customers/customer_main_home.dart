@@ -9,9 +9,11 @@ import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/views/home_screen_for_tech/components/announcement_containers.dart';
 import 'package:repairoo/views/home_screens_for_customers/components/services_container.dart';
+import 'package:repairoo/views/home_screens_for_customers/customer_task_home.dart';
 import 'package:repairoo/views/home_screens_for_customers/search_offer_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_button.dart';
+import 'package:repairoo/widgets/custom_container.dart';
 
 class CustomerMainHome extends StatefulWidget {
   const CustomerMainHome({super.key});
@@ -81,6 +83,7 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
                 Container(
                   height: 100.h,
                   width: double.infinity,
+                  margin: EdgeInsets.only(bottom: 21.h),
                   padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 6.h),
                   decoration: BoxDecoration(
                       color: AppColors.textFieldGrey,
@@ -106,16 +109,20 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Top Services", style: jost700(16.sp, AppColors.primary),),
-                    CustomElevatedButton(
-                        width: 72.w,
-                        height: 24.h,
-                        text: "View all",
-                        onPressed: (){},
-                        fontSize: 12.sp,
+                    CustomButton(
+                      width: 72.w,
+                      height: 24.h,
+                      vPadding: 0,
+                      foregroundColor: AppColors.secondary,
+                      backgroundColor: AppColors.primary,
+                      labelFontSize: 10.sp,
                       borderRadius: 8.r,
-                    ),
+                        label: "View all",
+                        onPressed: (){},
+                    )
                   ],
                 ),
+                SizedBox(height: 11.h,),
                 MasonryGridView.count(
                   shrinkWrap: true,
                   padding: EdgeInsets.zero,
@@ -127,7 +134,7 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: (){
-                        Get.to(SearchOfferScreen(field: dummy[index]["title"]));
+                        Get.to(CustomerTaskHome(service: dummy[index]['title'],));
                       },
                       child: ServicesContainer(
                         image: dummy[index]["image"],

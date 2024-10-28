@@ -30,13 +30,16 @@ class _OfferContainerState extends State<OfferContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
+      height: 97.h,
+      padding: EdgeInsets.symmetric(horizontal: 8.w, ),
       decoration: BoxDecoration(
         color: AppColors.primary,
         borderRadius: BorderRadius.circular(12.w),
       ),
       alignment: Alignment.center,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             width: 90.w,
@@ -48,6 +51,7 @@ class _OfferContainerState extends State<OfferContainer> {
             ),
           ),
           Expanded(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -68,7 +72,7 @@ class _OfferContainerState extends State<OfferContainer> {
                   )
                 ],
               ),
-              SizedBox(height: 3.h,),
+              SizedBox(height: 4.h,),
               Text(widget.experience, style: jost500(10.sp, AppColors.secondary),),
               SizedBox(height: 3.h,),
               Row(
@@ -114,7 +118,7 @@ class _OfferContainerState extends State<OfferContainer> {
                               isScrollControlled: true,
                               isDismissible: true,
                               enableDrag: true,
-                              BidBottomSheet(),
+                              BidBottomSheet(comingFrom: "customer",),
                             );
                           },
                           child: Container(

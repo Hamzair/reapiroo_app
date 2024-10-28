@@ -144,13 +144,9 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Icon(
-                                      Icons.location_on_outlined,
-                                      size: 20.w,
-                                      color: Colors.white,
-                                    ),
+                                    Image.asset(AppImages.pinlocation, width: 15.w, height: 15.h,),
                                     SizedBox(
-                                      width: 2,
+                                      width: 3.w,
                                     ),
                                     Text(
                                       "Downtown Road, Dubai.",
@@ -174,13 +170,14 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                           ),
 
                           Container(
+                            margin: EdgeInsets.only(left: 16.w),
                             height: 82.h,
-                            width: 92.w,
+                            width: 98.w,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.w),
                                 image: DecorationImage(
                                     image: AssetImage(AppImages.jared_hughs),
-                                    fit: BoxFit.contain)),
+                                    fit: BoxFit.fill)),
                           )
                         ],
                       ),
@@ -188,61 +185,62 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 35.h,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 8.w,),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(14.w),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 14.w,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 35.h,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 8.w,),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(14.w),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    child: Row(
+                                      children: [
+                                        MySvg(assetName: AppSvgs.calender),
+                                        SizedBox(
+                                          width: 8.w,
+                                        ),
+                                        Text(
+                                          "Mon, Dec 23",
+                                          style: montserrat600(
+                                              11.sp, AppColors.primary),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  SizedBox(
+                                    child: Row(
+                                      children: [
+                                        MySvg(assetName: AppSvgs.clock),
+                                        SizedBox(
+                                          width: 8.w,
+                                        ),
+                                        Text(
+                                          "12:00",
+                                          style: montserrat600(
+                                              11.sp, AppColors.primary),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                child: Row(
-                                  children: [
-                                    MySvg(assetName: AppSvgs.calender),
-                                    SizedBox(
-                                      width: 8.w,
-                                    ),
-                                    Text(
-                                      "Mon, Dec 23",
-                                      style: montserrat600(
-                                          11.sp, AppColors.primary),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: 45.w,
-                              ),
-                              SizedBox(
-                                child: Row(
-                                  children: [
-                                    MySvg(assetName: AppSvgs.clock),
-                                    SizedBox(
-                                      width: 8.w,
-                                    ),
-                                    Text(
-                                      "12:00",
-                                      style: montserrat600(
-                                          11.sp, AppColors.primary),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15.w,
-                        ),
-                        Expanded(
-                          child: GestureDetector(
+
+                          GestureDetector(
                             onTap: () {
                               if (widget.comingFrom == "booking") {
                                 showDialog(
@@ -438,7 +436,9 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               }
                             },
                             child: Container(
+                              width: 98.w,
                               height: 35.h,
+                              margin: EdgeInsets.only(left: 16.w),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(14.w),
@@ -450,9 +450,9 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               ),
                             ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 10.h,
@@ -471,6 +471,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                         borderRadius: BorderRadius.circular(
                             20), // Add circular border radius
                       ),
+
                       clipBehavior: Clip
                           .hardEdge, // To clip the child within the rounded border
                       child: VideoPlayer(
@@ -563,6 +564,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                   children: [
                     CustomElevatedButton(
                       width: 160.w,
+                      height: 51.h,
                       text: "Mark as done",
                       backgroundColor: AppColors.primary,
                       textColor: AppColors.secondary,
@@ -573,6 +575,8 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                     ),
                     CustomElevatedButton(
                       width: 160.w,
+                      height: 51.h,
+
                       text: "Cancel",
                       backgroundColor: AppColors.buttonGrey,
                       textColor: AppColors.primary,

@@ -279,8 +279,7 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-        ()=> GestureDetector(
+    return GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
         },
@@ -485,7 +484,7 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                                   Colors.black, // Initial color of the indicator
                               center: CircleAvatar(
                                 radius: 10.w,
-                                backgroundColor: AppColors.primary,
+                                backgroundColor: _isRecording ? Colors.red : AppColors.primary,
                               ),
                             ),
                           ),
@@ -638,7 +637,6 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
             ),
           )),
         ),
-      ),
-    );
+      );
   }
 }

@@ -35,7 +35,7 @@ class _PaymentBottomsheetState extends State<PaymentBottomsheet> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 20.h,),
+            SizedBox(height: 26.h,),
             Container(
               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 50.w),
               decoration: BoxDecoration(
@@ -64,12 +64,12 @@ class _PaymentBottomsheetState extends State<PaymentBottomsheet> {
                 ],
               ),
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 30.h,),
             Align(
               alignment: Alignment.center,
               child: Text("Select payment Method.", style: jost600(16.sp, AppColors.primary), textAlign: TextAlign.center,),
             ),
-            SizedBox(height: 15.h,),
+            SizedBox(height: 50.h,),
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(bottom: 12.h),

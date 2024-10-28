@@ -132,15 +132,18 @@ class _SearchOfferScreenState extends State<SearchOfferScreen> {
                     },
                   ),
                   SizedBox(height: 26.h,),
-                  CustomElevatedButton(text: "Cancel", onPressed: (){
-                    showDialog(context: context, builder: (BuildContext context){
-                      return AlertDialog(
-                        backgroundColor: AppColors.secondary,
-                        contentPadding: EdgeInsets.zero,
-                        content: CancelDialogBox(),
-                      );
-                    });
-                  })
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.0.w),
+                    child: CustomElevatedButton(text: "Cancel", onPressed: (){
+                      showDialog(context: context, builder: (BuildContext context){
+                        return AlertDialog(
+                          backgroundColor: AppColors.secondary,
+                          contentPadding: EdgeInsets.zero,
+                          content: CancelDialogBox(),
+                        );
+                      });
+                    }),
+                  )
                 ],
               ),
             ),

@@ -9,7 +9,9 @@ import 'package:repairoo/widgets/custom_input_fields.dart';
 import 'customer_bid.dart';
 
 class BidBottomSheet extends StatelessWidget {
-  const BidBottomSheet({super.key});
+  const BidBottomSheet({super.key, required this.comingFrom});
+
+  final String comingFrom;
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +47,19 @@ class BidBottomSheet extends StatelessWidget {
             ),
             SizedBox(height: 21.h,),
             CustomElevatedButton(
-                text: "Send Bid",
+                text: comingFrom == "customer" ? "Offer" : "Send Bid",
                 fontSize: 16.sp,
                 onPressed: (){
-                  Get.back();
-                  Get.bottomSheet(
-                      isScrollControlled: true,
-                      isDismissible: true,
-                      enableDrag: true,
-                      CustomerBidBottomSheet()
-                  );
+                  if(comingFrom == "tech"){
+                    Get.back();
+                    Get.bottomSheet(
+                        isScrollControlled: true,
+                        isDismissible: true,
+                        enableDrag: true,
+                        CustomerBidBottomSheet()
+                    );
+                  }
+
                 },
             ),
             SizedBox(height: 29.h,),
