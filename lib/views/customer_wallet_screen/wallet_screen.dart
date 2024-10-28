@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/widgets/app_bars.dart';
@@ -45,13 +46,21 @@ class WalletScreen extends StatelessWidget {
                         // SizedBox(height: 20.h,),
                         Text(
                           'Available Balance',
-                          style: jost600(14.87.sp, AppColors.primary),
+                          style: GoogleFonts.inter(  // Replace 'Roboto' with any font you like
+                            fontSize: 14.87.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                         SizedBox(
-                          height: 7.h,
+                          height: 6.25.h,
                         ),
-                        Text('79.00 AED ',
-                            style: jost700(35.65.sp, AppColors.primary)),
+                        Text(
+                          '79.00 AED',
+                          style: GoogleFonts.inter(  // Replace 'Roboto' with any font you like
+                            fontSize: 35.65.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -60,7 +69,7 @@ class WalletScreen extends StatelessWidget {
                       right: 0.w,
                       left: 0.w,
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 12.h),
+                        padding: EdgeInsets.symmetric(vertical: 11.h),
                         margin: EdgeInsets.symmetric(horizontal: 25.w),
                         width: 304.11.w,
                         // height: 61.15.h,
@@ -107,112 +116,120 @@ class WalletScreen extends StatelessWidget {
               SizedBox(
                 height: 60.h,
               ),
-              Center(
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
-                  width: 308.w,
-                  // height: 61.15.h,
-                  decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(10.52.r)),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.add_box_outlined,
-                        color: Colors.white,
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 10.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+                        width: 308.w,
+                        // height: 61.15.h,
+                        decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(10.52.r)),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.add_box_outlined,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 17.66.w,
+                            ),
+                            Text('Add New Card',
+                                style: jost400(14.sp, Color(0xffE8E7E7))),
+                          ],
+                        ),
                       ),
-                      SizedBox(
-                        width: 17.66.w,
+                    ),
+                    SizedBox(
+                      height: 23.h,
+                    ),
+                    Text('Transactions', style: jost600(26.35.sp, AppColors.primary)),
+                    SizedBox(
+                      height: 13.h,
+                    ),
+                    Text('Today', style: jost400(13.17.sp, AppColors.primary)),
+                    SizedBox(
+                      height: 13.h,
+                    ),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      leading: Container(
+                        width: 40.w,
+                        height: 40.h,
+                        decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(AppImages.arrow_down),
+                              scale: 4,
+                            )),
                       ),
-                      Text('Add New Card',
-                          style: jost400(14.sp, Color(0xffE8E7E7))),
-                    ],
-                  ),
+                      title: Text(
+                        'Credit',
+                        style: jost400(13.17, AppColors.primary),
+                      ),
+                      subtitle: Text('From Starbucks',
+                          style: jost400(12.17, AppColors.buttonGrey)),
+                      trailing:
+                          Text('\$ 3,110', style: jost500(14.17, AppColors.primary)),
+                    ),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      leading: Container(
+                        width: 40.w,
+                        height: 40.h,
+                        decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(AppImages.arrow_down),
+                              scale: 4,
+                            )),
+                      ),
+                      title: Text(
+                        'Credit',
+                        style: jost400(13.17, AppColors.primary),
+                      ),
+                      subtitle: Text('From Starbucks',
+                          style: jost400(12.17, AppColors.buttonGrey)),
+                      trailing:
+                          Text('\$ 3,110', style: jost500(14.17, AppColors.primary)),
+                    ),
+                    SizedBox(
+                      height: 13.h,
+                    ),
+                    Text('Yesterday', style: jost400(13.17.sp, AppColors.primary)),
+                    SizedBox(
+                      height: 13.h,
+                    ),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      leading: Container(
+                        width: 40.w,
+                        height: 40.h,
+                        decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(AppImages.arrow_down),
+                              scale: 4,
+                            )),
+                      ),
+                      title: Text(
+                        'Transfer',
+                        style: jost400(13.17, AppColors.primary),
+                      ),
+                      subtitle: Text('From Starbucks',
+                          style: jost400(12.17, AppColors.buttonGrey)),
+                      trailing:
+                          Text('\$ 3,110', style: jost500(14.17, AppColors.primary)),
+                    ),
+                  ],
                 ),
-              ),
-              SizedBox(
-                height: 23.h,
-              ),
-              Text('Transactions', style: jost600(26.35.sp, AppColors.primary)),
-              SizedBox(
-                height: 13.h,
-              ),
-              Text('Today', style: jost400(13.17.sp, AppColors.primary)),
-              SizedBox(
-                height: 21.h,
-              ),
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: Container(
-                  width: 40.w,
-                  height: 40.h,
-                  decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage(AppImages.arrow_down),
-                        scale: 4,
-                      )),
-                ),
-                title: Text(
-                  'Credit',
-                  style: jost400(13.17, AppColors.primary),
-                ),
-                subtitle: Text('From Starbucks',
-                    style: jost400(12.17, AppColors.buttonGrey)),
-                trailing:
-                    Text('\$ 3,110', style: jost500(14.17, AppColors.primary)),
-              ),
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: Container(
-                  width: 40.w,
-                  height: 40.h,
-                  decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage(AppImages.arrow_down),
-                        scale: 4,
-                      )),
-                ),
-                title: Text(
-                  'Credit',
-                  style: jost400(13.17, AppColors.primary),
-                ),
-                subtitle: Text('From Starbucks',
-                    style: jost400(12.17, AppColors.buttonGrey)),
-                trailing:
-                    Text('\$ 3,110', style: jost500(14.17, AppColors.primary)),
-              ),
-              SizedBox(
-                height: 13.h,
-              ),
-              Text('Yesterday', style: jost400(13.17.sp, AppColors.primary)),
-              SizedBox(
-                height: 21.h,
-              ),
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: Container(
-                  width: 40.w,
-                  height: 40.h,
-                  decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage(AppImages.arrow_down),
-                        scale: 4,
-                      )),
-                ),
-                title: Text(
-                  'Transfer',
-                  style: jost400(13.17, AppColors.primary),
-                ),
-                subtitle: Text('From Starbucks',
-                    style: jost400(12.17, AppColors.buttonGrey)),
-                trailing:
-                    Text('\$ 3,110', style: jost500(14.17, AppColors.primary)),
               )
             ],
           ),

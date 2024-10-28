@@ -82,14 +82,11 @@ class _PersonalDetailsFormState extends State<PersonalDetailsForm> {
           SizedBox(height: 25.h),
 
           /// Gender Drop Down Field
-          SizedBox(
-            height: 70.h,
-            child: GenderDropdownField(
-              label: 'Gender',
-              iconPath: 'assets/images/gender_icon.png',
-              iconHeight: 18.h,
-              iconWidth: 18.w,
-            ),
+          GenderDropdownField(
+            label: 'Gender',
+            iconPath: 'assets/images/gender_icon.png',
+            iconHeight: 18.h,
+            iconWidth: 18.w,
           ),
           SizedBox(height: 120.h),
 

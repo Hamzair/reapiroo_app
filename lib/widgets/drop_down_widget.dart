@@ -22,6 +22,7 @@ class GenderDropdownField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Container(
+      height: 55.h,
       decoration: BoxDecoration(
         color: AppColors.primary,
         borderRadius: BorderRadius.circular(13.31.r), // Match with the input decoration
