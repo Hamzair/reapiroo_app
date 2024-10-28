@@ -459,24 +459,22 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                     ),
                     /// Video Player
                     Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 14.w,
-                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 14.w),
                       alignment: Alignment.center,
-                      height: 160.h,
-                      // width: 328.w,
+                      height: 189.h,
                       decoration: BoxDecoration(
-                        color: Colors
-                            .black, // Add a background color to make the border radius more visible
-                        borderRadius: BorderRadius.circular(
-                            20), // Add circular border radius
-                      ),
+                        color: AppColors.primary,
 
-                      clipBehavior: Clip
-                          .hardEdge, // To clip the child within the rounded border
-                      child: VideoPlayer(
-                        videoUrl:
-                            'assets/video/videotest.mp4', // Provide your video URL directly here
+                      ),
+                      clipBehavior: Clip.hardEdge,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12.r), // Match the container's radius
+                        child: AspectRatio(
+                          aspectRatio: 16 / 9, // Replace this with your video’s actual aspect ratio
+                          child: VideoPlayer(
+                            videoUrl: 'assets/video/videotest.mp4',
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -570,7 +568,8 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                       textColor: AppColors.secondary,
                       fontSize: 19.sp,
                       onPressed: () {
-                        Get.to(NewTaskHome());
+                        //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> NewTaskHome()));
+                        Get.off(NewTaskHome());
                       },
                     ),
                     CustomElevatedButton(

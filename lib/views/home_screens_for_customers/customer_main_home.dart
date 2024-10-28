@@ -7,10 +7,12 @@ import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/views/customer_wallet_screen/wallet_screen.dart';
 import 'package:repairoo/views/home_screen_for_tech/components/announcement_containers.dart';
 import 'package:repairoo/views/home_screens_for_customers/components/services_container.dart';
 import 'package:repairoo/views/home_screens_for_customers/customer_task_home.dart';
 import 'package:repairoo/views/home_screens_for_customers/search_offer_screen.dart';
+import 'package:repairoo/views/tech_wallet/wallet_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_button.dart';
 import 'package:repairoo/widgets/custom_container.dart';
@@ -62,6 +64,9 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
           isTextField: true,
           isSecondIcon: true,
           secondIcon: AppSvgs.white_wallet,
+          onSecondTap: (){
+            Get.to(WalletScreen());
+          },
           title: "",
         ),
         backgroundColor: AppColors.secondary,

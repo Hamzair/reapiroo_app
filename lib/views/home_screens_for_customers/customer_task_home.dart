@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
@@ -37,6 +38,9 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
   bool _isRecording = false;
   double _progressValue = 0.0; // Value from 0.0 to 1.0
   Timer? _progressTimer;
+
+  XFile? imageFile;
+
 
   @override
   void initState() {
@@ -277,6 +281,28 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
     return DateFormat('MM/dd/yyyy hh:mm a').format(selectedDateTime!);
   }
 
+  Future<void> _openGallery() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        imageFile = pickedFile; // Store the image path
+      });
+    } else {
+      // Handle the case when no image was selected
+      print('No image selected.');
+    }
+  }
+
+  // Method to remove the selected image
+  void _removeImage() {
+    setState(() {
+      imageFile  = null; // Clear the image path
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -314,42 +340,79 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                     height: 13.w,
                   ),
                   Container(
-                    height: 55.h,
                     margin: EdgeInsets.only(bottom: 6.h),
                     width: double.infinity,
-                    padding: EdgeInsets.symmetric(horizontal: 15.w),
+                    padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 12.h),
                     decoration: BoxDecoration(
                       color: Color(0xffFAFAFA),
                       border: Border.all(color: Color(0xffE2E2E2), width: 1),
                       borderRadius: BorderRadius.circular(8.r),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
                       children: [
-                        Text("Upload Picture/Video"),
-                        Container(
-                          height: 30.h,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 5.w, vertical: 6.h),
-                          decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              borderRadius: BorderRadius.circular(8.w)),
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(AppImages.upload,
-                                  height: 18.h, width: 18.w),
-                              SizedBox(
-                                width: 8.w,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Upload Picture/Video"),
+                            imageFile == null ?
+                            InkWell(
+                              onTap: _openGallery,
+                              child: Container(
+                                height: 30.h,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 5.w, vertical: 6.h),
+                                decoration: BoxDecoration(
+                                    color: AppColors.primary,
+                                    borderRadius: BorderRadius.circular(8.w)),
+                                alignment: Alignment.center,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(AppImages.upload,
+                                        height: 18.h, width: 18.w),
+                                    SizedBox(
+                                      width: 8.w,
+                                    ),
+                                    Text(
+                                      "Upload    ",
+                                      style: sora600(10.sp, AppColors.secondary),
+                                    )
+                                  ],
+                                ),
                               ),
-                              Text(
-                                "Upload    ",
-                                style: sora600(10.sp, AppColors.secondary),
+                            ) : GestureDetector(
+                              onTap: () => _removeImage(),
+                              child: Icon(Icons.close, color: Colors.red),
+                            )
+                          ],
+                        ),
+                        if(imageFile != null)
+                          Container(
+                            margin: EdgeInsets.only(top: 15.h,),
+                            height: 100.h,
+                            width: 100.w,
+                            decoration: BoxDecoration(
+                              image: imageFile != null
+                                  ? DecorationImage(
+                                image: FileImage(
+                                    File(imageFile!.path)),
+                                fit: BoxFit.cover,
                               )
-                            ],
+                                  : null, // No image when the path is null
+                              borderRadius: BorderRadius.circular(8
+                                  .r), // Optional: add border radius if needed
+                            ),
+                            child: imageFile != null
+                                ? Center(
+                              child: Text(
+                                'No Image Selected',
+                                style:
+                                jost400(12.sp, Color(0xff6B7280)),
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                                : null, // Do not display anything if an image is set
                           ),
-                        )
                       ],
                     ),
                   ),
@@ -631,6 +694,9 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                       },
                       fontSize: 19.sp,
                     ),
+                  ),
+                  SizedBox(
+                    height: 40.h,
                   ),
                 ],
               ),
