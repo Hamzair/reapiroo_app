@@ -91,14 +91,11 @@ class _CustomerSignupState extends State<CustomerSignup> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
 
-                child: SizedBox(
-                  height: 70.h,
-                  child: GenderDropdownField(
-                    label: 'Gender',
-                    iconPath: 'assets/images/gender_icon.png', // Specify the image asset path
-                    iconHeight: 18.h, // Set your desired height
-                    iconWidth: 18.w,  // Set your desired width
-                  ),
+                child: GenderDropdownField(
+                  label: 'Gender',
+                  iconPath: 'assets/images/gender_icon.png', // Specify the image asset path
+                  iconHeight: 18.h, // Set your desired height
+                  iconWidth: 18.w,  // Set your desired width
                 ),
               ),
 
