@@ -22,32 +22,16 @@ class ProfileButton extends StatefulWidget {
 }
 
 class _ProfileButtonState extends State<ProfileButton> {
-  bool _isPressed = false; // State to track if button is pressed
-
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        setState(() {
-          _isPressed = !_isPressed; // Toggle the pressed state
-        });
-        widget.onPressed(); // Call the provided onPressed function
-      },
+      onPressed: widget.onPressed, // Call the provided onPressed function
       style: TextButton.styleFrom(
-        backgroundColor: Colors.transparent, // No background color initially
+        backgroundColor: Colors.transparent, // No background color
         padding: EdgeInsets.zero, // Remove default padding
         minimumSize: Size(double.infinity, 52.h), // Set height
         shape: RoundedRectangleBorder(
           // borderRadius: BorderRadius.circular(13.31.r), // Border radius
-        ),
-      ).copyWith(
-        backgroundColor: MaterialStateProperty.resolveWith<Color>(
-              (Set<MaterialState> states) {
-            if (_isPressed) {
-              return AppColors.lightGrey; // Change to light grey when pressed
-            }
-            return Colors.transparent; // Default background is transparent
-          },
         ),
       ),
       child: Padding(
@@ -63,12 +47,12 @@ class _ProfileButtonState extends State<ProfileButton> {
                   width: 21.54.w, // Set your desired width
                 ),
                 SizedBox(width: 20.39.h),
-                // Change the text color based on the pressed state
+                // Use a fixed color for the text
                 Text(
                   widget.label, // Use the passed label text
                   style: jost500(
                     16.sp,
-                    _isPressed ? Colors.black : Color.fromRGBO(81, 81, 81, 1), // Change color based on state
+                    Color.fromRGBO(81, 81, 81, 1), // Fixed color, no state-based change
                   ),
                 ),
               ],
