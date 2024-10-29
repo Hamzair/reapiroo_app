@@ -39,6 +39,14 @@ class _OtpAuthenticationViewState extends State<OtpAuthenticationView> {
               ),
               const OtpBackButtonWidget(),
               SizedBox(
+                height: 8.h,
+              ),
+              Divider(
+                thickness: 2,
+                height: 1,
+                color: Color.fromRGBO(188, 202, 214, 0.23),
+              ),
+              SizedBox(
                 height: 25.h,
               ),
               Container(

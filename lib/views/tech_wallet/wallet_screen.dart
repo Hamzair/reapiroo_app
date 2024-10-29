@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/views/tech_wallet/wallet_detail.dart';
+
+// import 'package:repairoo/views/tech_wallet/wallet_detail.dart';
 import 'package:repairoo/widgets/custom_input_fields.dart';
 
 import '../../const/color.dart';
@@ -22,13 +24,21 @@ class _WalletState extends State<Wallet> {
   final TextEditingController name = TextEditingController();
   final TextEditingController iban = TextEditingController();
   final TextEditingController acc_number = TextEditingController();
+  String? selectedBank;
+  final List<Map<String, String>> banks = [
+    {'name': 'ADCB', 'image': 'assets/images/bank.png'},
+    {'name': 'HSBC', 'image': 'assets/images/hsbc.png'},
+    {'name': 'DIB', 'image': 'assets/images/duabi_islamic.jpg'},
+    {'name': 'Standard Chartered', 'image': 'assets/images/standard_charter.png'},
+    {'name': 'CBD', 'image': 'assets/images/standard_charter.png'},
+  ];
+
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus(); // Close the keyboard when tapping outside
-
       },
       child: Scaffold(
         appBar: MyAppBar(
@@ -53,12 +63,12 @@ class _WalletState extends State<Wallet> {
                   height: 120.h,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 0.h),
                   // height: 356.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(12.r)),
+                      borderRadius: BorderRadius.circular(13.31.r)),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -73,59 +83,121 @@ class _WalletState extends State<Wallet> {
                         SizedBox(
                           height: 26.h,
                         ),
-                        SizedBox(
-                            height: 50.h,
-                            child: CustomInputField(
-                              controller: bankName,
-                              hintText: "Bank Name",
-                            )),
-                        SizedBox(
-                          height: 11.h,
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 40.h,
+                              child: DropdownButtonFormField<String>(
+                                value: selectedBank,
+                                hint: Text(
+                                  "Bank Name",
+                                  style: jost400(14.65.sp, AppColors.primary),
+                                ),
+                                decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: AppColors.secondary,
+                                  contentPadding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 12.w),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(13.0.r),
+                                  ),
+                                ),
+                                icon: Icon(
+                                  Icons.keyboard_arrow_down_sharp,
+                                  color: Colors.black, // Set the dropdown icon color to black
+                                ),
+                                items: banks.map((bank) {
+                                  return DropdownMenuItem<String>(
+                                    value: bank['name'],
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                          bank['image']!,
+                                          width: 24.w,
+                                          height: 24.h,
+                                        ),
+                                        SizedBox(width: 10.w),
+                                        Text(bank['name']!),
+                                      ],
+                                    ),
+                                  );
+                                }).toList(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedBank = value;
+                                  });
+                                },
+                              ),
+                            ),
+
+                            SizedBox(
+                              height: 11.h,
+                            ),
+                            SizedBox(
+                                height: 40.h,
+                                child: CustomInputField(
+                                  controller: name,
+                                  hintText: "Full Name",
+                                  contentPadding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w),
+                                )),
+                            SizedBox(
+                              height: 11.h,
+                            ),
+                            SizedBox(
+                                height: 40.h,
+                                child: CustomInputField(
+                                  controller: iban,
+                                  hintText: "IBAN",
+                                  contentPadding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w
+                                  ),
+                                )),
+                            SizedBox(
+                              height: 11.h,
+                            ),
+                            SizedBox(
+                                height: 40.h,
+                                child: CustomInputField(
+                                  controller: acc_number,
+                                  contentPadding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w),
+
+                                  hintText: "Account Number",
+
+
+                                )),
+                            SizedBox(
+                              height: 26.h,
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                            height: 50.h,
-                            child: CustomInputField(
-                              controller: name,
-                              hintText: "Full Name",
-                            )),
-                        SizedBox(
-                          height: 11.h,
-                        ),
-                        SizedBox(
-                            height: 50.h,
-                            child: CustomInputField(
-                              controller: iban,
-                              hintText: "IBAN",
-                            )),
-                        SizedBox(
-                          height: 11.h,
-                        ),
-                        SizedBox(
-                            height: 50.h,
-                            child: CustomInputField(
-                              controller: acc_number,
-                              hintText: "Account Number",
-                            )),
-                        SizedBox(
-                          height: 26.h,
-                        ),
+
                         GestureDetector(
                           onTap: () {
-                            Get.to(WalletDetail());
+                            final selectedBankData = banks.firstWhere(
+                                  (bank) => bank['name'] == selectedBank,
+                              orElse: () => {'name': '', 'image': ''},
+                            );
+                            Get.to(WalletDetail(
+                              name: name.text,
+                              iban: iban.text,
+                              bankName: selectedBankData['name']?? "Aljazeera",
+                              bankImage: selectedBankData['image']??"assets/images/bank.png",
+                              accNumber: acc_number.text,));
                           },
                           child: Container(
                             height: 51.h,
                             width: double.infinity,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(13.r),
+                                borderRadius: BorderRadius.circular(13.31.r),
                                 color: AppColors.secondary),
                             child: Center(
                                 child: Text(
-                              "Add",
-                              style: jost600(19.sp, AppColors.primary),
-                            )),
+                                  "Add",
+                                  style: jost600(19.sp, AppColors.primary),
+                                )),
                           ),
-                        )
+                        ),
+                        SizedBox(
+                          height: 27.h,
+                        ),
                       ],
                     ),
                   ),

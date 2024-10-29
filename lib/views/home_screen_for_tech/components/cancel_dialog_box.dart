@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/widgets/custom_button.dart';
+import 'package:repairoo/widgets/custom_container.dart';
 
 class CancelDialogBox extends StatelessWidget {
   const CancelDialogBox({super.key});
@@ -52,26 +53,31 @@ class CancelDialogBox extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomElevatedButton(
-                  width: 101.w,
-                    text: "Yes",
-                    onPressed: (){
-                       Get.back();
-                    },
+                CustomButton(
+                    width: 101.w,
+                    height: 42.h,
+                    label: "Yes",
                     backgroundColor: AppColors.primary,
-                    fontSize: 19.sp,
-                    textColor: AppColors.secondary,
+                    labelFontSize: 19.sp,
+                    borderRadius: 13.31.r,
+                    vPadding: 0,
+                  onPressed: (){
+                      Get.back();
+                    },
                 ),
-                CustomElevatedButton(
-                  borderSide: BorderSide(color: Colors.transparent),
-                  width: 101.w,
-                    text: "No",
+                CustomButton(
+                    width: 101.w,
+                    height: 42.h,
+                    label: "No",
+                    backgroundColor: Color(0xffDDDDDD),
+                    borderColor: AppColors.primary,
+                    vPadding: 0,
+                    foregroundColor: AppColors.primary,
+                    labelFontSize: 19.sp,
+                    borderRadius: 13.31.r,
                     onPressed: (){
                       Get.back();
                     },
-                    backgroundColor: Color(0xffDDDDDD),
-                    fontSize: 19.sp,
-                    textColor: AppColors.primary,
                 ),
               ],
             ),

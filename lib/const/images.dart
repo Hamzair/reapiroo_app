@@ -87,4 +87,8 @@ class AppImages{
   static const total_earned = 'assets/images/total_earned.png';
   static const dialogue_boximage = 'assets/images/spareparts_dialogue_boximage.png';
   static const upload_icon = 'assets/images/upload_icon.png';
+  static const hsbc = 'assets/images/hsbc.png';
+  static const dubai_islamic = 'assets/images/duabi_islamic.jpg';
+  static const comercial_bank = 'assets/images/commercial_bank.png';
+  static const standard_charter = 'assets/images/standard_charter.png';
 }

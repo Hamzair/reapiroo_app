@@ -45,7 +45,7 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                 ),
                 /// Dropdown Menu
                 Container(
-                  height: 26.h,
+                  height: 29.h,
                   width: 87.w,
                   decoration: BoxDecoration(
                     color: AppColors.primary,
@@ -99,7 +99,7 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                         return Container(
                           width: 87.w,
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 7.w),
+                            padding: EdgeInsets.symmetric(horizontal: 6.w),
                             child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(

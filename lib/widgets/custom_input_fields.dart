@@ -18,12 +18,13 @@ class CustomInputField extends StatefulWidget {
   final bool alignLabelWithHint; // New parameter to adjust label position
   final Widget? suffixIcon; // Suffix icon parameter
   final Widget? prefixIcon; // New parameter for prefix icon
+  final EdgeInsets? contentPadding; // New parameter for prefix icon
   final ValueChanged<String>? onChanged;
   final int? maxLines; // New parameter for max lines
 
   CustomInputField({
     required this.controller,
-     this.label,
+    this.label,
     this.obscureText = false,
     this.svgIconPath,
     this.keyboardType = TextInputType.text,
@@ -37,7 +38,7 @@ class CustomInputField extends StatefulWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.onChanged,
-    this.maxLines, // Add maxLines to the constructor
+    this.maxLines, this.contentPadding, // Add maxLines to the constructor
   });
 
   @override
@@ -117,16 +118,17 @@ class _CustomInputFieldState extends State<CustomInputField> {
             : widget.suffixIcon,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(13.31.r),
-          borderSide: BorderSide(color: AppColors.lightGrey, width: 0.95.w),
+          borderSide: BorderSide(color: AppColors.textFieldGrey, width: 0.95.w),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.lightGrey, width: 0.95.w),
+          borderSide: BorderSide(color: AppColors.textFieldGrey, width: 0.95.w),
           borderRadius: BorderRadius.circular(13.31.r),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.lightGrey, width: 0.95.w),
+          borderSide: BorderSide(color: AppColors.textFieldGrey, width: 0.95.w),
           borderRadius: BorderRadius.circular(13.31.r),
         ),
+        contentPadding: widget.contentPadding,
       ),
       validator: widget.validator,
       onChanged: widget.onChanged,

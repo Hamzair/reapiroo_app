@@ -33,7 +33,7 @@ class _TechSignupState extends State<TechSignup> {
   List<String> name = [
     "Personal",
     "Services",
-    "Details",
+    " Details ",
     "Documents",
   ];
 
@@ -88,8 +88,9 @@ class _TechSignupState extends State<TechSignup> {
           child: Column(
             children: [
               Container(
+                margin: EdgeInsets.only(top: 20.h),
                   width: double.infinity,
-                  height: 45.h,
+                  height: 35.h,
                   padding: EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     color: AppColors.primary,
@@ -109,8 +110,8 @@ class _TechSignupState extends State<TechSignup> {
                                 techController.selectedIndex.value = index[val];
                               },
                               child: Container(
-                                width: 77.5.w,
-                                padding: EdgeInsets.symmetric(vertical: 5.h),
+                                // width: 75.w,
+                                padding: EdgeInsets.symmetric( horizontal: 15.w),
                                 decoration: BoxDecoration(
                                   color: techController.selectedIndex.value ==
                                           index[val]

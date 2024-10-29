@@ -51,7 +51,7 @@ class BookingCard extends StatelessWidget {
                 child: Center(
                   child: Text('In Progress',style: jost600(
                       10.56.sp,
-                      AppColors.primary,
+                      AppColors.darkGrey,
                   ),
                   ),
                 ),
@@ -70,7 +70,7 @@ class BookingCard extends StatelessWidget {
                 child: Center(
                   child: Text('Plumbing',style: jost600(
                       10.56.sp,
-                      AppColors.primary,
+                      AppColors.darkGrey,
                   ),
                   ),
                 ),
@@ -85,43 +85,60 @@ class BookingCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          name,
-                          style: jost600(16.sp, AppColors.buttontext),
-                        ),
-                        SizedBox(height: 4.h),
-                        Row(
-                          children: [
-                            Image.asset(
-                              AppImages.pinlocation, // Replace with your pin location icon path
-                              height: 12.h,
-                              width: 8.w,
-                            ),
-                            SizedBox(width: 4.w),
-                            Text(
-                              location,
-                              style: jost400(11.sp, AppColors.buttontext),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 180,
-                          child: Text(
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            description,
-                            style: jost400(9.sp, AppColors.buttontext),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                name,
+                                style:
+                                jost600(18.sp, AppColors.secondary),
+                              ),
+                              Text(
+                                "ID #2145",
+                                style:
+                                jost600(12.sp, AppColors.secondary),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 4.h),
+                          Row(
+                            children: [
+                              Image.asset(
+                                AppImages.pinlocation, // Replace with your pin location icon path
+                                height: 12.h,
+                                width: 8.w,
+                              ),
+                              SizedBox(width: 4.w),
+                              Text(
+                                location,
+                                style: jost400(11.sp, AppColors.buttontext),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 180,
+                            child: Text(
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              description,
+                              style: jost400(9.sp, AppColors.buttontext),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Image.asset(
-                      imagePath,
-                      height: 82.h,
-                      width: 94.w,
+                    Padding(
+                      padding: EdgeInsets.only(left: 16.w),
+                      child: Image.asset(
+                        imagePath,
+                        height: 82.h,
+                        width: 94.w,
+                      ),
                     ),
                   ],
                 ),
@@ -129,13 +146,13 @@ class BookingCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Date and Time Container
+                    /// Date and Time Container
                     Container(
                       height: 35.h,
                       width: 195.w,
                       decoration: BoxDecoration(
                         color: AppColors.secondary,
-                        borderRadius: BorderRadius.circular(14.r),
+                        borderRadius: BorderRadius.circular(12.r),
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.w),
@@ -152,7 +169,7 @@ class BookingCard extends StatelessWidget {
                                 SizedBox(width: 3.w),
                                 Text(
                                   date,
-                                  style: jost600(10.85.sp, AppColors.primary),
+                                  style: jost600(10.85.sp, AppColors.darkGrey),
                                 ),
                               ],
                             ),
@@ -166,7 +183,7 @@ class BookingCard extends StatelessWidget {
                                 SizedBox(width: 3.w),
                                 Text(
                                   time,
-                                  style: jost600(10.85.sp, AppColors.primary),
+                                  style: jost600(10.85.sp, AppColors.darkGrey),
                                 ),
                               ],
                             ),
@@ -174,7 +191,7 @@ class BookingCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // View Container
+                    /// View Container
                     GestureDetector(
                       onTap: () {
                         Get.to(TaskDescriptionHome(comingFrom: "booking",));
@@ -184,7 +201,7 @@ class BookingCard extends StatelessWidget {
                         width: 94.w,
                         decoration: BoxDecoration(
                           color: AppColors.secondary,
-                          borderRadius: BorderRadius.circular(14.r),
+                          borderRadius: BorderRadius.circular(12.r),
                         ),
                         child: Center(
                           child: Text(

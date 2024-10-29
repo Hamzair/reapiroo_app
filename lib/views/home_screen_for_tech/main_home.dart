@@ -166,7 +166,7 @@ class _MainHomeState extends State<MainHome> {
                               ],
                             ),
                             SizedBox(
-                              height: 13.h,
+                              height: 6.h,
                             ),
                             Text(
                               "79.00 AED",
@@ -236,7 +236,7 @@ class _MainHomeState extends State<MainHome> {
                   ),
                 ),
                 SizedBox(
-                  height: 14.h,
+                  height: 10.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -387,7 +387,11 @@ class _MainHomeState extends State<MainHome> {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.primary,
-                    borderRadius: BorderRadius.circular(12.w),
+                    borderRadius: BorderRadius.circular(12.r),
+                    border: Border.all(
+                      color: Colors.transparent,
+                      width: 0,
+                    )
                   ),
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
                     Row(
@@ -398,10 +402,10 @@ class _MainHomeState extends State<MainHome> {
                           height: 21.h,
                           width: 108.w,
                           decoration: BoxDecoration(
-                              color: AppColors.textFieldGrey,
+                              color: AppColors.containerLightGrey,
                               borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(12.w),
-                                bottomRight: Radius.circular(12.w),
+                                topLeft: Radius.circular(10.5.r),
+                                bottomRight: Radius.circular(10.5.r),
                               )),
                           alignment: Alignment.center,
                           child: Text(
@@ -413,10 +417,10 @@ class _MainHomeState extends State<MainHome> {
                           height: 21.h,
                           width: 108.w,
                           decoration: BoxDecoration(
-                              color: AppColors.textFieldGrey,
+                              color: AppColors.containerLightGrey,
                               borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(12.w),
-                                bottomLeft: Radius.circular(12.w),
+                                topRight: Radius.circular(10.5.r),
+                                bottomLeft: Radius.circular(10.5.r),
                               )),
                           alignment: Alignment.center,
                           child: Text(
@@ -427,11 +431,11 @@ class _MainHomeState extends State<MainHome> {
                       ],
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 7.h,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 14.w,
+                        horizontal: 10.w,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -477,13 +481,15 @@ class _MainHomeState extends State<MainHome> {
                                 SizedBox(
                                   height: 6.h,
                                 ),
-                                SizedBox(
-                                    width: 174.w,
-                                    child: Text(
-                                      "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
-                                      style: montserrat(9.sp,
-                                          AppColors.secondary, FontWeight.w300),
-                                    )),
+                                Text(
+                                  "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 9.sp,
+                                    fontWeight: FontWeight.w300,
+                                    color: AppColors.secondary,
+                                    height: 1,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -494,7 +500,7 @@ class _MainHomeState extends State<MainHome> {
                             height: 82.h,
                             width: 92.w,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.w),
+                                borderRadius: BorderRadius.circular(12.r),
                                 image: DecorationImage(
                                     image: AssetImage(AppImages.jared_hughs),
                                     fit: BoxFit.contain)),
@@ -503,11 +509,11 @@ class _MainHomeState extends State<MainHome> {
                       ),
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 9.h,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 14.w,
+                        horizontal: 10.w,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -519,7 +525,7 @@ class _MainHomeState extends State<MainHome> {
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(14.w),
+                              borderRadius: BorderRadius.circular(12.r),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -534,7 +540,7 @@ class _MainHomeState extends State<MainHome> {
                                       Text(
                                         "Mon, Dec 23",
                                         style: montserrat600(
-                                            11.sp, AppColors.primary),
+                                            11.sp, AppColors.darkGrey),
                                       ),
                                     ],
                                   ),
@@ -552,7 +558,7 @@ class _MainHomeState extends State<MainHome> {
                                       Text(
                                         "12:00",
                                         style: montserrat600(
-                                            11.sp, AppColors.primary),
+                                            11.sp, AppColors.darkGrey),
                                       ),
                                     ],
                                   ),
@@ -575,7 +581,7 @@ class _MainHomeState extends State<MainHome> {
                                 //  padding: EdgeInsets.symmetric(vertical: 12.h),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(14.w),
+                                  borderRadius: BorderRadius.circular(12.r),
                                 ),
                                 alignment: Alignment.center,
                                 child: Text(
@@ -589,34 +595,13 @@ class _MainHomeState extends State<MainHome> {
                       ),
                     ),
                     SizedBox(
-                      height: 16.h,
+                      height: 10.h,
                     )
                   ]),
                 ),
                 SizedBox(
                   height: 18.h,
                 ),
-                // MasonryGridView.count(
-                //   shrinkWrap: true,
-                //   padding: EdgeInsets.zero,
-                //   physics: NeverScrollableScrollPhysics(),
-                //   crossAxisCount: 2, // Number of items in a row
-                //   mainAxisSpacing: 20.w, // Vertical spacing between items
-                //   crossAxisSpacing: 20.w, // Horizontal spacing between items
-                //   itemCount: dummy.length, // Number of items
-                //   itemBuilder: (context, index) {
-                //     return CustomBox(
-                //       image: dummy[index]["image"],
-                //       title: dummy[index]["title"],
-                //       value: dummy[index]["value"],
-                //     );
-                //   },
-                // ),
-
-                // Wrap(
-                // spacing: 8.0,
-                // runSpacing: 8.0,
-                // children: List.generate(role.length, (index) {}
                 SizedBox(
                   height: 16.h,
                 ),

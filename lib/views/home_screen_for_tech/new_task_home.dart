@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
@@ -56,7 +57,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.primary,
-                    borderRadius: BorderRadius.circular(13.r),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -70,14 +71,14 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                               decoration: BoxDecoration(
                                 color: Color.fromRGBO(239, 239, 239, 1),
                                 borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10.r,),
-                                  bottomRight: Radius.circular(10.r,),
+                                  topLeft: Radius.circular(10.5.r,),
+                                  bottomRight: Radius.circular(10.5.r,),
                                 ),
                               ),
                               child: Center(
                                 child: Text('New',style: jost600(
                                   10.56.sp,
-                                  AppColors.primary,
+                                  AppColors.darkGrey,
                                 ),
                                 ),
                               ),
@@ -96,7 +97,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                               child: Center(
                                 child: Text('Plumbing',style: jost600(
                                   10.56.sp,
-                                  AppColors.primary,
+                                  AppColors.darkGrey,
                                 ),
                                 ),
                               ),
@@ -105,7 +106,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                         ),
 
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 14.w,vertical: 8.h),
+                          padding: EdgeInsets.symmetric(horizontal: 13.w,vertical: 7.h),
                           child: Column(
                             children: [
                               Row(
@@ -152,23 +153,24 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                         SizedBox(
                                           height: 6.h,
                                         ),
-                                        SizedBox(
-                                            width: 174.w,
-                                            child: Text(
-                                              "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
-                                              style: montserrat(9.sp,
-                                                  AppColors.secondary, FontWeight.w300),
-                                            )),
+                                        Text(
+                                          "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 9.sp,
+                                            fontWeight: FontWeight.w300,
+                                            color: AppColors.secondary,
+                                            height: 1,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
-
                                   Container(
                                     margin: EdgeInsets.only(left: 16.w),
                                     height: 82.h,
                                     width: 98.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12.w),
+                                        borderRadius: BorderRadius.circular(12.r),
                                         image: DecorationImage(
                                             image: AssetImage(AppImages.jared_hughs),
                                             fit: BoxFit.fill)),
@@ -176,7 +178,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                 ],
                               ),
                               SizedBox(
-                                height: 10.h,
+                                height: 9.h,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -188,7 +190,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                         horizontal: 8.w,),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius: BorderRadius.circular(14.w),
+                                        borderRadius: BorderRadius.circular(12.r),
                                       ),
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -203,7 +205,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                                 Text(
                                                   "Mon, Dec 23",
                                                   style: montserrat600(
-                                                      11.sp, AppColors.primary),
+                                                      11.sp, AppColors.darkGrey),
                                                 ),
                                               ],
                                             ),
@@ -219,7 +221,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                                 Text(
                                                   "12:00",
                                                   style: montserrat600(
-                                                      11.sp, AppColors.primary),
+                                                      11.sp, AppColors.darkGrey),
                                                 ),
                                               ],
                                             ),
@@ -268,7 +270,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
 
                                 ],
                               ),
-                              SizedBox(height: 12.h),
+                              SizedBox(height: 10.h),
                               Container(
                                 alignment: Alignment.center,
                                 height: 189.h,
@@ -289,7 +291,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                               ),
                               SizedBox(height: 12.h),
                               AudioNote(),
-                              SizedBox(height: 8.h),
+                              SizedBox(height: 7.h),
                             ],
                           ),
                         ),

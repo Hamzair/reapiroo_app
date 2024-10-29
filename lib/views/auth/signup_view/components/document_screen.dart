@@ -66,16 +66,16 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
                       ),
                       subtitle: Text(documentNames[index],
                           style: jost400(16.sp, Color(0xff1F2937))),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 12.w),
                       trailing: selectedImagePaths[index] != null
                           ? GestureDetector(
                               onTap: () => _removeImage(index),
                               child: Icon(Icons.close, color: Colors.red),
                             )
                           : ElevatedButton(
-
                               onPressed: () => _openGallery(index),
                               style: ElevatedButton.styleFrom(
-                                minimumSize: Size(76.w,   30),
+                                minimumSize: Size(76.w,   30.h),
                                 backgroundColor: AppColors.primary,
 
                                 shape: RoundedRectangleBorder(
@@ -144,7 +144,7 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
             'Please make sure to submit the required things correctly so you don’t delay your approval.',
             style: jost600(15.17.sp, Color(0xff6B7280)),
           ),
-          SizedBox(height: 50.h,),
+          SizedBox(height: 88.h,),
           CustomElevatedButton(
             text: 'Next',
             textColor: AppColors.secondary,

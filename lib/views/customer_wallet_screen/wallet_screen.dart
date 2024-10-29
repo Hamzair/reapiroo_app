@@ -158,8 +158,8 @@ class WalletScreen extends StatelessWidget {
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        width: 40.w,
-                        height: 40.h,
+                        width: 28.1.w,
+                        height: 28.1.h,
                         decoration: BoxDecoration(
                             color: AppColors.primary,
                             shape: BoxShape.circle,
@@ -180,21 +180,21 @@ class WalletScreen extends StatelessWidget {
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        width: 40.w,
-                        height: 40.h,
+                        width: 28.1.w,
+                        height: 28.1.h,
                         decoration: BoxDecoration(
                             color: AppColors.primary,
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage(AppImages.arrow_down),
+                              image: AssetImage(AppImages.arrow_right),
                               scale: 4,
                             )),
                       ),
                       title: Text(
-                        'Credit',
+                        'Transfer',
                         style: jost400(13.17, AppColors.primary),
                       ),
-                      subtitle: Text('From Starbucks',
+                      subtitle: Text('To Starbucks',
                           style: jost400(12.17, AppColors.buttonGrey)),
                       trailing:
                           Text('\$ 3,110', style: jost500(14.17, AppColors.primary)),
@@ -209,13 +209,13 @@ class WalletScreen extends StatelessWidget {
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        width: 40.w,
-                        height: 40.h,
+                        width: 28.1.w,
+                        height: 28.1.h,
                         decoration: BoxDecoration(
                             color: AppColors.primary,
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage(AppImages.arrow_down),
+                              image: AssetImage(AppImages.arrow_right),
                               scale: 4,
                             )),
                       ),
@@ -223,7 +223,29 @@ class WalletScreen extends StatelessWidget {
                         'Transfer',
                         style: jost400(13.17, AppColors.primary),
                       ),
-                      subtitle: Text('From Starbucks',
+                      subtitle: Text('To Starbucks',
+                          style: jost400(12.17, AppColors.buttonGrey)),
+                      trailing:
+                          Text('\$ 3,110', style: jost500(14.17, AppColors.primary)),
+                    ),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      leading: Container(
+                        width: 28.1.w,
+                        height: 28.1.h,
+                        decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage(AppImages.arrow_right),
+                              scale: 4,
+                            )),
+                      ),
+                      title: Text(
+                        'Transfer',
+                        style: jost400(13.17, AppColors.primary),
+                      ),
+                      subtitle: Text('To Starbucks',
                           style: jost400(12.17, AppColors.buttonGrey)),
                       trailing:
                           Text('\$ 3,110', style: jost500(14.17, AppColors.primary)),

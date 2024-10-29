@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
@@ -68,7 +69,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                   padding: EdgeInsets.only(bottom: 16.h),
                   decoration: BoxDecoration(
                     color: AppColors.primary,
-                    borderRadius: BorderRadius.circular(12.w),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
                     Row(
@@ -79,10 +80,10 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                           height: 21.h,
                           width: 108.w,
                           decoration: BoxDecoration(
-                              color: AppColors.textFieldGrey,
+                              color: AppColors.containerLightGrey,
                               borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(12.w),
-                                bottomRight: Radius.circular(12.w),
+                                topLeft: Radius.circular(10.5.r),
+                                bottomRight: Radius.circular(10.5.r),
                               )),
                           alignment: Alignment.center,
                           child: Text(
@@ -94,10 +95,10 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                           height: 21.h,
                           width: 108.w,
                           decoration: BoxDecoration(
-                              color: AppColors.textFieldGrey,
+                              color: AppColors.containerLightGrey,
                               borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(12.w),
-                                bottomLeft: Radius.circular(12.w),
+                                topRight: Radius.circular(10.5.r),
+                                bottomLeft: Radius.circular(10.5.r),
                               )),
                           alignment: Alignment.center,
                           child: Text(
@@ -108,11 +109,11 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                       ],
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 7.h,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 14.w,
+                        horizontal: 13.w,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -158,13 +159,15 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                 SizedBox(
                                   height: 6.h,
                                 ),
-                                SizedBox(
-                                    width: 174.w,
-                                    child: Text(
-                                      "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
-                                      style: montserrat(9.sp,
-                                          AppColors.secondary, FontWeight.w300),
-                                    )),
+                                Text(
+                                  "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 9.sp,
+                                    fontWeight: FontWeight.w300,
+                                    color: AppColors.secondary,
+                                    height: 1.2.h,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -198,8 +201,12 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 8.w,),
                               decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(14.w),
+                                color: AppColors.secondary,
+                                borderRadius: BorderRadius.circular(12.r),
+                                border: Border.all(
+                                  color: Colors.transparent,
+                                  width: 0
+                                )
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -214,7 +221,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                         Text(
                                           "Mon, Dec 23",
                                           style: montserrat600(
-                                              11.sp, AppColors.primary),
+                                              11.sp, AppColors.darkGrey),
                                         ),
                                       ],
                                     ),
@@ -230,7 +237,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                         Text(
                                           "12:00",
                                           style: montserrat600(
-                                              11.sp, AppColors.primary),
+                                              11.sp, AppColors.darkGrey),
                                         ),
                                       ],
                                     ),
@@ -441,7 +448,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               margin: EdgeInsets.only(left: 16.w),
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(14.w),
+                                borderRadius: BorderRadius.circular(12.w),
                               ),
                               alignment: Alignment.center,
                               child: Text(
@@ -458,25 +465,48 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                       height: 10.h,
                     ),
                     /// Video Player
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 14.w),
-                      alignment: Alignment.center,
-                      height: 189.h,
-                      decoration: BoxDecoration(
-                        color: AppColors.primary,
-
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12.r), // Match the container's radius
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9, // Replace this with your video’s actual aspect ratio
-                          child: VideoPlayer(
-                            videoUrl: 'assets/video/videotest.mp4',
+                    Stack(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 14.w),
+                          alignment: Alignment.center,
+                          height: 189.h,
+                          decoration: BoxDecoration(
+                            color: AppColors.primary,
+                          ),
+                          clipBehavior: Clip.hardEdge,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12.r), // Match the container's radius
+                            child: AspectRatio(
+                              aspectRatio: 16 / 9, // Replace this with your video’s actual aspect ratio
+                              child: VideoPlayer(
+                                videoUrl: 'assets/video/videotest.mp4',
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        Positioned(
+                          top: 4.h,
+                          left: 14.w,
+                          child: Container(
+                            height: 28.h,
+                            width: 68.w,
+                            decoration: BoxDecoration(
+                                color: AppColors.containerLightGrey,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10.5.w),
+                                  bottomRight: Radius.circular(10.5.w),
+                                )),
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Video",
+                              style: montserrat400(11.sp, AppColors.primary),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+
                     SizedBox(
                       height: 19.h,
                     ),

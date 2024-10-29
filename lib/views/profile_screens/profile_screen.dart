@@ -131,7 +131,7 @@ class _EditProfileScreenState extends State<ProfileScreen> {
                       label: "Bio and Experience",
                       iconPath: AppImages.bagicon,
                     ),
-              // SizedBox(height: 10.h),
+              SizedBox(height: 10.h),
  userVM.userRole.value == "Customer"
                   ? SizedBox.shrink()
                   : ProfileButton(

@@ -32,7 +32,7 @@ class PendingApproval extends StatelessWidget {
             Text(
               textAlign: TextAlign.center,
               'Thank you for registering with Repairoo. A member of the team will approve your request shortly.',
-              style: jost400(20.sp, Color(0xff6B7280)),
+              style: jost400(20.sp, Color(0xff656F77)),
             ),
             SizedBox(
               height: 80.h,

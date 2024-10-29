@@ -50,7 +50,7 @@ class ReportsScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               CircleAvatar(
-                                radius: 22.r,
+                                radius: 25.r,
                                 backgroundImage: AssetImage(AppImages.today_appointment),
                               ),
                               Spacer(),
@@ -88,7 +88,7 @@ class ReportsScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               CircleAvatar(
-                                radius: 22.r,
+                                radius: 25.r,
                                 backgroundImage: AssetImage(AppImages.happy_customers),
                               ),
                               Spacer(),
@@ -130,7 +130,7 @@ class ReportsScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               CircleAvatar(
-                                radius: 22.r,
+                                radius: 25.r,
                                 backgroundImage: AssetImage(AppImages.jobs_completed),
                               ),
                               Spacer(),
@@ -165,7 +165,7 @@ class ReportsScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               CircleAvatar(
-                                radius: 22.r,
+                                radius: 25.r,
                                 backgroundImage: AssetImage(AppImages.total_earned),
                               ),
                               Spacer(),

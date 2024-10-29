@@ -88,7 +88,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                 SizedBox(height: 26.h),
                 /// Rating container
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 8.h),
                   decoration: BoxDecoration(
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(14.r),
@@ -100,7 +100,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                         children: List.generate(
                           5,
                               (index) => Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                                padding: EdgeInsets.symmetric(horizontal: 7.w),
                                 child: Icon(
                                                             index < 4
                                   ? FontAwesomeIcons.solidStar  // Example: solid star icon
@@ -112,7 +112,6 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                         ),
                       ),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
                             '4 out of 5',
@@ -140,7 +139,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                   width: 87.w,
                   decoration: BoxDecoration(
                     color: AppColors.primary,
-                    borderRadius: BorderRadius.circular(8.r), // Apply border radius here
+                    borderRadius: BorderRadius.circular(9.r), // Apply border radius here
                   ),
                   child: Padding(
                     padding:  EdgeInsets.symmetric(horizontal: 8.w),

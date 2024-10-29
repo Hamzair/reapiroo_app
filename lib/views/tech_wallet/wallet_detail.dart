@@ -2,14 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/text_styles.dart';
-
 import '../../const/color.dart';
 import '../../widgets/app_bars.dart';
 
 class WalletDetail extends StatelessWidget {
-  const WalletDetail({super.key});
+  final String bankName;
+  final String name;
+  final String iban;
+  final String accNumber;
+  final String bankImage;
+
+  const WalletDetail({ required this.bankName,
+    required this.name,
+    required this.iban,
+    required this.bankImage,
+    required this.accNumber,});
 
   @override
   Widget build(BuildContext context) {
@@ -32,38 +40,45 @@ class WalletDetail extends StatelessWidget {
             children: [
               SizedBox(height: 24.h,),
               Row(
-
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    decoration: BoxDecoration(border: Border.all(color: AppColors.primary,width: 1),borderRadius:BorderRadius.circular(12.r) ),
-                    height: 75.h,
-                    width: 108.w,
-                    child: Image.asset(AppImages.bank),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.primary, width: 1.w),
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    height: 85.h,
+                    width: 101.w,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12.r), // Apply border radius to the image
+                      child: Image.asset(
+                        bankImage,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
+
                   SizedBox(width: 8.w,),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text('$bankName',style: jost600(14.sp, AppColors.primary)),
 
-                      Text('ADCB',style: jost600(14.sp, AppColors.primary)),
+                      Text("$name",style: jost600(19.sp, AppColors.primary),),
 
-                      Text("Muhammad Ali",style: jost600(19.sp, AppColors.primary),),
+                      Text("$iban",style: jost600(12.sp, AppColors.primary),),
 
-                      Text("AE07 0331 2345 6789 0123 456",style: jost600(12.sp, AppColors.primary),),
-
-                      Text("1234567890123456",style: jost600(12.sp, AppColors.primary),),
-
-
+                      Text("$accNumber",style: jost600(12.sp, AppColors.primary),),
                     ],
                   ),
+                  Spacer(),
                   Container(
                     height: 35.h,
                     width: 35.w,
-                    decoration: BoxDecoration(color: AppColors.primary,borderRadius: BorderRadius.circular(13.r),),
+                    decoration: BoxDecoration(color: AppColors.primary,borderRadius: BorderRadius.circular(12.r),),
                     child: Padding(
                       padding: const EdgeInsets.all(5.0),
-                      child: Image.asset(AppImages.editicon),
+                      child: Image.asset("assets/images/editicon.png"),
                     ),
                   )
 
@@ -71,8 +86,8 @@ class WalletDetail extends StatelessWidget {
               ),
               SizedBox(height: 18.h,),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 22.w,vertical: 14.h),
-                // height: 101.h,
+                padding: EdgeInsets.fromLTRB(31.w, 17.h, 31.w ,0),
+                height: 101.h,
                 width: 350.w,
                 decoration: BoxDecoration(
                     color: AppColors.primary,
@@ -85,6 +100,7 @@ class WalletDetail extends StatelessWidget {
                     Column(
                       children: [
                         Text("Total",style: jost600(14.sp, AppColors.secondary),),
+                        SizedBox(height: 6.h,),
                         Text("79.00",style: jost700(18.sp, AppColors.secondary),),
                         Text("AED",style: jost600(14.sp, AppColors.secondary),),
                       ],
@@ -109,6 +125,7 @@ class WalletDetail extends StatelessWidget {
                     Column(
                       children: [
                         Text("Pending",style: jost600(14.sp, AppColors.secondary),),
+                        SizedBox(height: 6.h,),
                         Text("79.00",style: jost700(18.sp, AppColors.secondary),),
                         Text("AED",style: jost600(14.sp, AppColors.secondary),),
                       ],
@@ -132,8 +149,10 @@ class WalletDetail extends StatelessWidget {
                     Column(
                       children: [
                         Text("Available",style: jost600(14.sp, AppColors.secondary),),
+                        SizedBox(height: 6.h,),
                         Text("79.00",style: jost700(18.sp, AppColors.secondary),),
                         Text("AED",style: jost600(14.sp, AppColors.secondary),),
+
                       ],
                     )
                   ],
@@ -143,35 +162,40 @@ class WalletDetail extends StatelessWidget {
               Text("- Withdrawals will be made Twice a week on Monday and Thursday- Total Balance : Net Balance after deducting our fees 10% from each order.- Note: Amount is being held for 7 days to make sure everything works smooth for both tech and user.",style:jost400(11.sp, AppColors.primary) ,),
               SizedBox(height: 14.h,),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 11.h,horizontal: 20.w),
-                // height: 61.h,
+                height: 61.h,
                 width: 304.w,
                 decoration: BoxDecoration(
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(12.4.r),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-
-                    Column(
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 47.w), // Adjust padding as needed
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween, // Spread items within the padding
                       children: [
-                        Image.asset(AppImages.withdraw,scale:3,),
-                        SizedBox(height: 4.h,),
-                        Text("Withdraw",style: jost400(12.sp, AppColors.secondary),)
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset("assets/images/withdraw.png", scale: 3),
+                            SizedBox(height: 4.h),
+                            Text("Withdraw", style: jost400(12.sp, AppColors.secondary)),
+                          ],
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset("assets/images/history.png", scale: 3),
+                            SizedBox(height: 4.h),
+                            Text("History", style: jost400(12.sp, AppColors.secondary)),
+                          ],
+                        ),
                       ],
                     ),
-                    Column(
-                      children: [
-                        Image.asset(AppImages.history,scale:3,),
-                        SizedBox(height: 4.h,),
-
-                        Text("History",style: jost400(12.sp, AppColors.secondary),)
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
               ),
+
               SizedBox(height: 14.h,),
               Align(
                   alignment: AlignmentDirectional.topStart,
@@ -188,13 +212,13 @@ class WalletDetail extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        width: 40.w,
-                        height: 40.h,
+                        width: 28.1.w,
+                        height: 28.1.h,
                         decoration: BoxDecoration(
                             color: AppColors.primary,
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage(AppImages.arrow_down),
+                              image: AssetImage("assets/images/arrow_down_wallet.png"),
                               scale: 4,
                             )),
                       ),
@@ -219,13 +243,13 @@ class WalletDetail extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        width: 40.w,
-                        height: 40.h,
+                        width: 28.1.w,
+                        height: 28.1.h,
                         decoration: BoxDecoration(
                             color: AppColors.primary,
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage(AppImages.arrow_right),
+                              image: AssetImage("assets/images/arrow_left_wallet.png"),
                               scale: 4,
                             )),
                       ),
@@ -254,13 +278,13 @@ class WalletDetail extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        width: 40.w,
-                        height: 40.h,
+                        width: 28.1.w,
+                        height: 28.1.h,
                         decoration: BoxDecoration(
                             color: AppColors.primary,
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: AssetImage(AppImages.arrow_right),
+                              image: AssetImage("assets/images/arrow_left_wallet.png"),
                               scale: 4,
                             )),
                       ),
