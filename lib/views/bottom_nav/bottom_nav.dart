@@ -12,6 +12,7 @@ import 'package:repairoo/views/profile_screens/profile_screen.dart';
 
 import '../../const/images.dart';
 import '../../controllers/nav_bar_controller.dart';
+import '../../widgets/drawer.dart';
 
 class AppNavBar extends StatefulWidget {
   const AppNavBar({super.key});
@@ -65,6 +66,8 @@ class _AppNavBarState extends State<AppNavBar> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       key: navBarController.scaffoldKey,
+      drawer: const MyDrawer(),
+
       body: PageView(
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
@@ -74,6 +77,7 @@ class _AppNavBarState extends State<AppNavBar> {
         ),
       ),
       extendBody: true,
+
       bottomNavigationBar: AnimatedNotchBottomBar(
         showBlurBottomBar: false,
         showShadow: false,
@@ -99,12 +103,18 @@ class _AppNavBarState extends State<AppNavBar> {
             inActiveItem: Image.asset(AppImages.homeicon),
             activeItem: Image.asset(
               AppImages.homeicon,
+              fit: BoxFit.contain,
+
+              alignment: Alignment.center,
             ),
             itemLabel: 'Home'.tr,
           ),
           BottomBarItem(
             inActiveItem: Image.asset(AppImages.bookingicon),
             activeItem: Image.asset(
+              fit: BoxFit.contain,
+              alignment: Alignment.center,
+
               AppImages.bookingicon,
             ),
             itemLabel: 'Request'.tr,
@@ -112,6 +122,9 @@ class _AppNavBarState extends State<AppNavBar> {
           BottomBarItem(
             inActiveItem: Image.asset(AppImages.chaticon),
             activeItem: Image.asset(
+              alignment: Alignment.center,
+              fit: BoxFit.contain,
+
               AppImages.chaticon,
             ),
             itemLabel: 'Chat'.tr,
@@ -119,6 +132,9 @@ class _AppNavBarState extends State<AppNavBar> {
           BottomBarItem(
             inActiveItem: Image.asset(AppImages.profileicon),
             activeItem: Image.asset(
+              alignment: Alignment.center,
+              fit: BoxFit.contain,
+
               AppImages.profileicon,
             ),
             itemLabel: 'Profile'.tr,

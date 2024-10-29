@@ -5,7 +5,9 @@ import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/controllers/nav_bar_controller.dart';
 import 'package:repairoo/controllers/user_controller.dart';
+import 'package:repairoo/views/auth/signup_view/role_screen.dart';
 import 'package:repairoo/views/customer_wallet_screen/wallet_screen.dart';
 import 'package:repairoo/views/profile_screens/bio_and_experience/bio_and_experience_main.dart';
 import 'package:repairoo/views/profile_screens/edit_profile_screen.dart';
@@ -32,6 +34,8 @@ class _EditProfileScreenState extends State<ProfileScreen> {
   final TextEditingController lastname = TextEditingController();
   final TextEditingController email = TextEditingController();
   final UserController userVM = Get.put(UserController());
+  final NavBarController navBarController = Get.find<NavBarController>();
+
 
   @override
   void dispose() {
@@ -51,6 +55,9 @@ class _EditProfileScreenState extends State<ProfileScreen> {
       },
       child: Scaffold(
         appBar: MyAppBar(
+          onMenuTap: () {
+            navBarController.openDrawer(context);
+          },
           isMenu: true,
           isNotification: false,
           isTitle: true,
@@ -183,23 +190,28 @@ class _EditProfileScreenState extends State<ProfileScreen> {
                   ,
 
               SizedBox(height: 30.h),
-              userVM.userRole.value == "Customer"?       Padding(
-                padding: EdgeInsets.symmetric(horizontal: 21.w),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      AppImages.logout,
-                      height: 25.h,
-                      width: 25.w,
-                    ),
-                    SizedBox(
-                      width: 15.w,
-                    ),
-                    Text(
-                      'Logout',
-                      style: jost500(16.sp, AppColors.primary),
-                    )
-                  ],
+              userVM.userRole.value == "Customer"?       GestureDetector(
+                onTap: () {
+                  Get.offAll(RoleScreen());
+                },
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 21.w),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        AppImages.logout,
+                        height: 25.h,
+                        width: 25.w,
+                      ),
+                      SizedBox(
+                        width: 15.w,
+                      ),
+                      Text(
+                        'Logout',
+                        style: jost500(16.sp, AppColors.primary),
+                      )
+                    ],
+                  ),
                 ),
               ):SizedBox.shrink(),
 

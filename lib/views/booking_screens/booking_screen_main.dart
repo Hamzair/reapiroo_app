@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/controllers/nav_bar_controller.dart';
 import 'package:repairoo/views/booking_screens/today_screen_content.dart'; // Ensure you have this file created with TodayContent
 import 'package:repairoo/widgets/app_bars.dart';
 
@@ -14,11 +16,15 @@ class BookingScreenMain extends StatefulWidget {
 
 class _BookingScreenMainState extends State<BookingScreenMain> {
   String? selectedOption = 'In Progress'; // Default to "In Progress"
+  final NavBarController navBarController = Get.find<NavBarController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
+        onMenuTap: () {
+          navBarController.openDrawer(context);
+        },
         isMenu: true,
         isNotification: true,
         isTitle: true,

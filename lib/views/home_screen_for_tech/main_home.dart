@@ -9,6 +9,7 @@ import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/controllers/nav_bar_controller.dart';
 import 'package:repairoo/controllers/user_controller.dart';
 import 'package:repairoo/views/home_screen_for_tech/components/announcement_containers.dart';
 import 'package:repairoo/views/home_screen_for_tech/task_description_home.dart';
@@ -28,6 +29,8 @@ class MainHome extends StatefulWidget {
 class _MainHomeState extends State<MainHome> {
   final TechHomeController homeVM = Get.find<TechHomeController>();
   final UserController userVM = Get.find<UserController>();
+  final NavBarController navBarController = Get.find<NavBarController>();
+
   String? selectedOption = 'Nearest'; // Default to "In Progress"
   String? serviceOption = 'Plumbing'; // Default to "In Progress"
 
@@ -58,6 +61,9 @@ class _MainHomeState extends State<MainHome> {
     return Scaffold(
       backgroundColor: AppColors.secondary,
       appBar: MyAppBar(
+        onMenuTap: () {
+          navBarController.openDrawer(context);
+        },
         isMenu: true,
         isNotification: true,
         isTitle: false,

@@ -5,13 +5,20 @@ import 'package:repairoo/const/color.dart';
 import 'package:repairoo/views/chat_screens/chat_widget.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 
+import '../../controllers/nav_bar_controller.dart';
+
 class ChatsScreenMain extends StatelessWidget {
   const ChatsScreenMain({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final NavBarController navBarController = Get.find<NavBarController>();
+
     return Scaffold(
       appBar:  MyAppBar(
+        onMenuTap: () {
+          navBarController.openDrawer(context);
+        },
         isMenu: true,
         isNotification: true,
         isTitle: true,
