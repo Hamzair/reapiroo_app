@@ -102,7 +102,7 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
   async {
     initialDate ??= DateTime.now();
     firstDate ??= initialDate.subtract(const Duration(days: 365 * 100));
-    lastDate ??= firstDate.add(const Duration(days: 365 * 200));
+    lastDate ??= initialDate.add(const Duration(days: 3)); // Restrict to 3 days ahead
 
     // Show time picker first with theme
     final TimeOfDay? selectedTime = await showTimePicker(
@@ -469,11 +469,12 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Select Time"),
+                        Text( getFormattedDateTime(), // Display formatted date and time
+                         ),
                         Row(
                           children: [
                             GestureDetector(
-                              onTap: () => showDateTimePicker(context: context),
+                              onTap: () => _pickDateTime(),
                               child: Container(
                                 width: 73.w,
                                 height: 30.h,
@@ -679,8 +680,10 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
                     ),
                   ),
                   CustomInputField(
+                    maxLines: 4,
                     controller: task,
-                    label: "Describe your task",
+                    hintText: 'Describe your task',
+
                   ),
                   SizedBox(
                     height: 72.h,

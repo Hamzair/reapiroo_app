@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/views/auth/login_view/login_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../const/color.dart';
@@ -80,8 +81,14 @@ class _MainOnBoardingViewState extends State<MainOnBoardingView> {
                     controller: pageController,
                     count: 5,
                   ),
+                  SizedBox(width: 8.w,),
 
                   // Arrow button with circular progress
+                  GestureDetector(
+                      onTap: () {
+                        Get.to(LoginScreen());
+                      },
+                      child: Text('Skip',style: jost500(18.sp, AppColors.secondary),)),
                   GestureDetector(
                     onTap: () {
                       _moveToNextPage();
