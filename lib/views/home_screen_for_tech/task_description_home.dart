@@ -87,7 +87,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               )),
                           alignment: Alignment.center,
                           child: Text(
-                            "New",
+                            "In Progress",
                             style: montserrat600(11.sp, AppColors.primary),
                           ),
                         ),
@@ -124,18 +124,48 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "Jared Hughs",
-                                      style:
-                                      jost600(18.sp, AppColors.secondary),
+                                    SizedBox(
+                                        height: 60.h,
+                                        width: 60.w,
+                                        child: Image.asset(
+                                          AppImages.saraprofile,
+                                        )),
+                                    SizedBox(
+                                      width: 10.w,
                                     ),
-                                    Text(
-                                      "ID #2145",
-                                      style:
-                                      jost600(12.sp, AppColors.secondary),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Jared Hughs",
+                                          style: jost600(
+                                              18.sp, AppColors.secondary),
+                                        ),
+                                        Text(
+                                          "ID #2145",
+                                          style: jost600(
+                                              12.sp, AppColors.secondary),
+                                        ),
+                                        Row(
+
+                                          children: [
+                                            SizedBox(
+                                                height: 18.h,
+                                                width: 18.w,
+                                                child: Image.asset(
+                                                    AppImages.star)),
+                                            SizedBox(width: 5.w,),
+                                            Text(
+                                              "4 (15)",
+                                              style: jost600(
+                                                  12.sp, AppColors.secondary),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -145,7 +175,11 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Image.asset(AppImages.pinlocation, width: 15.w, height: 15.h,),
+                                    Image.asset(
+                                      AppImages.pinlocation,
+                                      width: 15.w,
+                                      height: 15.h,
+                                    ),
                                     SizedBox(
                                       width: 3.w,
                                     ),
@@ -171,10 +205,9 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               ],
                             ),
                           ),
-
                           Container(
                             margin: EdgeInsets.only(left: 16.w),
-                            height: 82.h,
+                            height: 110.h,
                             width: 98.w,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.w),
@@ -199,17 +232,16 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                             child: Container(
                               height: 35.h,
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 8.w,),
-                              decoration: BoxDecoration(
-                                color: AppColors.secondary,
-                                borderRadius: BorderRadius.circular(12.r),
-                                border: Border.all(
-                                  color: Colors.transparent,
-                                  width: 0
-                                )
+                                horizontal: 8.w,
                               ),
+                              decoration: BoxDecoration(
+                                  color: AppColors.secondary,
+                                  borderRadius: BorderRadius.circular(12.r),
+                                  border: Border.all(
+                                      color: Colors.transparent, width: 0)),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   SizedBox(
                                     child: Row(
@@ -226,7 +258,6 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                       ],
                                     ),
                                   ),
-
                                   SizedBox(
                                     child: Row(
                                       children: [
@@ -246,24 +277,27 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               ),
                             ),
                           ),
-
                           GestureDetector(
                             onTap: () {
                               if (widget.comingFrom == "booking") {
                                 showDialog(
                                   context: context,
-                                  barrierDismissible: true, // Allows dialog dismissal on outside tap
+                                  barrierDismissible:
+                                      true, // Allows dialog dismissal on outside tap
                                   builder: (BuildContext context) {
                                     return Dialog(
                                       backgroundColor: Colors.transparent,
                                       insetPadding: EdgeInsets.all(16),
                                       child: Center(
                                         child: Container(
-                                          width: MediaQuery.of(context).size.width,
-                                          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 16.w, vertical: 24.h),
                                           decoration: BoxDecoration(
                                             color: Colors.white,
-                                            borderRadius: BorderRadius.circular(16.r),
+                                            borderRadius:
+                                                BorderRadius.circular(16.r),
                                           ),
                                           child: SparepartDialogueBox(),
                                         ),
@@ -274,14 +308,16 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               } else if (widget.comingFrom == "tech") {
                                 showDialog(
                                   context: context,
-                                  barrierDismissible: true, // Allows dialog dismissal on outside tap
+                                  barrierDismissible:
+                                      true, // Allows dialog dismissal on outside tap
                                   builder: (BuildContext context) {
                                     return AlertDialog(
                                       backgroundColor: AppColors.secondary,
                                       title: Center(
                                         child: Text(
                                           "Spare Parts",
-                                          style: jost700(18.sp, AppColors.primary),
+                                          style:
+                                              jost700(18.sp, AppColors.primary),
                                         ),
                                       ),
                                       content: SingleChildScrollView(
@@ -290,22 +326,30 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                           children: [
                                             Text(
                                               "James has purchased the spare part you requested, please check the invoice thoroughly and select how you would like to pay for it",
-                                              style: jost400(12.sp, AppColors.primary),
+                                              style: jost400(
+                                                  12.sp, AppColors.primary),
                                               textAlign: TextAlign.center,
                                             ),
                                             SizedBox(height: 20.h),
                                             SizedBox(
                                               height: 193.h,
                                               child: Stack(
-                                                alignment: Alignment.bottomCenter,
+                                                alignment:
+                                                    Alignment.bottomCenter,
                                                 children: [
-                                                  Image.asset(AppImages.invoice),
+                                                  Image.asset(
+                                                      AppImages.invoice),
                                                   CustomElevatedButton(
-                                                    borderSide: BorderSide(color: Color(0xffA6A6A6), width: 1),
+                                                    borderSide: BorderSide(
+                                                        color:
+                                                            Color(0xffA6A6A6),
+                                                        width: 1),
                                                     width: 90.w,
                                                     text: "Open",
-                                                    backgroundColor: Color(0xffDDDDDD),
-                                                    textColor: AppColors.primary,
+                                                    backgroundColor:
+                                                        Color(0xffDDDDDD),
+                                                    textColor:
+                                                        AppColors.primary,
                                                     fontSize: 19.sp,
                                                     onPressed: () {
                                                       Get.back();
@@ -317,98 +361,141 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                             SizedBox(height: 20.h),
                                             Text(
                                               "20 AED",
-                                              style: jost700(22.sp, AppColors.primary),
+                                              style: jost700(
+                                                  22.sp, AppColors.primary),
                                             )
                                           ],
                                         ),
                                       ),
                                       actions: [
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             CustomElevatedButton(
                                               width: 101.w,
                                               text: "Pay",
-                                              backgroundColor: AppColors.primary,
+                                              backgroundColor:
+                                                  AppColors.primary,
                                               textColor: AppColors.secondary,
                                               fontSize: 19.sp,
                                               onPressed: () {
                                                 Get.back();
                                                 showDialog(
                                                   context: context,
-                                                  barrierDismissible: true, // Allows dialog dismissal on outside tap
-                                                  builder: (BuildContext context) {
+                                                  barrierDismissible:
+                                                      true, // Allows dialog dismissal on outside tap
+                                                  builder:
+                                                      (BuildContext context) {
                                                     return AlertDialog(
-                                                      backgroundColor: AppColors.secondary,
+                                                      backgroundColor:
+                                                          AppColors.secondary,
                                                       title: Center(
                                                         child: Text(
                                                           "Leave a Review",
-                                                          style: jost700(18.sp, AppColors.primary),
+                                                          style: jost700(
+                                                              18.sp,
+                                                              AppColors
+                                                                  .primary),
                                                         ),
                                                       ),
                                                       content: Column(
-                                                        mainAxisSize: MainAxisSize.min,
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
                                                         children: [
                                                           Container(
-                                                            width: double.infinity,
+                                                            width:
+                                                                double.infinity,
                                                             height: 55.h,
-                                                            decoration: BoxDecoration(
-                                                              color: AppColors.primary,
-                                                              borderRadius: BorderRadius.circular(22.r),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: AppColors
+                                                                  .primary,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          22.r),
                                                             ),
                                                             child: Row(
                                                               children: [
                                                                 Row(
-                                                                  children: List.generate(
+                                                                  children: List
+                                                                      .generate(
                                                                     5,
-                                                                        (index) => Padding(
-                                                                      padding: EdgeInsets.symmetric(horizontal: 8.w),
-                                                                      child: Icon(
+                                                                    (index) =>
+                                                                        Padding(
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          horizontal:
+                                                                              8.w),
+                                                                      child:
+                                                                          Icon(
                                                                         index < 4
                                                                             ? Icons.star
                                                                             : Icons.star_border,
-                                                                        color: AppColors.goldenstar,
-                                                                        size: 20.w,
+                                                                        color: AppColors
+                                                                            .goldenstar,
+                                                                        size: 20
+                                                                            .w,
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
                                                                 Text(
                                                                   '4 out of 5',
-                                                                  style: jost500(9.sp, AppColors.buttontext),
+                                                                  style: jost500(
+                                                                      9.sp,
+                                                                      AppColors
+                                                                          .buttontext),
                                                                 ),
                                                               ],
                                                             ),
                                                           ),
-                                                          SizedBox(height: 16.h),
+                                                          SizedBox(
+                                                              height: 16.h),
                                                           CustomInputField(
-                                                            hintText: 'Write your comments',
+                                                            hintText:
+                                                                'Write your comments',
                                                             maxLines: 4,
-                                                            controller: description,
+                                                            controller:
+                                                                description,
                                                           ),
                                                         ],
                                                       ),
                                                       actions: [
                                                         Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
                                                           children: [
                                                             CustomElevatedButton(
                                                               width: 101.w,
                                                               text: "Done",
-                                                              backgroundColor: AppColors.primary,
-                                                              textColor: AppColors.secondary,
+                                                              backgroundColor:
+                                                                  AppColors
+                                                                      .primary,
+                                                              textColor:
+                                                                  AppColors
+                                                                      .secondary,
                                                               fontSize: 19.sp,
                                                               onPressed: () {
                                                                 Get.back();
                                                               },
                                                             ),
-                                                            SizedBox(width: 10.w),
+                                                            SizedBox(
+                                                                width: 10.w),
                                                             CustomElevatedButton(
-                                                              borderSide: BorderSide(color: Color(0xffA6A6A6), width: 1),
+                                                              borderSide: BorderSide(
+                                                                  color: Color(
+                                                                      0xffA6A6A6),
+                                                                  width: 1),
                                                               width: 101.w,
                                                               text: "Cancel",
-                                                              backgroundColor: Color(0xffDDDDDD),
-                                                              textColor: AppColors.primary,
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xffDDDDDD),
+                                                              textColor:
+                                                                  AppColors
+                                                                      .primary,
                                                               fontSize: 19.sp,
                                                               onPressed: () {
                                                                 Get.back();
@@ -424,10 +511,13 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                             ),
                                             SizedBox(width: 10.w),
                                             CustomElevatedButton(
-                                              borderSide: BorderSide(color: Color(0xffA6A6A6), width: 1),
+                                              borderSide: BorderSide(
+                                                  color: Color(0xffA6A6A6),
+                                                  width: 1),
                                               width: 101.w,
                                               text: "Cancel",
-                                              backgroundColor: Color(0xffDDDDDD),
+                                              backgroundColor:
+                                                  Color(0xffDDDDDD),
                                               textColor: AppColors.primary,
                                               fontSize: 19.sp,
                                               onPressed: () {
@@ -457,13 +547,13 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               ),
                             ),
                           ),
-
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 10.h,
                     ),
+
                     /// Video Player
                     Stack(
                       children: [
@@ -476,9 +566,11 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                           ),
                           clipBehavior: Clip.hardEdge,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12.r), // Match the container's radius
+                            borderRadius: BorderRadius.circular(
+                                12.r), // Match the container's radius
                             child: AspectRatio(
-                              aspectRatio: 16 / 9, // Replace this with your video’s actual aspect ratio
+                              aspectRatio: 16 /
+                                  9, // Replace this with your video’s actual aspect ratio
                               child: VideoPlayer(
                                 videoUrl: 'assets/video/videotest.mp4',
                               ),
@@ -557,7 +649,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               ),
                               alignment: Alignment.center,
                               child: Text(
-                                "Open Maps",
+                                "Track on map",
                                 style: jost600(13.sp, AppColors.primary),
                               ),
                             ),
@@ -605,7 +697,6 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                     CustomElevatedButton(
                       width: 160.w,
                       height: 51.h,
-
                       text: "Cancel",
                       backgroundColor: AppColors.buttonGrey,
                       textColor: AppColors.primary,
@@ -613,11 +704,14 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                           BorderSide(width: 0, color: Colors.transparent),
                       fontSize: 19.sp,
                       onPressed: () {
-                     CancelDialogBox();
+                        CancelDialogBox();
                       },
                     ),
                   ],
-                )
+                ),
+                SizedBox(
+                  height: 26.h,
+                ),
               ],
             ),
           ),

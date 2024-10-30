@@ -76,7 +76,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                 ),
                               ),
                               child: Center(
-                                child: Text('New',style: jost600(
+                                child: Text('In Progress',style: jost600(
                                   10.56.sp,
                                   AppColors.darkGrey,
                                 ),
@@ -118,18 +118,48 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment: MainAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              "Jared Hughs",
-                                              style:
-                                              jost600(18.sp, AppColors.secondary),
+                                            SizedBox(
+                                                height: 60.h,
+                                                width: 60.w,
+                                                child: Image.asset(
+                                                  AppImages.saraprofile,
+                                                )),
+                                            SizedBox(
+                                              width: 10.w,
                                             ),
-                                            Text(
-                                              "ID #2145",
-                                              style:
-                                              jost600(12.sp, AppColors.secondary),
+                                            Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Jared Hughs",
+                                                  style: jost600(
+                                                      18.sp, AppColors.secondary),
+                                                ),
+                                                Text(
+                                                  "ID #2145",
+                                                  style: jost600(
+                                                      12.sp, AppColors.secondary),
+                                                ),
+                                                Row(
+
+                                                  children: [
+                                                    SizedBox(
+                                                        height: 18.h,
+                                                        width: 18.w,
+                                                        child: Image.asset(
+                                                            AppImages.star)),
+                                                    SizedBox(width: 5.w,),
+                                                    Text(
+                                                      "4 (15)",
+                                                      style: jost600(
+                                                          12.sp, AppColors.secondary),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
@@ -167,7 +197,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(left: 16.w),
-                                    height: 82.h,
+                                    height: 110.h,
                                     width: 98.w,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(12.r),
