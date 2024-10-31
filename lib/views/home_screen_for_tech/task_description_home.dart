@@ -8,6 +8,7 @@ import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/controllers/user_controller.dart';
 import 'package:repairoo/views/home_screen_for_tech/components/cancel_dialog_box.dart';
 import 'package:repairoo/views/home_screen_for_tech/main_home.dart';
 import 'package:repairoo/views/home_screen_for_tech/new_task_home.dart';
@@ -33,6 +34,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
   final TechHomeController homeVM = Get.find<TechHomeController>();
   final PostController postController = Get.put(PostController());
   final TextEditingController description = TextEditingController();
+  final UserController userVM = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +93,12 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                             style: montserrat600(11.sp, AppColors.primary),
                           ),
                         ),
+                        userVM.userRole.value == "Customer" ?
+                        Text(
+                          "ID #2145",
+                          style:
+                          jost600(12.sp, AppColors.secondary),
+                        ):SizedBox.shrink(),
                         Container(
                           height: 21.h,
                           width: 108.w,
@@ -123,6 +131,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                userVM.userRole.value == "Customer" ?
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -137,18 +146,14 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                     ),
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           "Jared Hughs",
                                           style: jost600(
                                               18.sp, AppColors.secondary),
                                         ),
-                                        Text(
-                                          "ID #2145",
-                                          style: jost600(
-                                              12.sp, AppColors.secondary),
-                                        ),
+
                                         Row(
 
                                           children: [
@@ -166,6 +171,21 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                           ],
                                         ),
                                       ],
+                                    ),
+                                  ],
+                                ):      Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Jared Hughs',
+                                      style:
+                                      jost600(18.sp, AppColors.secondary),
+                                    ),
+                                    Text(
+                                      "ID #2145",
+                                      style:
+                                      jost600(12.sp, AppColors.secondary),
                                     ),
                                   ],
                                 ),

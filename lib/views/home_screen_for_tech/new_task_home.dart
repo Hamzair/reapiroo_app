@@ -7,6 +7,7 @@ import 'package:repairoo/const/images.dart';
 import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
+import 'package:repairoo/controllers/user_controller.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/audio_note.dart';
 import 'package:repairoo/widgets/custom_button.dart';
@@ -27,6 +28,7 @@ class NewTaskHome extends StatefulWidget {
 class _NewTaskHomeState extends State<NewTaskHome> {
 
   final TechHomeController homeVM = Get.find<TechHomeController>();
+  final UserController userVM = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +85,12 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                 ),
                               ),
                             ),
+                            userVM.userRole.value == "Customer" ?
+                            Text(
+                              "ID #2145",
+                              style:
+                              jost600(12.sp, AppColors.secondary),
+                            ):SizedBox.shrink(),
                             /// plumbing
                             Container(
                               height: 21.h,
@@ -117,6 +125,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
+                                        userVM.userRole.value == "Customer" ?
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           children: [
@@ -138,11 +147,7 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                                   style: jost600(
                                                       18.sp, AppColors.secondary),
                                                 ),
-                                                Text(
-                                                  "ID #2145",
-                                                  style: jost600(
-                                                      12.sp, AppColors.secondary),
-                                                ),
+
                                                 Row(
 
                                                   children: [
@@ -160,6 +165,21 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                                                   ],
                                                 ),
                                               ],
+                                            ),
+                                          ],
+                                        ):      Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Jared Hughs',
+                                              style:
+                                              jost600(18.sp, AppColors.secondary),
+                                            ),
+                                            Text(
+                                              "ID #2145",
+                                              style:
+                                              jost600(12.sp, AppColors.secondary),
                                             ),
                                           ],
                                         ),
