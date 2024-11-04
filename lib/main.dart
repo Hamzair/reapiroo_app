@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:repairoo/controllers/audio_controller.dart';
 import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/controllers/user_controller.dart';
+import 'package:repairoo/views/auth/signup_view/role_screen.dart';
 import 'package:repairoo/views/splash_screen/splash_screen.dart';
 
 void main() async {
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
           builder: (_, child) {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
-              home: SplashScreen(),
+              home: RoleScreen(),
               // initialBinding: UserBinding(),
             );
           }),

@@ -10,7 +10,7 @@ import 'package:repairoo/widgets/custom_input_fields.dart';
 import 'package:repairoo/widgets/promo_bottomsheet.dart';
 
 class PaymentBottomsheet extends StatefulWidget {
-  const PaymentBottomsheet({super.key, required this.price, });
+  const PaymentBottomsheet({super.key, required this.price});
 
   final String price;
 
@@ -19,6 +19,17 @@ class PaymentBottomsheet extends StatefulWidget {
 }
 
 class _PaymentBottomsheetState extends State<PaymentBottomsheet> {
+  // Define a service fee percentage (e.g., 2%)
+  final double serviceFeePercentage = 2.0;
+
+  double get serviceFee {
+    return (double.parse(widget.price) * serviceFeePercentage) / 100;
+  }
+
+  double get totalAmount {
+    return double.parse(widget.price) + serviceFee;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,7 +46,7 @@ class _PaymentBottomsheetState extends State<PaymentBottomsheet> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 26.h,),
+            SizedBox(height: 26.h),
             Container(
               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 50.w),
               decoration: BoxDecoration(
@@ -44,128 +55,120 @@ class _PaymentBottomsheetState extends State<PaymentBottomsheet> {
               ),
               child: Column(
                 children: [
-                  SizedBox(height: 12.h,),
+                  SizedBox(height: 12.h),
                   Text(
-                    "79.00",
+                    "${widget.price}",
                     style: GoogleFonts.inter(
                       fontSize: 38.sp,
                       fontWeight: FontWeight.w700,
-                      color: AppColors.secondary
+                      color: AppColors.secondary,
                     ),
                   ),
                   Text(
                     "AED",
                     style: GoogleFonts.inter(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.secondary
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.secondary,
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 30.h,),
+            SizedBox(height: 20.h),
+            _buildAmountRow("Amount", widget.price),
+            _buildAmountRow("Service Fees (${serviceFeePercentage.toStringAsFixed(1)}%)", serviceFee.toStringAsFixed(2)),
+            _buildAmountRow("Total", totalAmount.toStringAsFixed(2), isTotal: true),
+            SizedBox(height: 30.h),
             Align(
               alignment: Alignment.center,
-              child: Text("Select payment Method.", style: jost600(16.sp, AppColors.primary), textAlign: TextAlign.center,),
-            ),
-            SizedBox(height: 50.h,),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(bottom: 12.h),
-              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(12.w), // Rounded corners
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(AppImages.white_wallet, width: 21.w, height: 17.h,),
-                  SizedBox(width: 80.w), // Space between icon and text
-                  Text(
-                    'Pay via Wallet',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16, // Adjust size as per need
-                    ),
-                  ),
-                  Expanded(child: SizedBox()),
-                ],
+              child: Text(
+                "Select payment Method.",
+                style: jost600(16.sp, AppColors.primary),
+                textAlign: TextAlign.center,
               ),
             ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(bottom: 12.h),
-              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(12.w), // Rounded corners
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,                children: [
-                  Image.asset(AppImages.card, width: 28.w, height: 19.h,),
-                SizedBox(width: 76.w),// Space between icon and text
-                  Text(
-                    'Pay via Card',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16, // Adjust size as per need
-                    ),
-                  ),
-                Expanded(child: SizedBox()),
-
-              ],
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(bottom: 49.h),
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 18),
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(12.w), // Rounded corners
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(AppImages.apple_pay, width: 43.w, height: 43.h,),
-                  SizedBox(width: 55.w), // Space between icon and text
-                  Text(
-                    '   Apple Pay',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16, // Adjust size as per need
-                    ),
-                  ),
-                  Expanded(child: SizedBox()),
-
-                ],
-              ),
-            ),
+            SizedBox(height: 50.h),
+            _buildPaymentOption(AppImages.white_wallet, 'Pay via Wallet'),
+            _buildPaymentOption(AppImages.card, 'Pay via Card'),
+            _buildPaymentOption(AppImages.apple_pay, 'Apple Pay'),
             GestureDetector(
               onTap: () {
                 Get.back();
                 Get.bottomSheet(
-                    isScrollControlled: true,
-                    isDismissible: true,
-                    enableDrag: true,
-                    PromoBottomsheet()
+                  PromoBottomsheet(),
+                  isScrollControlled: true,
+                  isDismissible: true,
+                  enableDrag: true,
                 );
               },
-              child: Text("Use a promo Code", style: GoogleFonts.jost(
-                fontSize: 19.sp,
-                fontWeight: FontWeight.w500,
-                color: AppColors.primary,
-                decoration: TextDecoration.underline,
-              ), ),
+              child: Text(
+                "Use a promo Code",
+                style: GoogleFonts.jost(
+                  fontSize: 19.sp,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.primary,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
             ),
-            SizedBox(height: 29.h,),
+            SizedBox(height: 29.h),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildAmountRow(String label, String value, {bool isTotal = false}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: jost600(
+              isTotal ? 18.sp : 16.sp,
+              isTotal ? AppColors.primary : AppColors.primary,
+            ),
+          ),
+          Text(
+            "$value AED",
+            style: GoogleFonts.inter(
+              fontSize: isTotal ? 18.sp : 16.sp,
+              fontWeight: isTotal ? FontWeight.w700 : FontWeight.w500,
+              color: AppColors.primary,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPaymentOption(String assetPath, String label) {
+    return Container(
+      width: double.infinity,
+      margin: EdgeInsets.only(bottom: 12.h),
+      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+      decoration: BoxDecoration(
+        color: AppColors.primary,
+        borderRadius: BorderRadius.circular(12.w),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(assetPath, width: 21.w, height: 21.h),
+          SizedBox(width: 80.w),
+          Text(
+            label,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
+          ),
+          Expanded(child: SizedBox()),
+        ],
       ),
     );
   }

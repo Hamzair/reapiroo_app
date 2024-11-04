@@ -82,7 +82,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
         labelText: widget.label,
         hintText: widget.hintText,
         hintStyle: TextStyle(
-          color: widget.hintTextColor ?? AppColors.primary,
+          color: widget.hintTextColor ?? AppColors.primary.withOpacity(0.5),
           fontSize: widget.hintTextSize ?? 14.65.sp,
           fontFamily: 'Jost',
         ),

@@ -86,7 +86,7 @@ class _MainOnBoardingViewState extends State<MainOnBoardingView> {
                   // Arrow button with circular progress
                   GestureDetector(
                       onTap: () {
-                        Get.to(LoginScreen());
+                        Get.offAll(LoginScreen());
                       },
                       child: Text('Skip',style: jost500(18.sp, AppColors.secondary),)),
                   GestureDetector(

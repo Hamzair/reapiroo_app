@@ -25,8 +25,10 @@ class ReportsScreen extends StatelessWidget {
       backgroundColor: AppColors.secondary,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 14.w),
-        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: 30.h,),
             Container(
               height: 244.22.h,
               width: double.infinity,
@@ -42,72 +44,77 @@ class ReportsScreen extends StatelessWidget {
                         height: 113.76.h,
                         width: 154.43.w,
                         decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(7.r)
-                        ),
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(7.r)),
                         child: Padding(
-                          padding:  EdgeInsets.symmetric(vertical: 8.h),
+                          padding: EdgeInsets.symmetric(vertical: 8.h),
                           child: Column(
                             children: [
                               CircleAvatar(
                                 radius: 25.r,
-                                backgroundImage: AssetImage(AppImages.today_appointment),
+                                backgroundImage:
+                                    AssetImage(AppImages.today_appointment),
                               ),
                               Spacer(),
-                              Text("Today Appointments",style: jost700(10.sp, AppColors.secondary),
+                              Text(
+                                "Today Appointments",
+                                style: jost700(10.sp, AppColors.secondary),
                               ),
                               Spacer(),
                               Container(
                                 height: 20.h,
                                 width: 84.w,
                                 decoration: BoxDecoration(
-                                  color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(6.r)
-                                ),
+                                    color: AppColors.secondary,
+                                    borderRadius: BorderRadius.circular(6.r)),
                                 child: Center(
-                                    child: Text("3",style: jost700(12.sp, AppColors.primary),
-                                    ),
+                                  child: Text(
+                                    "3",
+                                    style: jost700(12.sp, AppColors.primary),
+                                  ),
                                 ),
                               ),
-
                             ],
                           ),
                         ),
                       ),
                       Spacer(),
+
                       /// Happy Customers
                       Container(
                         height: 113.76.h,
                         width: 154.43.w,
                         decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(7.r)
-                        ),
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(7.r)),
                         child: Padding(
-                          padding:  EdgeInsets.symmetric(vertical: 8.h),
+                          padding: EdgeInsets.symmetric(vertical: 8.h),
                           child: Column(
                             children: [
                               CircleAvatar(
                                 radius: 25.r,
-                                backgroundImage: AssetImage(AppImages.happy_customers),
+                                backgroundImage:
+                                    AssetImage(AppImages.happy_customers),
                               ),
                               Spacer(),
-                              Text("Happy Customers",style: jost700(10.sp, AppColors.secondary),
+                              Text(
+                                "Happy Customers",
+                                style: jost700(10.sp, AppColors.secondary),
                               ),
                               Spacer(),
                               Container(
                                 height: 20.h,
                                 width: 84.w,
                                 decoration: BoxDecoration(
-                                  color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(6.r)
-                                ),
+                                    color: AppColors.secondary,
+                                    borderRadius: BorderRadius.circular(6.r)),
                                 child: Center(
-                                    child: Text("2000",style: jost700(12.sp, AppColors.primary),
-                                    ),
+                                  child: Text(
+                                    "2000",
+                                    style: jost700(12.sp, AppColors.primary),
+                                  ),
                                 ),
                               ),
-
                             ],
                           ),
                         ),
@@ -122,66 +129,75 @@ class ReportsScreen extends StatelessWidget {
                         height: 113.76.h,
                         width: 154.43.w,
                         decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(7.r)
-                        ),
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(7.r)),
                         child: Padding(
-                          padding:  EdgeInsets.symmetric(vertical: 8.h),
+                          padding: EdgeInsets.symmetric(vertical: 8.h),
                           child: Column(
                             children: [
                               CircleAvatar(
                                 radius: 25.r,
-                                backgroundImage: AssetImage(AppImages.jobs_completed),
+                                backgroundImage:
+                                    AssetImage(AppImages.jobs_completed),
                               ),
                               Spacer(),
-                              Text("Jobs Completed",style: jost700(10.sp, AppColors.secondary),),
+                              Text(
+                                "Jobs Completed",
+                                style: jost700(10.sp, AppColors.secondary),
+                              ),
                               Spacer(),
                               Container(
                                 height: 20.h,
                                 width: 84.w,
                                 decoration: BoxDecoration(
-                                  color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(6.r)
-                                ),
+                                    color: AppColors.secondary,
+                                    borderRadius: BorderRadius.circular(6.r)),
                                 child: Center(
-                                    child: Text("170",style: jost700(12.sp, AppColors.primary),)),
+                                    child: Text(
+                                  "170",
+                                  style: jost700(12.sp, AppColors.primary),
+                                )),
                               ),
-
                             ],
                           ),
                         ),
                       ),
                       Spacer(),
+
                       /// Total Earned
                       Container(
                         height: 113.76.h,
                         width: 154.43.w,
                         decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(7.r)
-                        ),
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(7.r)),
                         child: Padding(
-                          padding:  EdgeInsets.symmetric(vertical: 8.h),
+                          padding: EdgeInsets.symmetric(vertical: 8.h),
                           child: Column(
                             children: [
                               CircleAvatar(
                                 radius: 25.r,
-                                backgroundImage: AssetImage(AppImages.total_earned),
+                                backgroundImage:
+                                    AssetImage(AppImages.total_earned),
                               ),
                               Spacer(),
-                              Text("Total Earned",style: jost700(10.sp, AppColors.secondary),),
+                              Text(
+                                "Total Earned",
+                                style: jost700(10.sp, AppColors.secondary),
+                              ),
                               Spacer(),
                               Container(
                                 height: 20.h,
                                 width: 84.w,
                                 decoration: BoxDecoration(
-                                  color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(6.r)
-                                ),
+                                    color: AppColors.secondary,
+                                    borderRadius: BorderRadius.circular(6.r)),
                                 child: Center(
-                                    child: Text("\$400",style: jost700(12.sp, AppColors.primary),)),
+                                    child: Text(
+                                  "\$400",
+                                  style: jost700(12.sp, AppColors.primary),
+                                )),
                               ),
-
                             ],
                           ),
                         ),

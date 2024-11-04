@@ -42,7 +42,7 @@ class _JobAcceptedBottomsheetState extends State<JobAcceptedBottomsheet> {
             SizedBox(height: 20.h,),
             Align(
               alignment: Alignment.center,
-              child: Text("Your Job has been successfully accepted\nby ${widget.name}. ", style: jost600(16.sp, AppColors.primary), textAlign: TextAlign.center,),
+              child: Text("Your Request has been successfully accepted with ${widget.name}. ", style: jost600(16.sp, AppColors.primary), textAlign: TextAlign.center,),
             ),
             SizedBox(height: 20.h,),
             Align(

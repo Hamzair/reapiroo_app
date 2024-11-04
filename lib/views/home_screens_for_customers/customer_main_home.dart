@@ -82,7 +82,7 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
               children: [
                 SizedBox(height: 6.h,),
                 Container(
-                  height: 99.h,
+                  height: 150.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.w),
@@ -90,31 +90,31 @@ class _CustomerMainHomeState extends State<CustomerMainHome> {
                   ),
                 ),
                 SizedBox(height: 8.h,),
-                Container(
-                  height: 100.h,
-                  width: double.infinity,
-                  margin: EdgeInsets.only(bottom: 21.h),
-                  padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 6.h),
-                  decoration: BoxDecoration(
-                      color: AppColors.textFieldGrey,
-                      borderRadius: BorderRadius.circular(12.w),
-                      border: Border.all(
-                          width: 1,
-                          color: AppColors.lightGrey
-                      )
-                  ),
-                  child: ListView.builder(
-                      itemCount: string.length,
-                      shrinkWrap: true,
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index){
-                        return Padding(
-                          padding: EdgeInsets.only(left: index != 0 ? 8.w : 0),
-                          child: AnnouncementContainers(type: string[index],),
-                        );
-                      }),
-                ),
+                // Container(
+                //   height: 100.h,
+                //   width: double.infinity,
+                //   margin: EdgeInsets.only(bottom: 21.h),
+                //   padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 6.h),
+                //   decoration: BoxDecoration(
+                //       color: AppColors.textFieldGrey,
+                //       borderRadius: BorderRadius.circular(12.w),
+                //       border: Border.all(
+                //           width: 1,
+                //           color: AppColors.lightGrey
+                //       )
+                //   ),
+                //   child: ListView.builder(
+                //       itemCount: string.length,
+                //       shrinkWrap: true,
+                //       padding: EdgeInsets.zero,
+                //       scrollDirection: Axis.horizontal,
+                //       itemBuilder: (context, index){
+                //         return Padding(
+                //           padding: EdgeInsets.only(left: index != 0 ? 8.w : 0),
+                //           child: AnnouncementContainers(type: string[index],),
+                //         );
+                //       }),
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

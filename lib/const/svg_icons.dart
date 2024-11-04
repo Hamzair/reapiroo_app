@@ -28,6 +28,7 @@ class AppSvgs {
   static const String customercare = "assets/svgs/customercare.svg";
   static const String privacy = "assets/svgs/privacy.svg";
   static const String profile = "assets/svgs/profile.svg";
+  static const String profileIcon = "assets/svgs/profileIcon.svg";
   static const String terms = "assets/svgs/terms.svg";
   static const String deleteaccount = "assets/svgs/deleteaccount.svg";
 

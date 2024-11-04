@@ -14,7 +14,7 @@ class ServicesScreen extends StatefulWidget {
 }
 
 class _ServicesScreenState extends State<ServicesScreen> {
-  String? selectedService; // Change to nullable string for proper RadioListTile
+  Set<String> selectedServices = {}; // Use a Set to track selected services
   final TechController techController = Get.find();
 
   // List of services to display
@@ -23,7 +23,6 @@ class _ServicesScreenState extends State<ServicesScreen> {
     'Plumbing Services',
     'Electrical Services',
     'Cleaning Services',
-
   ];
 
   @override
@@ -31,12 +30,12 @@ class _ServicesScreenState extends State<ServicesScreen> {
     return Column(
       children: [
         Text(
-          'Select Your Service.',
+          'Select Your Services.',
           style: jost600(15.17.sp, Color(0xff6B7280)),
         ),
         SizedBox(height: 30.h),
         Expanded(
-          /// Use Expanded to fill available space
+          // Use Expanded to fill available space
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: services.length,
@@ -65,53 +64,52 @@ class _ServicesScreenState extends State<ServicesScreen> {
                         AppImages.role1,
                         height: 73.h,
                         width: 110.w,
-                      ), // You may want to change this based on service
+                      ),
                       SizedBox(width: 16.w),
                       Expanded(
                         child: Text(
-                          services[index], // Display service name
+                          services[index],
                           style: jost700(16.sp, AppColors.primary),
                         ),
                       ),
-                  Transform.scale(
-                    scale: 1.5, // Adjust this value to increase or decrease the size
-                    child: Radio<String>(
-                      value: services[index],
-                      groupValue: selectedService,
-                      onChanged: (String? value) {
-                        setState(() {
-                          selectedService = value; // Update selected service
-                        });
-                      },
-                      activeColor: AppColors.primary, // Set your active color for selected state
-                      fillColor: MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.selected)) {
-                            return AppColors.primary; // Use active color when selected
-                          }
-                          return AppColors.outline; // Use red color when unselected
-                        },
+                      Transform.scale(
+                        scale: 1.5, // Adjust this value to increase or decrease the size
+                        child: Radio<String>(
+                          value: services[index],
+                          groupValue: selectedServices.contains(services[index]) ? services[index] : null,
+                          onChanged: (String? value) {
+                            setState(() {
+                              if (selectedServices.contains(value)) {
+                                selectedServices.remove(value); // Deselect if already selected
+                              } else {
+                                selectedServices.add(value!); // Select if not already selected
+                              }
+                            });
+                          },
+                          activeColor: AppColors.primary,
+                          fillColor: MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states) {
+                              if (states.contains(MaterialState.selected)) {
+                                return AppColors.primary;
+                              }
+                              return AppColors.outline;
+                            },
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-
-                  ],
+                    ],
                   ),
                 ),
               );
-
             },
           ),
         ),
-        // SizedBox(height: 10.h),
-
         CustomElevatedButton(
           text: 'Next',
           textColor: AppColors.secondary,
           onPressed: () {
-            // Button action
+            // Perform actions with selectedServices
             techController.selectedIndex.value = "2";
-
           },
           backgroundColor: AppColors.primary,
         ),

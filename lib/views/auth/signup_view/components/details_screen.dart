@@ -32,7 +32,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             height: 30.h,
           ),
           CustomInputField(
-            hintText: 'Write Description',
+            hintText: 'I am Muhammad, i have +10 Years experience in Plumping and ready to serve you anytime.',
             maxLines: 6,
             controller: description,
           ),

@@ -41,14 +41,14 @@ class GenderDropdownField extends StatelessWidget {
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(13.31.r),
-            borderSide: BorderSide(color: AppColors.lightGrey, width: 0.95.w),
+            borderSide: BorderSide(color: Color(0xffE2E2E2), width: 0.95.w),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.lightGrey, width: 0.95.w),
+            borderSide: BorderSide(color: Color(0xffE2E2E2), width: 0.95.w),
             borderRadius: BorderRadius.circular(13.31.r),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.lightGrey, width: 0.95.w),
+            borderSide: BorderSide(color: Color(0xffE2E2E2), width: 0.95.w),
             borderRadius: BorderRadius.circular(13.31.r),
           ),
           prefixIcon: Container( // Use Container to control size

@@ -18,7 +18,23 @@ class PromoBottomsheet extends StatefulWidget {
 }
 
 class _PromoBottomsheetState extends State<PromoBottomsheet> {
-  final TextEditingController firstname = TextEditingController();
+  final TextEditingController promoCodeController = TextEditingController();
+  bool isPromoApplied = false;
+  double discountAmount = 0.0;
+  double totalAmount = 100.0; // Example total amount before discount
+
+  void applyPromoCode() {
+    setState(() {
+      // Example logic to check the promo code and apply a discount
+      if (promoCodeController.text == 'SAVE20') {
+        discountAmount = 20.0; // Example discount value
+        isPromoApplied = true;
+      } else {
+        isPromoApplied = false;
+        discountAmount = 0.0;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +52,7 @@ class _PromoBottomsheetState extends State<PromoBottomsheet> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              height: 20.h,
-            ),
+            SizedBox(height: 20.h),
             Align(
               alignment: Alignment.center,
               child: Text(
@@ -47,40 +61,43 @@ class _PromoBottomsheetState extends State<PromoBottomsheet> {
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(
-              height: 29.h,
-            ),
+            SizedBox(height: 29.h),
             CustomInputField(
               label: 'Promo Code',
-              controller: firstname,
-
+              controller: promoCodeController,
             ),
-            SizedBox(
-              height: 33.h,
-            ),
+            SizedBox(height: 33.h),
             CustomElevatedButton(
               text: "Apply",
               fontSize: 16.sp,
               onPressed: () {
-                Get.back();
+                applyPromoCode();
               },
             ),
-            SizedBox(
-              height: 12.h,
-            ),
+            if (isPromoApplied) ...[
+              SizedBox(height: 20.h),
+              Text(
+                "Discount Applied: \$${discountAmount.toStringAsFixed(2)}",
+                style: jost500(16.sp, Colors.green),
+              ),
+              SizedBox(height: 10.h),
+              Text(
+                "Total Left to Pay: \$${(totalAmount - discountAmount).toStringAsFixed(2)}",
+                style: jost500(16.sp, AppColors.primary),
+              ),
+            ],
+            SizedBox(height: 12.h),
             CustomElevatedButton(
               backgroundColor: Color(0xffDDDDDD),
               text: "Back",
               textColor: AppColors.primary,
-              borderSide: BorderSide(color: Colors.transparent,width: 1),
+              borderSide: BorderSide(color: Colors.transparent, width: 1),
               fontSize: 16.sp,
               onPressed: () {
                 Get.back();
               },
             ),
-            SizedBox(
-              height: 29.h,
-            ),
+            SizedBox(height: 29.h),
           ],
         ),
       ),

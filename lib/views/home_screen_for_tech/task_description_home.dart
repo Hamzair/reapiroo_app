@@ -213,13 +213,17 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                 SizedBox(
                                   height: 6.h,
                                 ),
-                                Text(
-                                  "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 9.sp,
-                                    fontWeight: FontWeight.w300,
-                                    color: AppColors.secondary,
-                                    height: 1.2.h,
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(  color: AppColors.secondary,borderRadius: BorderRadius.circular(12.r) ),
+                                  child: Text(
+                                    "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 9.sp,
+                                      fontWeight: FontWeight.w300,
+                                      color: AppColors.primary,
+                                      height: 1.2.h,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -641,7 +645,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                Get.to(NewTaskHome());
+                                // Get.to(NewTaskHome());
                               },
                               child: Container(
                                 padding: EdgeInsets.symmetric(vertical: 12.h),
@@ -699,7 +703,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                 SizedBox(
                   height: 26.h,
                 ),
-                Row(
+                userVM.userRole.value == "Customer" ?   SizedBox.shrink() :    Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomElevatedButton(
