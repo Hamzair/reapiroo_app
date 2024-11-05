@@ -20,6 +20,7 @@ import 'package:repairoo/widgets/my_svg.dart';
 import '../../controllers/post_controller.dart';
 import '../../widgets/video_player.dart';
 import '../booking_screens/today_screen_widgets/sparepart_dialogue_box.dart';
+import 'package:intl/intl.dart';
 
 class TaskDescriptionHome extends StatefulWidget {
   const TaskDescriptionHome({super.key, required this.comingFrom});
@@ -35,7 +36,116 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
   final PostController postController = Get.put(PostController());
   final TextEditingController description = TextEditingController();
   final UserController userVM = Get.put(UserController());
+  DateTime? selectedDateTime;
 
+
+  Future<DateTime?> showDateTimePicker({
+    required BuildContext context,
+    DateTime? initialDate,
+    DateTime? firstDate,
+    DateTime? lastDate,
+    ThemeData? theme, // Optional theme parameter
+  })
+  async {
+    initialDate ??= DateTime.now();
+    firstDate ??= initialDate.subtract(const Duration(days: 365 * 100));
+    lastDate ??= initialDate.add(const Duration(days: 3)); // Restrict to 3 days ahead
+
+    // Show time picker first with theme
+    final TimeOfDay? selectedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.fromDateTime(initialDate),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            scaffoldBackgroundColor: Colors.red,
+            bannerTheme: MaterialBannerThemeData(backgroundColor: Colors.red),
+            timePickerTheme: TimePickerThemeData(
+                dialBackgroundColor: AppColors.textFieldGrey),
+            primaryColor: Colors.black, // Background color
+            colorScheme: ColorScheme.light(
+              primary: Colors.black,
+              onPrimary: Colors.white, // Time color
+              secondary: Colors.black, // AM/PM color
+              onSecondary: Colors.white, // Button text color
+            ),
+            buttonTheme: ButtonThemeData(
+              textTheme: ButtonTextTheme.normal, // Button text color
+            ),
+          ), // Apply provided theme or default
+          child: child ?? SizedBox(),
+        );
+      },
+    );
+
+    // If no time is selected, return null
+    if (selectedTime == null) {
+      return null; // User did not pick a time
+    }
+
+    // Show date picker after time picker with theme
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: firstDate,
+      lastDate: lastDate,
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: AppColors.primary,
+            primaryColor: Colors.black, // Background color
+            colorScheme: ColorScheme.light(
+              primary: Colors.black,
+              onPrimary: Colors.white, // Time color
+              secondary: Colors.black, // AM/PM color
+              onSecondary: Colors.white, // Button text color
+            ),
+            buttonTheme: ButtonThemeData(
+              textTheme: ButtonTextTheme.normal, // Button text color
+            ),
+          ), // Apply provided theme or default
+          child: child ?? SizedBox(),
+        );
+      },
+    );
+
+    // If no date is selected, return time with default date
+    if (selectedDate == null) {
+      return DateTime(
+        initialDate.year,
+        initialDate.month,
+        initialDate.day,
+        selectedTime.hour,
+        selectedTime.minute,
+      ); // Use initialDate if date is not picked
+    }
+
+    // Combine date and time
+    return DateTime(
+      selectedDate.year,
+      selectedDate.month,
+      selectedDate.day,
+      selectedTime.hour,
+      selectedTime.minute,
+    );
+  }
+  Future<void> _pickDateTime() async {
+    DateTime? dateTime = await showDateTimePicker(
+      context: context,
+      theme: ThemeData.light(), // Optional: Pass a custom theme if desired
+    );
+
+    // Update selectedDateTime if a date and time was picked
+    if (dateTime != null) {
+      setState(() {
+        selectedDateTime = dateTime;
+      });
+    }
+  }
+  String getFormattedDateTime() {
+    if (selectedDateTime == null) return "Select Date & Time";
+    return DateFormat('MM/dd/yyyy hh:mm a').format(selectedDateTime!);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,53 +178,42 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                   height: 9.h,
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom: 16.h),
+                  padding: EdgeInsets.only(bottom: 16.h,),
                   decoration: BoxDecoration(
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 21.h,
-                          width: 108.w,
-                          decoration: BoxDecoration(
-                              color: AppColors.containerLightGrey,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10.5.r),
-                                bottomRight: Radius.circular(10.5.r),
-                              )),
-                          alignment: Alignment.center,
-                          child: Text(
+                    Container(
+                      height: 21.h,
+                      padding: EdgeInsets.symmetric(vertical: 2,horizontal: 5.w),
+                      // width: 108.w,
+                      decoration: BoxDecoration(
+                          color: AppColors.containerLightGrey,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10.5.r),
+                            bottomRight: Radius.circular(10.5.r),
+                          )),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
                             "In Progress",
                             style: montserrat600(11.sp, AppColors.primary),
                           ),
-                        ),
-                        userVM.userRole.value == "Customer" ?
-                        Text(
-                          "ID #2145",
-                          style:
-                          jost600(12.sp, AppColors.secondary),
-                        ):SizedBox.shrink(),
-                        Container(
-                          height: 21.h,
-                          width: 108.w,
-                          decoration: BoxDecoration(
-                              color: AppColors.containerLightGrey,
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(10.5.r),
-                                bottomLeft: Radius.circular(10.5.r),
-                              )),
-                          alignment: Alignment.center,
-                          child: Text(
+                          userVM.userRole.value == "Customer" ?
+                          Text(
+                            "ID #2145",
+                            style:
+                            jost600(12.sp, AppColors.primary),
+                          ):SizedBox.shrink(),
+                          Text(
                             "Plumbing",
                             style: montserrat600(11.sp, AppColors.primary),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 7.h,
@@ -220,7 +319,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                     "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
                                     style: GoogleFonts.montserrat(
                                       fontSize: 9.sp,
-                                      fontWeight: FontWeight.w300,
+                                      fontWeight: FontWeight.w500,
                                       color: AppColors.primary,
                                       height: 1.2.h,
                                     ),
@@ -566,7 +665,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                               ),
                               alignment: Alignment.center,
                               child: Text(
-                                "View",
+                                "Spare parts",
                                 style: jost600(13.sp, AppColors.primary),
                               ),
                             ),
@@ -655,7 +754,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                 ),
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Chat",
+                                  "Call",
                                   style: jost600(13.sp, AppColors.primary),
                                 ),
                               ),
@@ -681,20 +780,35 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                           SizedBox(
                             width: 15.w,
                           ),
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 12.h),
-                              decoration: BoxDecoration(
-                                color: AppColors.buttonLightGrey,
-                                borderRadius: BorderRadius.circular(8.w),
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                "Reschedule",
-                                style: jost600(13.sp, AppColors.secondary),
+                          userVM.userRole.value == "Customer" ?   Expanded(
+                            child: GestureDetector(
+                              onTap: () => _pickDateTime(),
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 12.h),
+                                decoration: BoxDecoration(
+                                  color: AppColors.buttonLightGrey,
+                                  borderRadius: BorderRadius.circular(8.w),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Reschedule",
+                                  style: jost600(13.sp, AppColors.secondary),
+                                ),
                               ),
                             ),
+                          ):Container(
+                            padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 26.w),
+                            decoration: BoxDecoration(
+                              color: AppColors.buttonLightGrey,
+                              borderRadius: BorderRadius.circular(8.w),
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              "chat",
+                              style: jost600(13.sp, AppColors.secondary),
+                            ),
                           ),
+
                         ],
                       ),
                     )

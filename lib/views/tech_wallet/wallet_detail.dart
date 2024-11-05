@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/views/tech_wallet/components/wallet_history.dart';
 import '../../const/color.dart';
 import '../../widgets/app_bars.dart';
 
@@ -242,14 +243,19 @@ class WalletDetail extends StatelessWidget {
                           //     Text("Withdraw", style: jost400(12.sp, AppColors.secondary)),
                           //   ],
                           // ),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Image.asset("assets/images/history.png", scale: 3),
-                              SizedBox(height: 4.h),
-                              Text("History",
-                                  style: jost400(12.sp, AppColors.secondary)),
-                            ],
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(WalletHistory());
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Image.asset("assets/images/history.png", scale: 3),
+                                SizedBox(height: 4.h),
+                                Text("History",
+                                    style: jost400(12.sp, AppColors.secondary)),
+                              ],
+                            ),
                           ),
                         ],
                       ),

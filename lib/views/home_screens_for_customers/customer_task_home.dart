@@ -182,6 +182,23 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
       selectedTime.minute,
     );
   }
+  Future<void> _pickDateTime() async {
+    DateTime? dateTime = await showDateTimePicker(
+      context: context,
+      theme: ThemeData.light(), // Optional: Pass a custom theme if desired
+    );
+
+    // Update selectedDateTime if a date and time was picked
+    if (dateTime != null) {
+      setState(() {
+        selectedDateTime = dateTime;
+      });
+    }
+  }
+  String getFormattedDateTime() {
+    if (selectedDateTime == null) return "Select Date & Time";
+    return DateFormat('MM/dd/yyyy hh:mm a').format(selectedDateTime!);
+  }
 
   @override
   void dispose() {
@@ -263,23 +280,6 @@ class _CustomerTaskHomeState extends State<CustomerTaskHome> {
 //       });
 //     }
 //   }
-  Future<void> _pickDateTime() async {
-    DateTime? dateTime = await showDateTimePicker(
-      context: context,
-      theme: ThemeData.light(), // Optional: Pass a custom theme if desired
-    );
-
-    // Update selectedDateTime if a date and time was picked
-    if (dateTime != null) {
-      setState(() {
-        selectedDateTime = dateTime;
-      });
-    }
-  }
-  String getFormattedDateTime() {
-    if (selectedDateTime == null) return "Select Date & Time";
-    return DateFormat('MM/dd/yyyy hh:mm a').format(selectedDateTime!);
-  }
 
   Future<void> _openGallery() async {
     final picker = ImagePicker();
