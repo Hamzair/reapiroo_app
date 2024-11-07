@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           builder: (_, child) {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
-              home: RoleScreen(),
+              home: SplashScreen(),
               // initialBinding: UserBinding(),
             );
           }),
