@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/text_styles.dart';
+import 'package:repairoo/views/notification_screen/notification_screen.dart';
 
 class ChatScreenDetail extends StatelessWidget {
   final String profileImage;
@@ -20,7 +21,8 @@ class ChatScreenDetail extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h), // Set your preferred height here
         child: AppBar(
-          automaticallyImplyLeading: false, // Prevents the default back button or title
+          automaticallyImplyLeading:
+              false, // Prevents the default back button or title
           flexibleSpace: Container(
             height: 120.h,
             decoration: BoxDecoration(
@@ -31,7 +33,8 @@ class ChatScreenDetail extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.18), // Adjust opacity if needed
+                  color: Colors.black
+                      .withOpacity(0.18), // Adjust opacity if needed
                   offset: Offset(0, 4), // (x = 0, y = 4)
                   blurRadius: 10.4, // blur 10.4
                   spreadRadius: 0, // spread 0
@@ -42,7 +45,8 @@ class ChatScreenDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 10.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 13.w, vertical: 10.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -68,7 +72,8 @@ class ChatScreenDetail extends StatelessWidget {
                             child: ClipOval(
                               child: Image.asset(
                                 profileImage,
-                                fit: BoxFit.cover, // Ensures the image fills the circle container
+                                fit: BoxFit
+                                    .cover, // Ensures the image fills the circle container
                               ),
                             ),
                           ),
@@ -95,7 +100,14 @@ class ChatScreenDetail extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Image.asset('assets/images/notification_icon.png', height: 38.h, width: 38.w),
+                      GestureDetector(
+                          onTap: () {
+                            Get.to(NotificationScreen());
+                          },
+                          child: Image.asset(
+                              'assets/images/notification_icon.png',
+                              height: 38.h,
+                              width: 38.w)),
                     ],
                   ),
                 ),
@@ -103,10 +115,10 @@ class ChatScreenDetail extends StatelessWidget {
             ),
           ),
           elevation: 0, // Remove AppBar shadow
-          backgroundColor: Colors.transparent, // Makes the AppBar fully transparent
+          backgroundColor:
+              Colors.transparent, // Makes the AppBar fully transparent
         ),
       ),
-
       backgroundColor: AppColors.secondary,
       body: GestureDetector(
         onTap: () {
@@ -117,12 +129,15 @@ class ChatScreenDetail extends StatelessWidget {
             // Add body content here if needed
             Expanded(
               child: ListView(
-                padding: EdgeInsets.symmetric(horizontal:19.w ,vertical: 25.h),
+                padding: EdgeInsets.symmetric(horizontal: 19.w, vertical: 25.h),
                 children: [
-                  _buildSupportMessage("Alright, \nYou can track your progress by accessing the 'My Courses' or 'My Progress' section in the app.\nIt will show you the courses you're enrolled in, your completion status, and any assessments or quizzes you've completed."),
+                  _buildSupportMessage(
+                      "Alright, \nYou can track your progress by accessing the 'My Courses' or 'My Progress' section in the app.\nIt will show you the courses you're enrolled in, your completion status, and any assessments or quizzes you've completed."),
                   _buildUserMessage("That's good to know.!"),
-                  _buildUserMessage('Thank you so much for your help! I appreciate it.'),
-                  _buildSupportMessage("You're very welcome!\nYou can track your progress by accessing the 'My Courses' or 'My Progress' section in the app."),
+                  _buildUserMessage(
+                      'Thank you so much for your help! I appreciate it.'),
+                  _buildSupportMessage(
+                      "You're very welcome!\nYou can track your progress by accessing the 'My Courses' or 'My Progress' section in the app."),
                   _buildSupportMessage("Happy studying"),
                 ],
               ),
@@ -208,10 +223,12 @@ class ChatScreenDetail extends StatelessWidget {
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: 'Type message...',
-                    hintStyle: TextStyle(color: Color.fromRGBO(100, 100, 100, 1)),
+                    hintStyle:
+                        TextStyle(color: Color.fromRGBO(100, 100, 100, 1)),
                     filled: true,
                     fillColor: AppColors.secondary,
-                    contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 18.h),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 15.w, vertical: 18.h),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30.r),
                       borderSide: BorderSide.none,
@@ -236,7 +253,8 @@ class ChatScreenDetail extends StatelessWidget {
                   child: SizedBox(
                     height: 23.04.h,
                     width: 23.04.w,
-                    child: Image.asset('assets/images/send_icon.png', fit: BoxFit.contain),
+                    child: Image.asset('assets/images/send_icon.png',
+                        fit: BoxFit.contain),
                   ),
                 ),
               ),

@@ -3,12 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/const/images.dart';
 import 'package:repairoo/controllers/nav_bar_controller.dart';
+import 'package:repairoo/views/notification_screen/notification_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 
-import '../const/color.dart';
-import '../const/svg_icons.dart';
-import 'booking_screens/today_screen_widgets/today_screen_booking_card.dart';
-import 'tech_wallet/wallet_screen.dart';
+import '../../const/color.dart';
+import '../../const/svg_icons.dart';
+import '../booking_screens/today_screen_widgets/today_screen_booking_card.dart';
+import '../tech_wallet/wallet_screen.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({super.key});
@@ -42,6 +43,9 @@ class OrderScreen extends StatelessWidget {
     return  Scaffold(
       backgroundColor: AppColors.secondary,
       appBar: MyAppBar(
+        onNotificationTap: () {
+          Get.to(NotificationScreen());
+        },
         onMenuTap: () {
           navBarController.openDrawer(context);
         },

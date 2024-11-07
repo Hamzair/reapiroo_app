@@ -28,7 +28,7 @@ class BookingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 165.h,
+      // height: .h,
       decoration: BoxDecoration(
         color: AppColors.primary,
         borderRadius: BorderRadius.circular(12.r),
@@ -107,26 +107,39 @@ class BookingCard extends StatelessWidget {
                           ),
                           SizedBox(height: 4.h),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Image.asset(
                                 AppImages.pinlocation, // Replace with your pin location icon path
                                 height: 12.h,
                                 width: 8.w,
                               ),
-                              SizedBox(width: 4.w),
                               Text(
                                 location,
                                 style: jost400(11.sp, AppColors.buttontext),
                               ),
+                              SizedBox(width: 16.w,),
+                              Container(
+                                padding: EdgeInsets.all(5.w),
+                                decoration: BoxDecoration(  color: AppColors.secondary,borderRadius: BorderRadius.circular(10.r) ),
+                                child: Text(
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  '60 Aed',
+                                  style: jost400(9.sp, AppColors.primary),
+                                ),
+                              ),
                             ],
                           ),
-                          SizedBox(
-                            width: 180,
+                          SizedBox(height: 5.h,),
+                          Container(
+                            padding: EdgeInsets.all(4.w),
+                            decoration: BoxDecoration(  color: AppColors.secondary,borderRadius: BorderRadius.circular(10.r) ),
                             child: Text(
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               description,
-                              style: jost400(9.sp, AppColors.buttontext),
+                              style: jost400(9.sp, AppColors.primary),
                             ),
                           ),
                         ],
@@ -137,7 +150,7 @@ class BookingCard extends StatelessWidget {
                       child: Image.asset(
                         imagePath,
                         height: 82.h,
-                        width: 94.w,
+                        width: 70.w,
                       ),
                     ),
                   ],

@@ -5,6 +5,7 @@ import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/nav_bar_controller.dart';
 import 'package:repairoo/views/booking_screens/today_screen_content.dart'; // Ensure you have this file created with TodayContent
+import 'package:repairoo/views/notification_screen/notification_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 
 class BookingScreenMain extends StatefulWidget {
@@ -22,6 +23,9 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
+        onNotificationTap: () {
+          Get.to(NotificationScreen());
+        },
         onMenuTap: () {
           navBarController.openDrawer(context);
         },

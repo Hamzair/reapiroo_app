@@ -8,7 +8,7 @@ import 'package:repairoo/views/booking_screens/booking_screen_main.dart';
 import 'package:repairoo/views/chat_screens/chat_screen_main.dart';
 import 'package:repairoo/views/home_screen_for_tech/Home_screen.dart';
 import 'package:repairoo/views/home_screens_for_customers/CustomerHomeScreen.dart';
-import 'package:repairoo/views/order_screen.dart';
+import 'package:repairoo/views/tech_orderscreen/order_screen.dart';
 import 'package:repairoo/views/profile_screens/profile_screen.dart';
 
 import '../../const/images.dart';

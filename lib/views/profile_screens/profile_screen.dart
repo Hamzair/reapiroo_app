@@ -9,6 +9,7 @@ import 'package:repairoo/controllers/nav_bar_controller.dart';
 import 'package:repairoo/controllers/user_controller.dart';
 import 'package:repairoo/views/auth/signup_view/role_screen.dart';
 import 'package:repairoo/views/customer_wallet_screen/wallet_screen.dart';
+import 'package:repairoo/views/notification_screen/notification_screen.dart';
 import 'package:repairoo/views/profile_screens/bio_and_experience/bio_and_experience_main.dart';
 import 'package:repairoo/views/profile_screens/edit_profile_screen.dart';
 import 'package:repairoo/views/profile_screens/reports/reports_screen.dart';
@@ -18,6 +19,7 @@ import 'package:repairoo/widgets/profile_button_widget.dart';
 import 'dart:io';
 
 import '../tech_wallet/wallet_screen.dart';
+import 'support_screen/support_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -35,7 +37,6 @@ class _EditProfileScreenState extends State<ProfileScreen> {
   final TextEditingController email = TextEditingController();
   final UserController userVM = Get.put(UserController());
   final NavBarController navBarController = Get.find<NavBarController>();
-
 
   @override
   void dispose() {
@@ -55,15 +56,18 @@ class _EditProfileScreenState extends State<ProfileScreen> {
       },
       child: Scaffold(
         appBar: MyAppBar(
+          onNotificationTap: () {
+            Get.to(NotificationScreen());
+          },
           onMenuTap: () {
             navBarController.openDrawer(context);
           },
           isMenu: true,
-          isNotification: false,
+          isNotification: true,
           isTitle: true,
           title: 'Profile',
-          isSecondIcon: true,
-          secondIcon: AppSvgs.settings,
+          isSecondIcon: false,
+          // secondIcon: AppSvgs.notification,
         ),
         backgroundColor: AppColors.secondary,
         body: SingleChildScrollView(
@@ -97,14 +101,15 @@ class _EditProfileScreenState extends State<ProfileScreen> {
 
               /// My Profile
               userVM.userRole.value == "Customer"
-                  ?ProfileButton(
-                onPressed: () {
-                  // Navigate to the EditProfileScreen
-                  Get.to(EditProfileScreen());
-                },
-                label: "General Information",
-                iconPath: AppImages.name_icon,
-              ): ProfileButton(
+                  ? ProfileButton(
+                      onPressed: () {
+                        // Navigate to the EditProfileScreen
+                        Get.to(EditProfileScreen());
+                      },
+                      label: "General Information",
+                      iconPath: AppImages.name_icon,
+                    )
+                  : ProfileButton(
                       onPressed: () {
                         // Navigate to the EditProfileScreen
                         Get.to(EditProfileScreen());
@@ -132,7 +137,7 @@ class _EditProfileScreenState extends State<ProfileScreen> {
                       iconPath: AppImages.bagicon,
                     ),
               SizedBox(height: 10.h),
- userVM.userRole.value == "Customer"
+              userVM.userRole.value == "Customer"
                   ? SizedBox.shrink()
                   : ProfileButton(
                       onPressed: () {
@@ -162,58 +167,60 @@ class _EditProfileScreenState extends State<ProfileScreen> {
 
               SizedBox(height: 10.h),
 
-              /// Terms/Policy
-              ProfileButton(
-                onPressed: () {
-                  // Navigate to the SettingsScreen
-                },
-                label: "Terms/Policy",
-                iconPath: AppImages.privacyicon,
-              ),
-              SizedBox(height: 10.h),
+              // /// Terms/Policy
+              // ProfileButton(
+              //   onPressed: () {
+              //     // Navigate to the SettingsScreen
+              //   },
+              //   label: "Terms/Policy",
+              //   iconPath: AppImages.privacyicon,
+              // ),
+              // SizedBox(height: 10.h),
 
               /// Help/Contact Us
               userVM.userRole.value == "Customer"
-                  ?ProfileButton(
-                onPressed: () {
-                  // Navigate to the SettingsScreen
-                },
-                label: "Help & Support",
-                iconPath: AppImages.questionicon,
-              ): ProfileButton(
+                  ? ProfileButton(
                       onPressed: () {
-                        // Navigate to the SettingsScreen
+                        Get.to(SupportScreen());
+                      },
+                      label: "Help & Support",
+                      iconPath: AppImages.questionicon,
+                    )
+                  : ProfileButton(
+                      onPressed: () {
+                        Get.to(SupportScreen());
                       },
                       label: "Help/Contact Us",
                       iconPath: AppImages.questionicon,
-                    )
-                  ,
+                    ),
 
               SizedBox(height: 30.h),
-              userVM.userRole.value == "Customer"?       GestureDetector(
-                onTap: () {
-                  Get.offAll(RoleScreen());
-                },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 21.w),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        AppImages.logout,
-                        height: 25.h,
-                        width: 25.w,
+              userVM.userRole.value == "Customer"
+                  ? GestureDetector(
+                      onTap: () {
+                        Get.offAll(RoleScreen());
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 21.w),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              AppImages.logout,
+                              height: 25.h,
+                              width: 25.w,
+                            ),
+                            SizedBox(
+                              width: 15.w,
+                            ),
+                            Text(
+                              'Logout',
+                              style: jost500(16.sp, AppColors.primary),
+                            )
+                          ],
+                        ),
                       ),
-                      SizedBox(
-                        width: 15.w,
-                      ),
-                      Text(
-                        'Logout',
-                        style: jost500(16.sp, AppColors.primary),
-                      )
-                    ],
-                  ),
-                ),
-              ):SizedBox.shrink(),
+                    )
+                  : SizedBox.shrink(),
 
               SizedBox(height: 120.h),
             ],

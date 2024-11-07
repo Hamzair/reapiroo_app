@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/views/chat_screens/chat_widget.dart';
+import 'package:repairoo/views/notification_screen/notification_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 
 import '../../controllers/nav_bar_controller.dart';
@@ -16,6 +17,9 @@ class ChatsScreenMain extends StatelessWidget {
 
     return Scaffold(
       appBar:  MyAppBar(
+        onNotificationTap: () {
+          Get.to(NotificationScreen());
+        },
         onMenuTap: () {
           navBarController.openDrawer(context);
         },

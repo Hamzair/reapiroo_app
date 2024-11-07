@@ -4,6 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/images.dart';
+import 'package:repairoo/views/profile_screens/edit_profile_screen.dart';
+import 'package:repairoo/views/profile_screens/faqs_screen/faqs_screen.dart';
+import 'package:repairoo/views/profile_screens/privacy_policy/privacy_policy.dart';
+import 'package:repairoo/views/profile_screens/terms&cond/terms&cond.dart';
 
 import '../const/svg_icons.dart';
 import 'custom_text.dart';
@@ -43,7 +47,7 @@ class MyDrawer extends StatelessWidget {
                 SizedBox(
                   width: 140.w,
                   child: LexendCustomText(
-                      text:'',
+                      text:'Jared Hughs',
                       fontWeight: FontWeight.w400,
                       fontsize: 20.sp,
                       textColor: AppColors.primary,
@@ -62,13 +66,15 @@ class MyDrawer extends StatelessWidget {
               image: AppSvgs.profileIcon,
 
               onTap: () {
-                // CustomRoute.navigateTo(context, const MainEditProfileView());
+              Get.to(EditProfileScreen());
               },
             ),
             DrawerItemsWidget(
               text: 'Privacy Policy',
               image: AppSvgs.privacy,
               onTap: () {
+                Get.to(PrivacyPolicy());
+
                 // CustomRoute.navigateTo(context, const MainPrivacypolicyView());
               },
             ),
@@ -76,6 +82,7 @@ class MyDrawer extends StatelessWidget {
               text: 'Term of Use',
               image: AppSvgs.terms,
               onTap: () {
+                Get.to(Termscond());
                 // CustomRoute.navigateTo(context, const MainTermCondView());
               },
             ),
@@ -83,17 +90,18 @@ class MyDrawer extends StatelessWidget {
             //   text: 'Change Password',
             //   image: AppIcons.password,
             // ),
+            // DrawerItemsWidget(
+            //   text: 'Customer Support',
+            //   image: AppSvgs.customercare,
+            //   onTap: () {
+            //     // CustomRoute.navigateTo(context, EmailSender());
+            //   },
+            // ),
             DrawerItemsWidget(
-              text: 'Customer Support',
-              image: AppSvgs.customercare,
-              onTap: () {
-                // CustomRoute.navigateTo(context, EmailSender());
-              },
-            ),  DrawerItemsWidget(
               text: 'Faqs',
               image: AppSvgs.customercare,
               onTap: () {
-                // CustomRoute.navigateTo(context, EmailSender());
+             Get.to(FaqsScreen());
               },
             ),
 
@@ -152,7 +160,7 @@ class DrawerItemsWidget extends StatelessWidget {
             SizedBox(
               height: 36.7.h,
               width: 36.7.w,
-              child: SvgPicture.asset(image,),
+              child: SvgPicture.asset(image,colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),),
 
             ),
             SizedBox(

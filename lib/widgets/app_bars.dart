@@ -15,7 +15,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.isSecondIcon,
     this.onBackTap,
     this.onMenuTap,
-    this.isTextField = false, this.secondIcon, this.onSecondTap,
+    this.isTextField = false, this.secondIcon, this.onSecondTap, this.onNotificationTap,
   });
 
   final bool isMenu;
@@ -28,6 +28,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onBackTap;
   final VoidCallback? onMenuTap;
   final VoidCallback? onSecondTap;
+  final VoidCallback? onNotificationTap;
 
   @override
   Widget build(BuildContext context) {
@@ -112,19 +113,22 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           if (isNotification == true)
-            Container(
-              margin: EdgeInsets.only(left: isSecondIcon == true ? 7.w : 0),
-              height: 38.h,
-              width: 35.w,
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(14.w),
-              ),
-              alignment: Alignment.center,
-              child: MySvg(
-                assetName: AppSvgs.notification,
-                height: 23.h,
-                width: 23.w,
+            GestureDetector(
+              onTap: onNotificationTap,
+              child: Container(
+                margin: EdgeInsets.only(left: isSecondIcon == true ? 7.w : 0),
+                height: 38.h,
+                width: 35.w,
+                decoration: BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.circular(14.w),
+                ),
+                alignment: Alignment.center,
+                child: MySvg(
+                  assetName: AppSvgs.notification,
+                  height: 23.h,
+                  width: 23.w,
+                ),
               ),
             ),
 

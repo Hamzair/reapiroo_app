@@ -13,6 +13,7 @@ import 'package:repairoo/controllers/nav_bar_controller.dart';
 import 'package:repairoo/controllers/user_controller.dart';
 import 'package:repairoo/views/home_screen_for_tech/components/announcement_containers.dart';
 import 'package:repairoo/views/home_screen_for_tech/task_description_home.dart';
+import 'package:repairoo/views/notification_screen/notification_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/custom_box.dart';
 import 'package:repairoo/widgets/my_svg.dart';
@@ -61,6 +62,9 @@ class _MainHomeState extends State<MainHome> {
     return Scaffold(
       backgroundColor: AppColors.secondary,
       appBar: MyAppBar(
+        onNotificationTap: () {
+          Get.to(NotificationScreen());
+        },
         onMenuTap: () {
           navBarController.openDrawer(context);
         },
@@ -481,13 +485,17 @@ class _MainHomeState extends State<MainHome> {
                                 SizedBox(
                                   height: 6.h,
                                 ),
-                                Text(
-                                  "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 9.sp,
-                                    fontWeight: FontWeight.w300,
-                                    color: AppColors.secondary,
-                                    height: 1,
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(  color: AppColors.secondary,borderRadius: BorderRadius.circular(12.r) ),
+                                  child: Text(
+                                    "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 9.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.primary,
+                                      height: 1,
+                                    ),
                                   ),
                                 ),
                               ],
