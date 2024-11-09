@@ -30,8 +30,8 @@ class _OfferContainerState extends State<OfferContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 97.h,
-      padding: EdgeInsets.symmetric(horizontal: 8.w, ),
+      // height: 97.h,
+      padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 10.h ),
       decoration: BoxDecoration(
         color: AppColors.primary,
         borderRadius: BorderRadius.circular(12.w),
@@ -43,11 +43,11 @@ class _OfferContainerState extends State<OfferContainer> {
         children: [
           Container(
             width: 90.w,
-            height: 76.h,
+            height: 100.h,
             margin: EdgeInsets.only(right: 9.w),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.w),
-              image: DecorationImage(image: AssetImage(widget.image), fit: BoxFit.fill)
+              image: DecorationImage(image: AssetImage(widget.image), fit: BoxFit.cover)
             ),
           ),
           Expanded(child: Column(
@@ -91,6 +91,7 @@ class _OfferContainerState extends State<OfferContainer> {
                         GestureDetector(
                           onTap: (){
                             Get.to(SearchOfferView(
+                              skills: ["Plumbing", "Cleaning", "Electrical", "Painting", "HVAC"],
                                 name: widget.name,
                                 image: widget.image,
                                 experience: widget.experience,
@@ -140,8 +141,55 @@ class _OfferContainerState extends State<OfferContainer> {
                     ),
                   )
                 ],
-              )
-
+              ),
+              SizedBox(height: 5.h,),
+              Container(
+                height: 35.h,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 8.w,
+                ),
+                decoration: BoxDecoration(
+                    color: AppColors.secondary,
+                    borderRadius: BorderRadius.circular(12.r),
+                    border: Border.all(
+                        color: Colors.transparent, width: 0)),
+                child: Row(
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      child: Row(
+                        children: [
+                          MySvg(assetName: AppSvgs.calender),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Text(
+                            "Mon, Dec 23",
+                            style: montserrat600(
+                                11.sp, AppColors.darkGrey),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      child: Row(
+                        children: [
+                          MySvg(assetName: AppSvgs.clock),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Text(
+                            "12:00",
+                            style: montserrat600(
+                                11.sp, AppColors.darkGrey),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ))
         ],

@@ -9,6 +9,7 @@ import 'package:repairoo/const/svg_icons.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/home_controller.dart';
 import 'package:repairoo/controllers/user_controller.dart';
+import 'package:repairoo/views/chat_screens/chat_screen_main.dart';
 import 'package:repairoo/views/home_screen_for_tech/components/cancel_dialog_box.dart';
 import 'package:repairoo/views/home_screen_for_tech/main_home.dart';
 import 'package:repairoo/views/home_screen_for_tech/new_task_home.dart';
@@ -21,6 +22,8 @@ import '../../controllers/post_controller.dart';
 import '../../widgets/video_player.dart';
 import '../booking_screens/today_screen_widgets/sparepart_dialogue_box.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'components/description_widget.dart';
 
 class TaskDescriptionHome extends StatefulWidget {
   const TaskDescriptionHome({super.key, required this.comingFrom});
@@ -38,18 +41,17 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
   final UserController userVM = Get.put(UserController());
   DateTime? selectedDateTime;
 
-
   Future<DateTime?> showDateTimePicker({
     required BuildContext context,
     DateTime? initialDate,
     DateTime? firstDate,
     DateTime? lastDate,
     ThemeData? theme, // Optional theme parameter
-  })
-  async {
+  }) async {
     initialDate ??= DateTime.now();
     firstDate ??= initialDate.subtract(const Duration(days: 365 * 100));
-    lastDate ??= initialDate.add(const Duration(days: 3)); // Restrict to 3 days ahead
+    lastDate ??=
+        initialDate.add(const Duration(days: 3)); // Restrict to 3 days ahead
 
     // Show time picker first with theme
     final TimeOfDay? selectedTime = await showTimePicker(
@@ -129,6 +131,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
       selectedTime.minute,
     );
   }
+
   Future<void> _pickDateTime() async {
     DateTime? dateTime = await showDateTimePicker(
       context: context,
@@ -142,10 +145,12 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
       });
     }
   }
+
   String getFormattedDateTime() {
     if (selectedDateTime == null) return "Select Date & Time";
     return DateFormat('MM/dd/yyyy hh:mm a').format(selectedDateTime!);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,7 +183,9 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                   height: 9.h,
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom: 16.h,),
+                  padding: EdgeInsets.only(
+                    bottom: 16.h,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(12.r),
@@ -186,7 +193,8 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
                     Container(
                       height: 21.h,
-                      padding: EdgeInsets.symmetric(vertical: 2,horizontal: 5.w),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 2, horizontal: 5.w),
                       // width: 108.w,
                       decoration: BoxDecoration(
                           color: AppColors.containerLightGrey,
@@ -202,12 +210,12 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                             "In Progress",
                             style: montserrat600(11.sp, AppColors.primary),
                           ),
-                          userVM.userRole.value == "Customer" ?
-                          Text(
-                            "ID #2145",
-                            style:
-                            jost600(12.sp, AppColors.primary),
-                          ):SizedBox.shrink(),
+                          userVM.userRole.value == "Customer"
+                              ? Text(
+                                  "ID #2145",
+                                  style: jost600(12.sp, AppColors.primary),
+                                )
+                              : SizedBox.shrink(),
                           Text(
                             "Plumbing",
                             style: montserrat600(11.sp, AppColors.primary),
@@ -230,69 +238,73 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                userVM.userRole.value == "Customer" ?
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                        height: 60.h,
-                                        width: 60.w,
-                                        child: Image.asset(
-                                          AppImages.saraprofile,
-                                        )),
-                                    SizedBox(
-                                      width: 10.w,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Jared Hughs",
-                                          style: jost600(
-                                              18.sp, AppColors.secondary),
-                                        ),
-
-                                        Row(
-
-                                          children: [
-                                            SizedBox(
-                                                height: 18.h,
-                                                width: 18.w,
-                                                child: Image.asset(
-                                                    AppImages.star)),
-                                            SizedBox(width: 5.w,),
-                                            Text(
-                                              "4 (15)",
-                                              style: jost600(
-                                                  12.sp, AppColors.secondary),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ):      Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Jared Hughs',
-                                      style:
-                                      jost600(18.sp, AppColors.secondary),
-                                    ),
-                                    Text(
-                                      "ID #2145",
-                                      style:
-                                      jost600(12.sp, AppColors.secondary),
-                                    ),
-                                  ],
-                                ),
+                                userVM.userRole.value == "Customer"
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                              height: 60.h,
+                                              width: 60.w,
+                                              child: Image.asset(
+                                                AppImages.saraprofile,
+                                              )),
+                                          SizedBox(
+                                            width: 10.w,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Jared Hughs",
+                                                style: jost600(
+                                                    18.sp, AppColors.secondary),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  SizedBox(
+                                                      height: 18.h,
+                                                      width: 18.w,
+                                                      child: Image.asset(
+                                                          AppImages.star)),
+                                                  SizedBox(
+                                                    width: 5.w,
+                                                  ),
+                                                  Text(
+                                                    "4 (15)",
+                                                    style: jost600(12.sp,
+                                                        AppColors.secondary),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      )
+                                    : Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Jared Hughs',
+                                            style: jost600(
+                                                18.sp, AppColors.secondary),
+                                          ),
+                                          Text(
+                                            "ID #2145",
+                                            style: jost600(
+                                                12.sp, AppColors.secondary),
+                                          ),
+                                        ],
+                                      ),
                                 SizedBox(
                                   height: 6.h,
                                 ),
                                 Row(
-                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  // mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Image.asset(
                                       AppImages.pinlocation,
@@ -307,36 +319,40 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                       style: montserrat400(
                                           11.sp, AppColors.secondary),
                                     ),
+                                    SizedBox(
+                                      width: 8.w,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.all(5.w),
+                                      decoration: BoxDecoration(
+                                          color: AppColors.secondary,
+                                          borderRadius:
+                                              BorderRadius.circular(10.r)),
+                                      child: Text(
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        '60 Aed',
+                                        style: jost400(9.sp, AppColors.primary),
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 SizedBox(
                                   height: 6.h,
                                 ),
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(  color: AppColors.secondary,borderRadius: BorderRadius.circular(12.r) ),
-                                  child: Text(
-                                    "I need to have my outdoor pipes fixed. We have a huge leakage in the valves and the wall fittings.",
-                                    style: GoogleFonts.montserrat(
-                                      fontSize: 9.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: AppColors.primary,
-                                      height: 1.2.h,
-                                    ),
-                                  ),
-                                ),
+                                DescriptionWidget(),
                               ],
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 16.w),
                             height: 110.h,
-                            width: 98.w,
+                            width: 85.w,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.w),
                                 image: DecorationImage(
                                     image: AssetImage(AppImages.jared_hughs),
-                                    fit: BoxFit.fill)),
+                                    fit: BoxFit.cover)),
                           )
                         ],
                       ),
@@ -402,7 +418,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              if (widget.comingFrom == "booking") {
+                              if (widget.comingFrom != "booking") {
                                 showDialog(
                                   context: context,
                                   barrierDismissible:
@@ -655,7 +671,7 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                 );
                               }
                             },
-                            child: Container(
+                            child:userVM.userRole =='Customer'? SizedBox.shrink():Container(
                               width: 98.w,
                               height: 35.h,
                               margin: EdgeInsets.only(left: 16.w),
@@ -743,8 +759,16 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                         children: [
                           Expanded(
                             child: GestureDetector(
-                              onTap: () {
-                                // Get.to(NewTaskHome());
+                              onTap: () async {
+                                final Uri phoneUri = Uri(
+                                    scheme: 'tel',
+                                    path:
+                                        '1234567890'); // Yahan apna phone number daalein
+                                if (await canLaunchUrl(phoneUri)) {
+                                  await launchUrl(phoneUri);
+                                } else {
+                                  print("Could not launch $phoneUri");
+                                }
                               },
                               child: Container(
                                 padding: EdgeInsets.symmetric(vertical: 12.h),
@@ -761,7 +785,29 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                             ),
                           ),
                           SizedBox(
-                            width: 15.w,
+                            width: 20.w,
+                          ),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.to(ChatsScreenMain());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 12.h),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(8.w),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Chat",
+                                  style: jost600(13.sp, AppColors.primary),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20.w,
                           ),
                           Expanded(
                             child: Container(
@@ -771,82 +817,123 @@ class _TaskDescriptionHomeState extends State<TaskDescriptionHome> {
                                 borderRadius: BorderRadius.circular(8.w),
                               ),
                               alignment: Alignment.center,
-                              child: Text(
-                                "Track on map",
-                                style: jost600(13.sp, AppColors.primary),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15.w,
-                          ),
-                          userVM.userRole.value == "Customer" ?   Expanded(
-                            child: GestureDetector(
-                              onTap: () => _pickDateTime(),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 12.h),
-                                decoration: BoxDecoration(
-                                  color: AppColors.buttonLightGrey,
-                                  borderRadius: BorderRadius.circular(8.w),
-                                ),
-                                alignment: Alignment.center,
+                              child: FittedBox(
                                 child: Text(
-                                  "Reschedule",
-                                  style: jost600(13.sp, AppColors.secondary),
+                                  "Track on map",
+                                  style: jost600(13.sp, AppColors.primary),
                                 ),
                               ),
                             ),
-                          ):Container(
-                            padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 26.w),
-                            decoration: BoxDecoration(
-                              color: AppColors.buttonLightGrey,
-                              borderRadius: BorderRadius.circular(8.w),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "chat",
-                              style: jost600(13.sp, AppColors.secondary),
-                            ),
                           ),
-
                         ],
                       ),
-                    )
+                    ),
+
                   ]),
                 ),
                 SizedBox(
                   height: 26.h,
                 ),
-                userVM.userRole.value == "Customer" ?   SizedBox.shrink() :    Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomElevatedButton(
-                      width: 160.w,
-                      height: 51.h,
-                      text: "Mark as done",
-                      backgroundColor: AppColors.primary,
-                      textColor: AppColors.secondary,
-                      fontSize: 19.sp,
-                      onPressed: () {
-                        //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> NewTaskHome()));
-                        Get.off(NewTaskHome());
-                      },
-                    ),
-                    CustomElevatedButton(
-                      width: 160.w,
-                      height: 51.h,
-                      text: "Cancel",
-                      backgroundColor: AppColors.buttonGrey,
-                      textColor: AppColors.primary,
-                      borderSide:
-                          BorderSide(width: 0, color: Colors.transparent),
-                      fontSize: 19.sp,
-                      onPressed: () {
-                        CancelDialogBox();
-                      },
-                    ),
-                  ],
-                ),
+                userVM.userRole.value == "Customer"
+                    ? Row(
+                        children: [
+                          // Reschedule Button
+                          CustomElevatedButton(
+                            width: 160.w,
+                            height: 51.h,
+                            text: "Reschedule",
+                            backgroundColor: AppColors.primary,
+                            textColor: AppColors.secondary,
+                            fontSize: 19.sp,
+                            onPressed: () {
+                              // Show message for rescheduling
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  title: FittedBox(child: Text("Reschedule Information")),
+                                  content: Text(
+                                      "Please contact the technician for that, you can always contact us for more help."),
+                                  actions: [
+                                    TextButton(
+                                      child: Text("OK",style: jost500(15.sp, AppColors.primary,)),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                            // enabled: false, // Disable the button
+                          ),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          // Cancel Button
+                          CustomElevatedButton(
+                            width: 160.w,
+                            height: 51.h,
+                            text: "Cancel",
+                            backgroundColor: AppColors.buttonGrey,
+                            textColor: AppColors.primary,
+                            borderSide:
+                                BorderSide(width: 0, color: Colors.transparent),
+                            fontSize: 19.sp,
+                            onPressed: () {
+                              // Show message for canceling
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  title: Text("Cancel Information"),
+                                  content: Text(
+                                      "Cancelling the order is not allowed, please contact us for help."),
+                                  actions: [
+                                    TextButton(
+                                      child: Text("OK",style: jost500(15.sp, AppColors.primary,)),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                            // enabled: false, // Disable the button
+                          ),
+                        ],
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomElevatedButton(
+                            width: 160.w,
+                            height: 51.h,
+                            text: "Mark as done",
+                            backgroundColor: AppColors.primary,
+                            textColor: AppColors.secondary,
+                            fontSize: 19.sp,
+                            onPressed: () {
+                              //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> NewTaskHome()));
+                              Get.off(NewTaskHome());
+                            },
+                          ),
+                          CustomElevatedButton(
+                            width: 160.w,
+                            height: 51.h,
+                            text: "Cancel",
+                            backgroundColor: AppColors.buttonGrey,
+                            textColor: AppColors.primary,
+                            borderSide:
+                                BorderSide(width: 0, color: Colors.transparent),
+                            fontSize: 19.sp,
+                            onPressed: () {
+                              CancelDialogBox();
+                            },
+                          ),
+                        ],
+                      ),
                 SizedBox(
                   height: 26.h,
                 ),

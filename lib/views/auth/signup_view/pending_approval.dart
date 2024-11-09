@@ -9,11 +9,16 @@ import 'package:repairoo/widgets/custom_button.dart';
 class PendingApproval extends StatelessWidget {
   const PendingApproval({super.key});
 
+  // A placeholder function to check if the account is verified
+  bool isAccountVerified() {
+    // Replace this with the actual logic for checking account verification
+    return true; // Assuming the account is not verified
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.secondary,
-
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
@@ -26,31 +31,50 @@ class PendingApproval extends StatelessWidget {
                 style: jost600(32.sp, Color(0xff6B7280)),
               ),
             ),
-            SizedBox(
-              height: 30.h,
-            ),
+            SizedBox(height: 30.h),
             Text(
-              textAlign: TextAlign.center,
               'Thank you for registering with Repairoo. A member of the team will approve your request shortly.',
+              textAlign: TextAlign.center,
               style: jost400(20.sp, Color(0xff656F77)),
             ),
-            SizedBox(
-              height: 80.h,
-            ),
+            SizedBox(height: 80.h),
             Image.asset(AppImages.logo),
-            SizedBox(
-              height: 142.h,
-            ),
+            SizedBox(height: 142.h),
             CustomElevatedButton(
               text: 'Go Home',
               textColor: AppColors.secondary,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AppNavBar(),
-                  ),
-                );
+                if (isAccountVerified()) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AppNavBar()),
+                  );
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.white,
+                        title: Text('Account Not Verified'),
+                        content: Text(
+                          'Your account has not been verified. Please contact us for assistance.',
+                          style: jost400(18.sp, Color(0xff656F77)),
+                        ),
+                        actions: [
+                          TextButton(
+                            child: Text(
+                              'Close',
+                              style: TextStyle(color: AppColors.primary),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
               },
               backgroundColor: AppColors.primary,
             ),

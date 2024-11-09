@@ -17,7 +17,7 @@ class TodayContent extends StatelessWidget {
       'I need to have my outdoor pipes fixed.\nWe have a huge leakage in the valves\nand the wall fittings.',
       'date': 'Mon, Dec 23',
       'time': '12:00',
-      'image': AppImages.jared_hughs, // Replace with your image path
+      'image':  AppImages.saraprofile,  // Replace with your image path
     },
     {
       'name': 'Michael Scott',

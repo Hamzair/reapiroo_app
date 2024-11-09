@@ -80,98 +80,109 @@ class _SearchOfferScreenState extends State<SearchOfferScreen> {
       body: SafeArea(
         child: isLoading
             ? Center(
-                child: SpinKitCircle(
-                  color: AppColors.primary,
-                  size: 100.0,
-                ),
-              )
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SpinKitCircle(
+                color: AppColors.primary,
+                size: 100.0,
+              ),
+              SizedBox(height: 20.h),
+              Text(
+                "We're working on your requests and connecting you with the nearest Technicians. Please wait.",
+                style: jost400(16.sp, AppColors.primary),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        )
             : SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 13.w),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(height: 16.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 13.w),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 16.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Searching best offer",
+                      style: jost700(24.sp, AppColors.primary),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 5.w, vertical: 4.h),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary,
+                        borderRadius: BorderRadius.circular(9.w),
+                      ),
+                      child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "Searching best offer",
-                            style: jost700(24.sp, AppColors.primary),
+                            "Lowest price",
+                            style: jost400(10.sp, AppColors.secondary),
                           ),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 5.w, vertical: 4.h),
-                            decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              borderRadius: BorderRadius.circular(9.w),
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Lowest price",
-                                  style: jost400(10.sp, AppColors.secondary),
-                                ),
-                                SizedBox(
-                                  width: 1.w,
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_down,
-                                  size: 20.w,
-                                  color: AppColors.secondary,
-                                )
-                              ],
-                            ),
+                          SizedBox(
+                            width: 1.w,
                           ),
+                          Icon(
+                            Icons.keyboard_arrow_down,
+                            size: 20.w,
+                            color: AppColors.secondary,
+                          )
                         ],
                       ),
-                      SizedBox(height: 20.h),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: dummy.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding:
-                                EdgeInsets.only(top: index != 0 ? 10.0.w : 0),
-                            child: OfferContainer(
-                              image: dummy[index]['image'],
-                              name: dummy[index]['name'],
-                              experience: dummy[index]['experience'],
-                              price: dummy[index]['price'],
-                              rating: dummy[index]['rating'],
-                              reviews: dummy[index]['reviews'],
-                            ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20.h),
+                ListView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: dummy.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding:
+                      EdgeInsets.only(top: index != 0 ? 10.0.w : 0),
+                      child: OfferContainer(
+                        image: dummy[index]['image'],
+                        name: dummy[index]['name'],
+                        experience: dummy[index]['experience'],
+                        price: dummy[index]['price'],
+                        rating: dummy[index]['rating'],
+                        reviews: dummy[index]['reviews'],
+                      ),
+                    );
+                  },
+                ),
+                SizedBox(height: 26.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12.0.w),
+                  child: CustomElevatedButton(
+                    text: "Cancel",
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            backgroundColor: AppColors.secondary,
+                            contentPadding: EdgeInsets.zero,
+                            content: CancelDialogBox(),
                           );
                         },
-                      ),
-                      SizedBox(height: 26.h),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12.0.w),
-                        child: CustomElevatedButton(
-                          text: "Cancel",
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  backgroundColor: AppColors.secondary,
-                                  contentPadding: EdgeInsets.zero,
-                                  content: CancelDialogBox(),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
-              ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

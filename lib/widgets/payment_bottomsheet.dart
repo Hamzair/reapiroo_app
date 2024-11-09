@@ -77,7 +77,7 @@ class _PaymentBottomsheetState extends State<PaymentBottomsheet> {
             ),
             SizedBox(height: 20.h),
             _buildAmountRow("Amount", widget.price),
-            _buildAmountRow("Service Fees (${serviceFeePercentage.toStringAsFixed(1)}%)", serviceFee.toStringAsFixed(2)),
+            _buildAmountRow("Service Fees ( incl VAT )(${serviceFeePercentage.toStringAsFixed(1)}%)", serviceFee.toStringAsFixed(2)),
             _buildAmountRow("Total", totalAmount.toStringAsFixed(2), isTotal: true),
             SizedBox(height: 30.h),
             Align(

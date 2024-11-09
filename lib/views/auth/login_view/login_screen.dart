@@ -67,13 +67,13 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(color: Colors.black),
               showDropdownIcon: false,
               decoration: InputDecoration(
-                hintText: 'Your phone number',
+                hintText: '0551234567',
                 filled: true,
                 fillColor: Color(0xffFAFAFA),
                 contentPadding: EdgeInsets.symmetric(horizontal: 20),
                 counterText: '',
                 hintStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.grey,
                   fontFamily: 'jost',
                   fontSize: 14.65.sp,
                   fontWeight: FontWeight.w400,

@@ -9,6 +9,7 @@ class AppImages{
   static const right_arrow = 'assets/images/right_arrow.png';
   static const role1 = 'assets/images/role1.png';
   static const role2 = 'assets/images/role2.png';
+  static const whatsapp = 'assets/images/whatsapp.png';
   static const logo = 'assets/images/logo.png';
   static const gender_icon = 'assets/images/gender_icon.png';
   static const name_icon = 'assets/images/name_icon.png';

@@ -356,18 +356,31 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                     CustomElevatedButton(
                       width: 160.w,
                       height: 51.h,
-
-                      text: "Bid",
+                      text: "Reschedule",
                       backgroundColor: AppColors.primary,
                       textColor: AppColors.secondary,
                       fontSize: 19.sp,
-                      onPressed: (){
-                        Get.bottomSheet(
-                            isScrollControlled: true,
-                            isDismissible: true,
-                            BidBottomSheet(comingFrom: "tech",)
+                      onPressed: () {
+                        // Show message for rescheduling
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            backgroundColor: Colors.white,
+                            title: FittedBox(child: Text("Reschedule Information")),
+                            content: Text(
+                                "Please contact the technician for that, you can always contact us for more help."),
+                            actions: [
+                              TextButton(
+                                child: Text("OK",style: jost500(15.sp, AppColors.primary,)),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          ),
                         );
                       },
+                      // enabled: false, // Disable the button
                     ),
                     CustomElevatedButton(
                       width: 160.w,
@@ -375,20 +388,30 @@ class _NewTaskHomeState extends State<NewTaskHome> {
                       text: "Cancel",
                       backgroundColor: AppColors.buttonGrey,
                       textColor: AppColors.primary,
-                      borderSide: BorderSide(
-                          width: 0,
-                          color: Colors.transparent
-                      ),
+                      borderSide:
+                      BorderSide(width: 0, color: Colors.transparent),
                       fontSize: 19.sp,
-                      onPressed: (){
-                        showDialog(context: context, builder: (BuildContext context){
-                          return AlertDialog(
-                            backgroundColor: AppColors.secondary,
-                            contentPadding: EdgeInsets.zero,
-                            content: CancelDialogBox(),
-                          );
-                        });
+                      onPressed: () {
+                        // Show message for canceling
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            backgroundColor: Colors.white,
+                            title: Text("Cancel Information"),
+                            content: Text(
+                                "Cancelling the order is not allowed, please contact us for help."),
+                            actions: [
+                              TextButton(
+                                child: Text("OK",style: jost500(15.sp, AppColors.primary,)),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          ),
+                        );
                       },
+                      // enabled: false, // Disable the button
                     ),
                   ],
                 )

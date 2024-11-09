@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:repairoo/const/color.dart';
 import 'package:repairoo/const/text_styles.dart';
 import 'package:repairoo/controllers/nav_bar_controller.dart';
+import 'package:repairoo/controllers/user_controller.dart';
 import 'package:repairoo/views/booking_screens/today_screen_content.dart'; // Ensure you have this file created with TodayContent
 import 'package:repairoo/views/notification_screen/notification_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
@@ -16,8 +17,13 @@ class BookingScreenMain extends StatefulWidget {
 }
 
 class _BookingScreenMainState extends State<BookingScreenMain> {
-  String? selectedOption = 'In Progress'; // Default to "In Progress"
+  String? selectedOption = 'All'; // Default to "All"
+
   final NavBarController navBarController = Get.find<NavBarController>();
+
+  // Assuming you have a view model that holds the user role
+  final UserController userVM = Get.put(UserController());
+ // Assuming you are using GetX for state management
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +53,7 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                   "Bookings",
                   style: jost700(24.sp, AppColors.primary),
                 ),
-                /// Dropdown Menu
+                /// Dropdown Menu for filtering orders
                 Container(
                   height: 29.h,
                   width: 87.w,
@@ -69,29 +75,7 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                     isExpanded: false,
                     underline: SizedBox(), // Remove the default underline
                     icon: SizedBox.shrink(), // Remove the default icon
-                    items: [
-                      DropdownMenuItem(
-                        value: 'In Progress',
-                        child: Text(
-                          'In Progress',
-                          style: jost700(14.sp, AppColors.primary),
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: 'In Month',
-                        child: Text(
-                          'In Month',
-                          style: jost700(14.sp, AppColors.primary),
-                        ),
-                      ),
-                      DropdownMenuItem(
-                        value: 'In Year',
-                        child: Text(
-                          'In Year',
-                          style: jost700(14.sp, AppColors.primary),
-                        ),
-                      ),
-                    ],
+                    items: _getDropdownItems(userVM.userRole.value),
                     onChanged: (value) {
                       setState(() {
                         selectedOption = value; // Update the selected option
@@ -99,12 +83,15 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                     },
                     // Custom rendering for the selected item to underline it
                     selectedItemBuilder: (BuildContext context) {
-                      return ['In Progress', 'In Month', 'In Year'].map((String value) {
+                      return [
+                        'All', 'Searching', 'In Progress', 'Completed', 'Canceled'
+                      ].map<Widget>((String value) {
                         return Container(
                           width: 87.w,
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 6.w),
-                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   value,
@@ -112,14 +99,15 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
                                 ),
                                 Icon(
                                   Icons.keyboard_arrow_down_sharp,
-                                  color: AppColors.secondary,size: 20,
+                                  color: AppColors.secondary, size: 20,
                                 ),
                               ],
                             ),
                           ),
                         );
-                      }).toList();
+                      }).toList(); // Ensure it's a List<Widget>
                     },
+
                   ),
                 )
               ],
@@ -134,29 +122,113 @@ class _BookingScreenMainState extends State<BookingScreenMain> {
     );
   }
 
+  List<DropdownMenuItem<String>> _getDropdownItems(String userRole) {
+    // Return different items based on the user role
+    if (userRole != "Customer") {
+      return [
+        DropdownMenuItem(
+          value: 'All',
+          child: Text(
+            'All',
+            style: jost700(14.sp, AppColors.primary),
+          ),
+        ),DropdownMenuItem(
+          value: 'In Progress',
+          child: Text(
+            'In Progress',
+            style: jost700(14.sp, AppColors.primary),
+          ),
+        ),
+        DropdownMenuItem(
+          value: 'Completed',
+          child: Text(
+            'Completed',
+            style: jost700(14.sp, AppColors.primary),
+          ),
+        ),
+        DropdownMenuItem(
+          value: 'Canceled',
+          child: Text(
+            'Canceled',
+            style: jost700(14.sp, AppColors.primary),
+          ),
+        ),
+      ];
+    } else if (userRole == "Customer") {
+      return [
+        DropdownMenuItem(
+          value: 'All',
+          child: Text(
+            'All',
+            style: jost700(14.sp, AppColors.primary),
+          ),
+        ),
+        DropdownMenuItem(
+          value: 'Searching',
+          child: Text(
+            'Searching',
+            style: jost700(14.sp, AppColors.primary),
+          ),
+        ),
+        DropdownMenuItem(
+          value: 'In Progress',
+          child: Text(
+            'In Progress',
+            style: jost700(14.sp, AppColors.primary),
+          ),
+        ),
+        DropdownMenuItem(
+          value: 'Completed',
+          child: Text(
+            'Completed',
+            style: jost700(14.sp, AppColors.primary),
+          ),
+        ),
+        DropdownMenuItem(
+          value: 'Canceled',
+          child: Text(
+            'Canceled',
+            style: jost700(14.sp, AppColors.primary),
+          ),
+        ),
+      ];
+    } else {
+      return [];
+    }
+  }
+
   Widget _getBodyContent(String? option) {
     // Returns the body content based on the selected option
     switch (option) {
-      case 'In Progress':
-        return TodayContent(); // Ensure this returns a Widget
-      case 'In Month':
+      case 'All':
+        return TodayContent(); // Ensure this returns a Widget for "All"
+      case 'Searching':
         return Center(
           child: Text(
-            'Displaying bookings for the upcoming month.',
+            'Displaying orders searching for tech.',
             style: jost400(18.sp, AppColors.primary),
           ),
         );
-      case 'In Year':
+      case 'In Progress':
+        return TodayContent();
+      case 'Completed':
         return Center(
           child: Text(
-            'Displaying bookings for the upcoming year.',
+            'Displaying completed orders.',
+            style: jost400(18.sp, AppColors.primary),
+          ),
+        );
+      case 'Canceled':
+        return Center(
+          child: Text(
+            'Displaying canceled orders.',
             style: jost400(18.sp, AppColors.primary),
           ),
         );
       default:
         return Center(
           child: Text(
-            'Please select an option.',
+            'Please select a filter.',
             style: jost400(18.sp, AppColors.primary),
           ),
         );

@@ -10,7 +10,7 @@ import 'package:repairoo/views/home_screens_for_customers/components/job_accepte
 import 'package:repairoo/widgets/app_bars.dart';
 
 class SearchOfferView extends StatefulWidget {
-  const SearchOfferView({super.key, required this.name, required this.image, required this.experience, required this.price, required this.rating, required this.reviews});
+  const SearchOfferView({super.key, required this.name, required this.image, required this.experience, required this.price, required this.rating, required this.reviews, required this.skills});
 
   final String image;
   final String name;
@@ -18,6 +18,7 @@ class SearchOfferView extends StatefulWidget {
   final String price;
   final String rating;
   final String reviews;
+  final List<String> skills;
 
   @override
   State<SearchOfferView> createState() => _SearchOfferViewState();
@@ -126,6 +127,40 @@ class _SearchOfferViewState extends State<SearchOfferView> {
                   ],
                 ),
               ),
+
+              Container(
+                margin: EdgeInsets.only(top: 20.h, bottom: 15.h),
+                alignment: Alignment.centerLeft,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Skills",
+                      style: jost600(14.sp, AppColors.primary),
+                    ),
+                    SizedBox(height: 8.h),
+                    Wrap(
+                      spacing: 8.0,
+                      runSpacing: 8.0,
+                      children: widget.skills.map((skill) {
+                        return Container(
+                          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                          decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(16.r),
+                          ),
+                          child: Text(
+                            skill,
+                            style: jost500(12.sp, AppColors.secondary),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+              ),
+
+
               Container(
                 margin: EdgeInsets.only(top: 28.h, bottom: 21.h),
                 padding: EdgeInsets.symmetric(vertical: 10.h),
