@@ -20,18 +20,18 @@ class _SupportScreenState extends State<SupportScreen> {
   TextEditingController topicController = TextEditingController();
   TextEditingController messageController = TextEditingController();
 
-  Future<void> _launchWhatsApp() async {
-    final url = Uri.parse(
-        'https://web.whatsapp.com/+923206754536?text=Hello,%20I%20need%20help%20with...');
+  void _openWhatsApp() async {
+    const phoneNumber = '+923206754536'; // example phone number
+    final url = Uri.parse('https://wa.me/$phoneNumber');  // WhatsApp URL format
 
-    try {
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url);
-      } else {
-        print('Could not launch WhatsApp');
-      }
-    } catch (e) {
-      print('Error launching WhatsApp: $e');
+    // Check if the URL can be launched and open it in an external application
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      // Show an error message if the URL cannot be launched
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not open WhatsApp.')),
+      );
     }
   }
 
@@ -40,7 +40,6 @@ class _SupportScreenState extends State<SupportScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          // contentPadding: EdgeInsets.zero,
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
@@ -49,8 +48,6 @@ class _SupportScreenState extends State<SupportScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              // SizedBox(height: 30.h),
-
               Icon(
                 Icons.check_circle,
                 color: Colors.green,
@@ -117,20 +114,23 @@ class _SupportScreenState extends State<SupportScreen> {
                 CustomElevatedButton(
                   text: 'Continue',
                   textColor: AppColors.secondary,
-                  onPressed: _showApprovalDialog, // Show dialog on button press
+                  onPressed: _showApprovalDialog,
                   backgroundColor: AppColors.primary,
                 ),
               ],
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _launchWhatsApp,
-          child: SizedBox(
-              height: 40.h,
-              width: 40.w,
-              child: Image.asset(AppImages.whatsapp)),
-          backgroundColor: Colors.green,
+        floatingActionButton: Padding(
+          padding: EdgeInsets.only(bottom: 50, right: 5),
+          child: FloatingActionButton(
+            onPressed: _openWhatsApp,
+            child: SizedBox(
+                height: 40.h,
+                width: 40.w,
+                child: Image.asset(AppImages.whatsapp)),
+            backgroundColor: Colors.green,
+          ),
         ),
       ),
     );

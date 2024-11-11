@@ -109,32 +109,39 @@ class BookingCard extends StatelessWidget {
                           ),
                           SizedBox(height: 4.h),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Image.asset(
                                 AppImages.pinlocation, // Replace with your pin location icon path
                                 height: 12.h,
                                 width: 8.w,
                               ),
+                              SizedBox(width: 7.w,),
                               Text(
                                 location,
                                 style: jost400(11.sp, AppColors.buttontext),
                               ),
-                              SizedBox(width: 16.w,),
-                              Container(
-                                padding: EdgeInsets.all(5.w),
-                                decoration: BoxDecoration(  color: AppColors.secondary,borderRadius: BorderRadius.circular(10.r) ),
-                                child: Text(
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  '60 Aed',
-                                  style: jost400(9.sp, AppColors.primary),
-                                ),
-                              ),
+
                             ],
                           ),
                           SizedBox(height: 5.h,),
                           DescriptionWidget(),
+                          SizedBox(
+                            height: 8.h,
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(7.w),
+                            decoration: BoxDecoration(
+                                color: AppColors.secondary,
+                                borderRadius:
+                                BorderRadius.circular(10.r)),
+                            child: Text(
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              '60 Aed',
+                              style: jost400(12.sp, AppColors.primary),
+                            ),
+                          ),
 
                         ],
                       ),

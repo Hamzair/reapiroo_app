@@ -33,6 +33,7 @@ class WalletDetail extends StatelessWidget {
         isSecondIcon: false,
         onBackTap: () {
           Get.back();
+          Get.back();
         },
       ),
       backgroundColor: AppColors.secondary,

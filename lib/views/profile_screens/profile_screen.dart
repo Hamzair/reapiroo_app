@@ -16,6 +16,7 @@ import 'package:repairoo/views/profile_screens/reports/reports_screen.dart';
 import 'package:repairoo/views/profile_screens/reviews/reviews_screen.dart';
 import 'package:repairoo/widgets/app_bars.dart';
 import 'package:repairoo/widgets/profile_button_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
 
 import '../tech_wallet/wallet_screen.dart';
@@ -46,7 +47,20 @@ class _EditProfileScreenState extends State<ProfileScreen> {
     email.dispose();
     super.dispose();
   }
+  void _openWhatsApp() async {
+    const phoneNumber = '+923206754536'; // example phone number
+    final url = Uri.parse('https://wa.me/$phoneNumber');  // WhatsApp URL format
 
+    // Check if the URL can be launched and open it in an external application
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      // Show an error message if the URL cannot be launched
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not open WhatsApp.')),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -180,19 +194,86 @@ class _EditProfileScreenState extends State<ProfileScreen> {
               /// Help/Contact Us
               userVM.userRole.value == "Customer"
                   ? ProfileButton(
-                      onPressed: () {
-                        Get.to(SupportScreen());
-                      },
-                      label: "Help & Support",
-                      iconPath: AppImages.questionicon,
-                    )
-                  : ProfileButton(
-                      onPressed: () {
-                        Get.to(SupportScreen());
-                      },
-                      label: "Help/Contact Us",
-                      iconPath: AppImages.questionicon,
+                onPressed: () {
+                  Get.dialog(
+                    AlertDialog(
+                      backgroundColor: Colors.white,
+                      title: Text("Help & Support"),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            leading: Icon(Icons.confirmation_number),
+                            title: Text("Tickets"),
+                            onTap: () {
+                              Get.back();// Replace with your Tickets screen
+
+                              // Navigate to the Tickets screen or handle tickets action
+                              Get.to(SupportScreen());                              // Navigate to the Tickets screen or handle tickets action
+                              // Get.to(TicketsScreen()); // Replace with your Tickets screen
+                            },
+                          ),
+                          ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            leading: SizedBox(
+                                height: 25,width: 25,
+                                child: Image.asset(AppImages.whatsapp)),
+                            title: Text("WhatsApp"),
+                            onTap:       _openWhatsApp                   // Navigate to the Tickets screen or handle tickets action
+
+                              // Navigate to WhatsApp support or open WhatsApp chat
+                              // For example, launch WhatsApp with a specific number
+                              // Get.to(WhatsAppSupportScreen()); // Replace with your WhatsApp support screen
+
+                          ),
+                        ],
+                      ),
+
                     ),
+                  );
+                },
+                label: "Help & Support",
+                iconPath: AppImages.questionicon,
+              )
+            : ProfileButton(
+                onPressed: () {
+                  Get.dialog(
+                    AlertDialog(
+                      backgroundColor: Colors.white,
+                      title: Text("Help & Support"),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            leading: Icon(Icons.confirmation_number),
+                            title: Text("Tickets"),
+                            onTap: () {
+                              Get.back();// Replace with your Tickets screen
+
+                              // Navigate to the Tickets screen or handle tickets action
+                             Get.to(SupportScreen());
+                            },
+                          ),
+                          ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            leading: SizedBox(
+                                height: 25,width: 25,
+                                child: Image.asset(AppImages.whatsapp)),
+                            title: Text("WhatsApp"),
+                              onTap:       _openWhatsApp ,                  // Navigate to the Tickets screen or handle tickets action
+
+                          ),
+                        ],
+                      ),
+
+                    ),
+                  );
+                },
+                label: "Help & Support",
+                iconPath: AppImages.questionicon,
+              ),
 
               SizedBox(height: 30.h),
               userVM.userRole.value == "Customer"

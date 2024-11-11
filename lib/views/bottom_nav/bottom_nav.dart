@@ -59,7 +59,7 @@ class _AppNavBarState extends State<AppNavBar> {
     // Move bottomBarPages into build method to ensure userVM is accessible
     List<Widget> bottomBarPages = [
       userVM.userRole.value == "Customer" ? Customerhomescreen() : HomeScreen(),
-      if (userVM.userRole.value != "Customer") OrderScreen(),
+      // if (userVM.userRole.value != "Customer") OrderScreen(),
       const BookingScreenMain(),
       const ChatsScreenMain(),
       const ProfileScreen(),
@@ -111,12 +111,12 @@ class _AppNavBarState extends State<AppNavBar> {
             ),
             itemLabel: 'Home'.tr,
           ),
-          if (userVM.userRole.value != "Customer")
-            BottomBarItem(
-              inActiveItem: Icon(Icons.shopping_bag_outlined, color: Colors.white),
-              activeItem: Icon(Icons.shopping_bag_outlined, color: Colors.white),
-              itemLabel: 'Orders'.tr,
-            ),
+          // if (userVM.userRole.value != "Customer")
+          //   BottomBarItem(
+          //     inActiveItem: Icon(Icons.shopping_bag_outlined, color: Colors.white),
+          //     activeItem: Icon(Icons.shopping_bag_outlined, color: Colors.white),
+          //     itemLabel: 'Orders'.tr,
+          //   ),
           BottomBarItem(
             inActiveItem: Image.asset(AppImages.bookingicon),
             activeItem: Image.asset(
