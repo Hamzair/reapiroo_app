@@ -121,17 +121,17 @@ class _SupportScreenState extends State<SupportScreen> {
             ),
           ),
         ),
-        floatingActionButton: Padding(
-          padding: EdgeInsets.only(bottom: 50, right: 5),
-          child: FloatingActionButton(
-            onPressed: _openWhatsApp,
-            child: SizedBox(
-                height: 40.h,
-                width: 40.w,
-                child: Image.asset(AppImages.whatsapp)),
-            backgroundColor: Colors.green,
-          ),
-        ),
+        // floatingActionButton: Padding(
+        //   padding: EdgeInsets.only(bottom: 50, right: 5),
+        //   child: FloatingActionButton(
+        //     onPressed: _openWhatsApp,
+        //     child: SizedBox(
+        //         height: 40.h,
+        //         width: 40.w,
+        //         child: Image.asset(AppImages.whatsapp)),
+        //     backgroundColor: Colors.green,
+        //   ),
+        // ),
       ),
     );
   }
